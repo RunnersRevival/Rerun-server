@@ -13,7 +13,7 @@ namespace OutrunSharp
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Outrun# pre-alpha");
+            Console.WriteLine("OutrunSharp pre-alpha");
 #if DEBUG
             Console.WriteLine("!!! THIS BUILD IS NOT INTENDED FOR PRODUCTION !!!");
 #endif
