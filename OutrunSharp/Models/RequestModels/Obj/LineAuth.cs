@@ -8,7 +8,7 @@ namespace OutrunSharp.Models.RequestModels.Obj
     public class LineAuth
     {
         public string userId { get; set; }
-        public string password { get; set; }
-        public string migrationPassword { get; set; }
+        public string password { get; set; } // actually a special auth string combining the player key, game key, and player password
+        public string migrationPassword { get; set; } // sent to set the migration password
     }
 }

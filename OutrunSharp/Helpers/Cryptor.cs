@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace OutrunSharp.Logic
+namespace OutrunSharp.Helpers
 {
     public class Cryptor
     {

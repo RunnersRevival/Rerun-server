@@ -15,7 +15,7 @@ namespace OutrunSharp
         {
             Console.WriteLine("OutrunSharp pre-alpha");
 #if DEBUG
-            Console.WriteLine("!!! THIS BUILD IS NOT INTENDED FOR PRODUCTION !!!");
+            Console.WriteLine("!!! DEBUG BUILD !!!");
 #endif
             CreateHostBuilder(args).Build().Run();
         }

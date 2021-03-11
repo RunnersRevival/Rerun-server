@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace OutrunSharp.Logic
+namespace OutrunSharp.Helpers
 {
     public class RunnersRequestHelper
     {

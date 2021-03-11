@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using OutrunSharp.Models.ParamModels;
 
-namespace OutrunSharp.Logic
+namespace OutrunSharp.Helpers
 {
     public class RunnersResponseHelper
     {
