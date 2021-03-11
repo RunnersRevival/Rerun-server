@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace OutrunSharp
 {
@@ -47,9 +48,25 @@ namespace OutrunSharp
 
             app.UseEndpoints(endpoints =>
             {
+                // index page; return 404 along with some info about OutrunSharp
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Outrun# is alive");
+                    context.Response.StatusCode = 404;
+                    string versionString = "v" + Assembly.GetEntryAssembly().GetName().Version.ToString() + " " +
+                        (env.IsDevelopment() ? "DEV " : "PROD ") +
+#if DEBUG
+                        "DEBUG";
+#else
+                        "RELEASE";
+#endif
+                    await context.Response.WriteAsync("OutrunSharp "+versionString);
+                });
+
+                // generates a 204 No Content response, intended for the status page
+                endpoints.MapGet("/generate204", async context =>
+                {
+                    context.Response.StatusCode = 204;
+                    await context.Response.WriteAsync("");
                 });
 
                 endpoints.MapControllers();

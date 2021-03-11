@@ -12,5 +12,11 @@ namespace OutrunSharp.Models.ParamModels
         public string seq { get; set; } // int, indicates sequence number - does this even matter?
         public long serverTime { get; set; } // indicates current server time
         public int statusCode { get; set; } // indicates status code
+
+        public string assets_version { get; set; }
+        public string client_data_version { get; set; }
+        public string data_version { get; set; }
+        public string info_version { get; set; }
+        public string version { get; set; }
     }
 }

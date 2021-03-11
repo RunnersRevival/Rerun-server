@@ -10,7 +10,7 @@ using OutrunSharp.Models.ParamModels;
 
 namespace OutrunSharp.Logic
 {
-    public class RunnersResponseBuilder
+    public class RunnersResponseHelper
     {
 
 		public enum StatusCode
@@ -85,12 +85,6 @@ namespace OutrunSharp.Logic
             };
         }
 
-		public static object DecryptAndDeserializeParam(string param, string key)
-        {
-			string decryptedParam = Cryptor.DecryptText(param, key);
-			return JsonSerializer.Deserialize<object>(decryptedParam);
-		}
-
 		public static BaseResponse CreateBaseResponse(string errMessage, StatusCode statusCode, int seq)
         {
 			DateTimeOffset closeTime = DateTime.Now.AddTicks(-1).AddDays(1);
@@ -101,7 +95,13 @@ namespace OutrunSharp.Logic
 				statusCode = (int)statusCode,
 				seq = seq.ToString(),
 				serverTime = DateTimeOffset.Now.ToUnixTimeSeconds(),
-				closeTime = closeTimeUnix
+				closeTime = closeTimeUnix,
+				// TODO: Make the below options configurable!
+				assets_version = "051",
+				client_data_version = "2.0.4",
+				data_version = "15",
+				info_version = "017",
+				version = "2.0.4"
 			};
 		}
     }
