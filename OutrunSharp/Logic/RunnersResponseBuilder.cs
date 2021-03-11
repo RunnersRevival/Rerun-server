@@ -12,6 +12,7 @@ namespace OutrunSharp.Logic
 {
     public class RunnersResponseBuilder
     {
+
 		public enum StatusCode
 		{
 			Ok = 0,
@@ -73,7 +74,7 @@ namespace OutrunSharp.Logic
             object outputParam = responseObj;
             if (wantSecure) {
                 isSecure = 1;
-                aesKey = System.Text.Encoding.Default.GetString(Cryptor.serverCryptKey);
+                aesKey = System.Text.Encoding.Default.GetString(Cryptor.CryptoIV);
                 outputParam = Cryptor.EncryptText(JsonSerializer.Serialize(responseObj));
             }
             return new RunnersResponseMessage
@@ -84,9 +85,9 @@ namespace OutrunSharp.Logic
             };
         }
 
-		public static object DecryptAndDeserializeParam(string param)
+		public static object DecryptAndDeserializeParam(string param, string key)
         {
-			string decryptedParam = Cryptor.DecryptText(param);
+			string decryptedParam = Cryptor.DecryptText(param, key);
 			return JsonSerializer.Deserialize<object>(decryptedParam);
 		}
 

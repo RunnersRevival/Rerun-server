@@ -16,7 +16,7 @@ namespace OutrunSharp.Controllers
         [HttpPost]
         public RunnersResponseMessage DoLogin()
         {
-            return RunnersResponseBuilder.CraftResponse(true, 
+            return RunnersResponseBuilder.CraftResponse(true,
                 RunnersResponseBuilder.CreateBaseResponse(
                     "Login not implemented",
                     RunnersResponseBuilder.StatusCode.NotAvailablePlayer,

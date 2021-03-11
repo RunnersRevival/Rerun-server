@@ -12,13 +12,8 @@ namespace OutrunSharp.Logic
 {
     public class Cryptor
     {
-
-        private static byte[] clientCryptKey = Encoding.ASCII.GetBytes("Ec7bLaTdSuXuf5pW");
-
-        public static byte[] serverCryptKey = Encoding.ASCII.GetBytes("DV3G4Kb7xflNqi5x");
-
-        private static byte[] cryptKey = Encoding.ASCII.GetBytes("u-4Z~jWARVUjkNSz");
-        private static byte[] cryptIV = Encoding.ASCII.GetBytes("Zb2*_.gj/uZ)@4hG9nAN,.H6Ew4n2N5e");
+        private static byte[] CryptoKey = Encoding.UTF8.GetBytes("Ec7bLaTdSuXuf5pW");
+        public static byte[] CryptoIV = Encoding.UTF8.GetBytes("DV3G4Kb7xflNqi5x");
 
         public static bool IsBase64String(string base64String)
         {
@@ -27,7 +22,7 @@ namespace OutrunSharp.Logic
                    Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None);
 
         }
-        public static string DecryptText(string text)
+        public static string DecryptText(string text, string iv)
         {
             if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException("text");
@@ -39,9 +34,10 @@ namespace OutrunSharp.Logic
             {
                 using (Rijndael rijAlg = Rijndael.Create())
                 {
-                    rijAlg.BlockSize = 256;
+                    rijAlg.BlockSize = 128;
                     rijAlg.Padding = PaddingMode.Zeros;
-                    rijAlg.Key = clientCryptKey;
+                    rijAlg.Key = CryptoKey;
+                    rijAlg.IV = Encoding.UTF8.GetBytes(iv);
 
                     ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
 
@@ -74,9 +70,10 @@ namespace OutrunSharp.Logic
             // with the specified key and IV.
             using (Rijndael rijAlg = Rijndael.Create())
             {
-                rijAlg.BlockSize = 256;
-                rijAlg.Padding = PaddingMode.Zeros;
-                rijAlg.Key = serverCryptKey;
+                rijAlg.BlockSize = 128;
+                rijAlg.Padding = PaddingMode.PKCS7;
+                rijAlg.Key = CryptoKey;
+                rijAlg.IV = CryptoIV;
 
                 // Create an encryptor to perform the stream transform.
                 ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
