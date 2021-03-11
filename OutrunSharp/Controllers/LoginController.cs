@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OutrunSharp.Logic;
 using OutrunSharp.Models;
+using OutrunSharp.Models.ParamModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +13,14 @@ namespace OutrunSharp.Controllers
     public class LoginController : Controller
     {
         [Route("Login/login")]
-        [HttpGet]
+        [HttpPost]
         public RunnersResponseMessage DoLogin()
         {
-            return new RunnersResponseMessage {
-                key = "",
-                param = { },
-                secure = 0
-            };
+            return RunnersResponseBuilder.CraftResponse(true, 
+                RunnersResponseBuilder.CreateBaseResponse(
+                    "Login not implemented",
+                    RunnersResponseBuilder.StatusCode.NotAvailablePlayer,
+                    1));
         }
     }
 }
