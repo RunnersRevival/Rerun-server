@@ -80,10 +80,10 @@ namespace OutrunSharp.Controllers
                     _logger.LogInformation("Entering Pre-Login");
                     try
                     {
-                        PlayerInfo playerinfo = context.GetPlayerInfo(paramData.lineAuth.userId);
+                        string pkey = context.GetPlayerKey(paramData.lineAuth.userId);
                         LoginCheckKeyResponse response = new("Bad password", (int)RunnersResponseHelper.StatusCode.PassWordError)
                         {
-                            key = playerinfo.Player_key
+                            key = pkey
                         };
                         return RunnersResponseHelper.CraftResponse(true, response);
                     }
@@ -101,12 +101,32 @@ namespace OutrunSharp.Controllers
                     // login - use user id in conjunction with a password to create a session id
                     _logger.LogInformation("Entering Login");
                     _logger.LogInformation(paramData.lineAuth.password);
-                    PlayerInfo playerinfo = context.GetPlayerInfo(paramData.lineAuth.userId);
-                    return RunnersResponseHelper.CraftResponse(true,
-                        RunnersResponseHelper.CreateBaseResponse(
-                        "Not yet",
-                        RunnersResponseHelper.StatusCode.MissingPlayer,
-                        0));
+                    if (context.ValidatePassword(paramData.lineAuth.userId, paramData.lineAuth.password))
+                    {
+                        _logger.LogInformation("Successful login");
+                        string sessionId = context.CreateSessionID(Convert.ToUInt64(paramData.lineAuth.userId));
+                        PlayerInfo playerinfo = context.GetPlayerInfo(paramData.lineAuth.userId);
+                        context.UpdatePlayerInfo(paramData.lineAuth.userId, "last_login", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
+                        LoginSuccessResponse response = new()
+                        {
+                            userName = playerinfo.Username,
+                            sessionId = sessionId,
+                            sessionTimeLimit = 3600,
+                            energyRecveryTime = "600",
+                            energyRecoveryMax = "10"
+                        };
+                        return RunnersResponseHelper.CraftResponse(true, response);
+                    }
+                    else
+                    {
+                        _logger.LogInformation("Auth failed!");
+                        string pkey = context.GetPlayerKey(paramData.lineAuth.userId);
+                        LoginCheckKeyResponse response = new("Bad password", (int)RunnersResponseHelper.StatusCode.PassWordError)
+                        {
+                            key = pkey
+                        };
+                        return RunnersResponseHelper.CraftResponse(true, response);
+                    }
                 }
             }
         }

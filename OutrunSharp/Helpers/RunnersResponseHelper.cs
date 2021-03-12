@@ -74,7 +74,7 @@ namespace OutrunSharp.Helpers
             object outputParam = responseObj;
             if (wantSecure) {
                 isSecure = 1;
-                aesKey = System.Text.Encoding.Default.GetString(Cryptor.CryptoIV);
+                aesKey = System.Text.Encoding.Default.GetString(Cryptor.GetCryptoIV());
                 outputParam = Cryptor.EncryptText(JsonSerializer.Serialize(responseObj));
             }
             return new RunnersResponseMessage

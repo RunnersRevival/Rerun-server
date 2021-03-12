@@ -12,8 +12,9 @@ namespace OutrunSharp.Helpers
 {
     public class Cryptor
     {
+        private static byte[] OldCryptoKey = Encoding.UTF8.GetBytes("vMdkkY8bfVmUS6qr"); // used in versions prior to 1.1.0
         private static byte[] CryptoKey = Encoding.UTF8.GetBytes("Ec7bLaTdSuXuf5pW");
-        public static byte[] CryptoIV = Encoding.UTF8.GetBytes("DV3G4Kb7xflNqi5x");
+        private static byte[] CryptoIV = Encoding.UTF8.GetBytes("DV3G4Kb7xflNqi5x");
 
         public static bool IsBase64String(string base64String)
         {
@@ -91,8 +92,26 @@ namespace OutrunSharp.Helpers
                     }
                 }
             }
-
             return Convert.ToBase64String(encrypted);
+        }
+
+        public static byte[] GetCryptoIV()
+        {
+            return CryptoIV;
+        }
+
+        public static string CalcMD5String(string plainText)
+        {
+            MD5CryptoServiceProvider cryptoMD5 = new();
+            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            byte[] hashValue = cryptoMD5.ComputeHash(plainTextBytes);
+            string convHash = string.Empty;
+            foreach (byte b in hashValue)
+            {
+                string hexConv = b.ToString("X2");
+                convHash += hexConv.ToLower();
+            }
+            return convHash;
         }
     }
 }
