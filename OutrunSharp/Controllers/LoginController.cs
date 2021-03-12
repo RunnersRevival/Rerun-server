@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using OutrunSharp.Exceptions;
 using OutrunSharp.Helpers;
 using OutrunSharp.Models;
-using OutrunSharp.Models.ParamModels;
+using OutrunSharp.Models.ResponseModels;
 using OutrunSharp.Models.RequestModels;
 using OutrunSharp.Models.DbModels;
 using System;
@@ -111,9 +111,9 @@ namespace OutrunSharp.Controllers
                         {
                             userName = playerinfo.Username,
                             sessionId = sessionId,
-                            sessionTimeLimit = 3600,
-                            energyRecveryTime = "600",
-                            energyRecoveryMax = "10"
+                            sessionTimeLimit = 3600, // TODO: Have this in a config file!
+                            energyRecveryTime = "600", // TODO: Have this in a config file!
+                            energyRecoveryMax = "10" // TODO: Have this in a config file!
                         };
                         return RunnersResponseHelper.CraftResponse(true, response);
                     }
@@ -129,6 +129,15 @@ namespace OutrunSharp.Controllers
                     }
                 }
             }
+        }
+
+        [Route("Login/getVariousParameters")]
+        [HttpPost]
+        public RunnersResponseMessage GetVariousParameters(string key, string param, int secure)
+        {
+            // agnostic; we do not need to get anything from param here
+            VariousParamsResponse response = new();
+            return RunnersResponseHelper.CraftResponse(true, response);
         }
     }
 }
