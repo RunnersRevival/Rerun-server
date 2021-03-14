@@ -131,9 +131,9 @@ namespace OutrunSharp.Controllers
             }
         }
 
-        [Route("Login/getVariousParameters")]
+        [Route("Login/getVariousParameter")]
         [HttpPost]
-        public RunnersResponseMessage GetVariousParameters(string key, string param, int secure)
+        public RunnersResponseMessage GetVariousParameter(string key, string param, int secure)
         {
             // agnostic; we do not need to get anything from param here
             VariousParamsResponse response = new();

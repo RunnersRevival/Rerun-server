@@ -14,7 +14,7 @@ namespace OutrunSharp.Models.ResponseModels
             energyRecveryTime = 600;
             onePlayCmCount = 0;
             onePlayContinueCount = 2;
-            isPurchased = 0;
+            isPurchased = 1;
         }
         public VariousParamsResponse(string errMsg, int status) : base(errMsg, status)
         {
@@ -23,7 +23,7 @@ namespace OutrunSharp.Models.ResponseModels
             energyRecveryTime = 600;
             onePlayCmCount = 0;
             onePlayContinueCount = 2;
-            isPurchased = 0;
+            isPurchased = 1;
         }
 
         public int cmSkipCount { get; set; }
@@ -31,6 +31,6 @@ namespace OutrunSharp.Models.ResponseModels
         public int energyRecveryTime { get; set; }
         public int onePlayCmCount { get; set; }
         public int onePlayContinueCount { get; set; } // maximum continues
-        public int isPurchased { get; set; }
+        public int isPurchased { get; set; } // flag - if set, ads do not load (on versions prior to 2.0.3)
     }
 }

@@ -30,4 +30,43 @@ namespace OutrunSharp.Models
         CharacterStatusUnlocked,
         CharacterStatusMaxLevel
     }
+
+    public enum CharaIDs
+    {
+        Sonic = 300000, // core
+        Tails, // core
+        Knuckles, // core
+        Amy,
+        Shadow,
+        Blaze,
+        Rouge,
+        Omega,
+        Big, // easy
+        Cream, // easy
+        Espio, // chaotix
+        Charmy, // chaotix
+        Vector, // chaotix
+        Silver, // easy
+        MetalSonic,
+        ClassicSonic, // birthday event
+        Werehog, // sonic unleashed event
+        Sticks,
+        Tikal, // sonic adventure event
+        Mephiles, // sonic wars/forces event?
+        PSISilver,
+        Chara0021, // 2.0.4 launch event
+        Chara0022, // ??? event
+        Chara0023, // ??? event
+        Chara0024, // ??? event
+
+        // special event characters
+        AmitieAmy = 301000,
+        GothicAmy,
+        HalloweenShadow,
+        HalloweenBlaze,
+        HalloweenRouge,
+        XMasSonic,
+        XMasTails,
+        XMasKnuckles,
+    }
 }

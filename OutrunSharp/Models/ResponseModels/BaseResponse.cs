@@ -17,7 +17,7 @@ namespace OutrunSharp.Models.ResponseModels
             serverTime = DateTimeOffset.Now.ToUnixTimeSeconds();
             closeTime = ctUnix;
             // TODO: Make the below options configurable!
-            assets_version = "051";
+            assets_version = "050";
             client_data_version = "2.0.3";
             data_version = "15";
             info_version = "017";
@@ -26,7 +26,11 @@ namespace OutrunSharp.Models.ResponseModels
 
         public BaseResponse(string errMsg, int status)
         {
-            DateTimeOffset ct = DateTime.Now.AddTicks(-1).AddDays(1);
+            DateTimeOffset ct = new DateTime(
+                DateTime.Now.Year,
+                DateTime.Now.Month,
+                DateTime.Now.Day,
+                23, 59, 59, 999);
             long ctUnix = ct.ToUnixTimeSeconds();
             errorMessage = errMsg;
             statusCode = status;
