@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,14 @@ namespace OutrunSharp.Models
 {
     public class PlayCharacter
     {
+        public PlayCharacter(string id)
+        {
+            characterId = id;
+            star = 0;
+            starMax = 10;
+            priceNumRings = 120000;
+            priceNumRedRings = 100;
+        }
         public string characterId { get; set; }
         public int star { get; set; } // current limit break level
         public int starMax { get; set; } // maximum limit break level (usually 10)
@@ -15,6 +24,16 @@ namespace OutrunSharp.Models
     }
     public class Character : PlayCharacter
     {
+        public Character(string id) : base(id)
+        {
+            status = CharacterStatus.CharacterStatusUnlocked;
+            level = 0;
+            exp = 0;
+            abilityLevel = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            abilityNumRings = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            abilityLevelup = new int[] { };
+            abilityLevelupExp = new int[] { };
+        }
         public CharacterStatus status { get; set; }
         public int level { get; set; }
         public int exp { get; set; }

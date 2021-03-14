@@ -52,6 +52,7 @@ namespace OutrunSharp.Models
 
     public enum ChaoIDs
     {
+        // normal buddies
         HeroChao = 400000,
         GoldChao,
         DarkChao,
@@ -88,6 +89,7 @@ namespace OutrunSharp.Models
         MagLv1,
         Chao0026, // NO DATA
 
+        // rare buddies
         EggChao = 401000,
         PumpkinChao,
         SkullChao,
@@ -108,7 +110,7 @@ namespace OutrunSharp.Models
         Chao1013, // NO DATA
         Chao1014, // NO DATA
 
-        // beyond this point they most likely dropped the trio scheme
+        // beyond this point they dropped the trio scheme
         EasterBunny,
         MagicLamp,
         StarShapedMissile,
@@ -143,6 +145,7 @@ namespace OutrunSharp.Models
         Orbot,
         Cubot,
 
+        // super-rare buddies
         LightChaos = 402000,
         HeroChaos,
         DarkChaos,
