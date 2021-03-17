@@ -1,11 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace OutrunSharp
 {
@@ -13,7 +9,11 @@ namespace OutrunSharp
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("OutrunSharp pre-alpha");
+            Version version = Assembly.GetEntryAssembly().GetName().Version;
+            DateTime buildDate = new DateTime(2000, 1, 1)
+                                    .AddDays(version.Build).AddSeconds(version.Revision * 2);
+            string displayableVersion = $"{version} (built {buildDate})";
+            Console.WriteLine("OutrunSharp v" + displayableVersion);
 #if DEBUG
             Console.WriteLine("!!! DEBUG BUILD !!!");
 #endif

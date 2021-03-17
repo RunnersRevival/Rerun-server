@@ -31,8 +31,8 @@ namespace OutrunSharp.Models
             exp = 0;
             abilityLevel = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             abilityNumRings = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            abilityLevelup = new int[] { };
-            abilityLevelupExp = new int[] { };
+            abilityLevelup = Array.Empty<int>();
+            abilityLevelupExp = Array.Empty<int>();
         }
         public CharacterStatus status { get; set; }
         public int level { get; set; }

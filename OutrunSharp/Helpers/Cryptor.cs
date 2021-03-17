@@ -12,9 +12,9 @@ namespace OutrunSharp.Helpers
 {
     public class Cryptor
     {
-        private static byte[] OldCryptoKey = Encoding.UTF8.GetBytes("vMdkkY8bfVmUS6qr"); // used in versions prior to 1.1.0
-        private static byte[] CryptoKey = Encoding.UTF8.GetBytes("Ec7bLaTdSuXuf5pW");
-        private static byte[] CryptoIV = Encoding.UTF8.GetBytes("DV3G4Kb7xflNqi5x");
+        private static readonly byte[] OldCryptoKey = Encoding.UTF8.GetBytes("vMdkkY8bfVmUS6qr"); // used in versions prior to 1.1.0
+        private static readonly byte[] CryptoKey = Encoding.UTF8.GetBytes("Ec7bLaTdSuXuf5pW");
+        private static readonly byte[] CryptoIV = Encoding.UTF8.GetBytes("DV3G4Kb7xflNqi5x");
 
         public static bool IsBase64String(string base64String)
         {
@@ -26,33 +26,25 @@ namespace OutrunSharp.Helpers
         public static string DecryptText(string text, string iv)
         {
             if (string.IsNullOrEmpty(text))
-                throw new ArgumentNullException("text");
+                throw new ArgumentNullException(nameof(text));
             if (!IsBase64String(text))
                 throw new DecryptFailureException("The text input parameter is not base64 encoded");
             byte[] cipherText = Convert.FromBase64String(text);
             string decryptedText = null;
             try
             {
-                using (Rijndael rijAlg = Rijndael.Create())
-                {
-                    rijAlg.BlockSize = 128;
-                    rijAlg.Padding = PaddingMode.Zeros;
-                    rijAlg.Key = CryptoKey;
-                    rijAlg.IV = Encoding.UTF8.GetBytes(iv);
+                using Rijndael rijAlg = Rijndael.Create();
+                rijAlg.BlockSize = 128;
+                rijAlg.Padding = PaddingMode.Zeros;
+                rijAlg.Key = CryptoKey;
+                rijAlg.IV = Encoding.UTF8.GetBytes(iv);
 
-                    ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
+                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
 
-                    using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                    {
-                        using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                        {
-                            using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                            {
-                                decryptedText = srDecrypt.ReadToEnd();
-                            }
-                        }
-                    }
-                }
+                using MemoryStream msDecrypt = new(cipherText);
+                using CryptoStream csDecrypt = new(msDecrypt, decryptor, CryptoStreamMode.Read);
+                using StreamReader srDecrypt = new(csDecrypt);
+                decryptedText = srDecrypt.ReadToEnd();
             }
             catch(Exception e)
             {
@@ -64,7 +56,7 @@ namespace OutrunSharp.Helpers
         public static string EncryptText(string text)
         {
             if (string.IsNullOrEmpty(text))
-                throw new ArgumentNullException("text");
+                throw new ArgumentNullException(nameof(text));
 
             byte[] encrypted;
             // Create an Rijndael object
@@ -80,17 +72,13 @@ namespace OutrunSharp.Helpers
                 ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
 
                 // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
+                using MemoryStream msEncrypt = new();
+                using CryptoStream csEncrypt = new(msEncrypt, encryptor, CryptoStreamMode.Write);
+                using (StreamWriter swEncrypt = new(csEncrypt))
                 {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
-                            swEncrypt.Write(text);
-                        }
-                        encrypted = msEncrypt.ToArray();
-                    }
+                    swEncrypt.Write(text);
                 }
+                encrypted = msEncrypt.ToArray();
             }
             return Convert.ToBase64String(encrypted);
         }

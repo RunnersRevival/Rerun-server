@@ -54,14 +54,18 @@ namespace OutrunSharp
                 endpoints.MapGet("/", async context =>
                 {
                     context.Response.StatusCode = 404;
-                    string versionString = "v" + Assembly.GetEntryAssembly().GetName().Version.ToString() + " " +
+                    Version version = Assembly.GetEntryAssembly().GetName().Version;
+                    DateTime buildDate = new DateTime(2000, 1, 1)
+                                            .AddDays(version.Build).AddSeconds(version.Revision * 2);
+                    string displayableVersion = $"{version} (built {buildDate})";
+                    string versionString = "v" + displayableVersion + " " +
                         (env.IsDevelopment() ? "DEV " : "PROD ") +
 #if DEBUG
                         "DEBUG";
 #else
                         "RELEASE";
 #endif
-                    await context.Response.WriteAsync("OutrunSharp "+versionString);
+                    await context.Response.WriteAsync("OutrunSharp " + versionString);
                 });
 
                 // generates a 204 No Content response, intended for the status page
