@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OutrunSharp.Models.ResponseModels
 {
@@ -9,7 +6,11 @@ namespace OutrunSharp.Models.ResponseModels
     {
         public BaseResponse()
         {
-            DateTimeOffset ct = DateTime.Now.AddTicks(-1).AddDays(1);
+            DateTimeOffset ct = new DateTime(
+                DateTime.Now.Year,
+                DateTime.Now.Month,
+                DateTime.Now.Day,
+                23, 59, 59, 999);
             long ctUnix = ct.ToUnixTimeSeconds();
             errorMessage = "OK";
 			statusCode = 0;
@@ -18,10 +19,10 @@ namespace OutrunSharp.Models.ResponseModels
             closeTime = ctUnix;
             // TODO: Make the below options configurable!
             assets_version = "050";
-            client_data_version = "2.0.3";
+            client_data_version = "2.0.4";
             data_version = "15";
             info_version = "017";
-            version = "2.0.3";
+            version = "2.0.4";
         }
 
         public BaseResponse(string errMsg, int status)

@@ -22,6 +22,8 @@ namespace OutrunSharp
             Configuration = configuration;
         }
 
+        public DateTime startupTime;
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -39,6 +41,8 @@ namespace OutrunSharp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            startupTime = DateTime.Now;
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -68,7 +72,7 @@ namespace OutrunSharp
                     await context.Response.WriteAsync("OutrunSharp " + versionString);
                 });
 
-                // generates a 204 No Content response, intended for the status page
+                // generates a 204 No Content response, intended for uptime monitoring
                 endpoints.MapGet("/generate204", async context =>
                 {
                     context.Response.StatusCode = 204;

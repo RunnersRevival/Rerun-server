@@ -64,7 +64,7 @@ namespace OutrunSharp.Controllers
             if(paramData.lineAuth.userId.Length == 0)
             {
                 // registration - create a new account and return its info
-                _logger.LogInformation("Entering Registration");
+                _logger.LogDebug("Entering Registration");
                 // TODO: add actual logic here
                 return RunnersResponseHelper.CraftResponse(true,
                 RunnersResponseHelper.CreateBaseResponse(
@@ -77,7 +77,7 @@ namespace OutrunSharp.Controllers
                 if (paramData.lineAuth.password.Length == 0)
                 {
                     // pre-login - search for user by ID and return key
-                    _logger.LogInformation("Entering Pre-Login");
+                    _logger.LogDebug("Entering Pre-Login");
                     try
                     {
                         string pkey = context.GetPlayerKey(paramData.lineAuth.userId);
@@ -99,11 +99,11 @@ namespace OutrunSharp.Controllers
                 else
                 {
                     // login - use user id in conjunction with a password to create a session id
-                    _logger.LogInformation("Entering Login");
-                    _logger.LogInformation(paramData.lineAuth.password);
+                    _logger.LogDebug("Entering Login");
+                    _logger.LogDebug(paramData.lineAuth.password);
                     if (context.ValidatePassword(paramData.lineAuth.userId, paramData.lineAuth.password))
                     {
-                        _logger.LogInformation("Successful login");
+                        _logger.LogDebug("Successful login");
                         string sessionId = context.CreateSessionID(Convert.ToUInt64(paramData.lineAuth.userId));
                         PlayerInfo playerinfo = context.GetPlayerInfo(paramData.lineAuth.userId);
                         context.UpdatePlayerInfo(paramData.lineAuth.userId, "last_login", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
@@ -119,7 +119,7 @@ namespace OutrunSharp.Controllers
                     }
                     else
                     {
-                        _logger.LogInformation("Auth failed!");
+                        _logger.LogDebug("Auth failed!");
                         string pkey = context.GetPlayerKey(paramData.lineAuth.userId);
                         LoginCheckKeyResponse response = new("Bad password", (int)RunnersResponseHelper.StatusCode.PassWordError)
                         {

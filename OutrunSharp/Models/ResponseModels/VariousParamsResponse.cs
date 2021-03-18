@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OutrunSharp.Models.ResponseModels
 {
@@ -31,6 +28,6 @@ namespace OutrunSharp.Models.ResponseModels
         public int energyRecveryTime { get; set; }
         public int onePlayCmCount { get; set; }
         public int onePlayContinueCount { get; set; } // maximum continues
-        public int isPurchased { get; set; } // flag - if set, ads do not load (on versions prior to 2.0.3)
+        public int isPurchased { get; set; } // flag
     }
 }
