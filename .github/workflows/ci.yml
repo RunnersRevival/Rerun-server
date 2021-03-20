@@ -41,7 +41,7 @@ jobs:
     # Package into zip
     - name: Package
       run: |
-        7z a OutrunSharp.zip OutrunSharp/bin/Debug/net5.0/*
+        7z a OutrunSharp.zip "OutrunSharp/bin/Debug/net5.0/*"
 
     # Upload artifact
     - name: Upload a Build Artifact
