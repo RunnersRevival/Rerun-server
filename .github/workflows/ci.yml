@@ -33,8 +33,8 @@ jobs:
     
     - name: Build
       run: |
-      msbuild OutrunSharp.sln /p:Configuration=Release
-      7z a OutrunSharp OutrunSharp/bin/Debug/net5.0/*      
+        msbuild OutrunSharp.sln /p:Configuration=Release
+        7z a OutrunSharp OutrunSharp/bin/Debug/net5.0/*      
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.1
