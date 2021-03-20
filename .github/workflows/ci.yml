@@ -16,6 +16,8 @@ jobs:
   build:
     name: Build
     runs-on: windows-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
     # Checkout repo
     - name: Checkout
