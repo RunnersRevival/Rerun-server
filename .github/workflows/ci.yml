@@ -2,20 +2,18 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
-
   build:
-
+    name: Build
     runs-on: windows-latest
-
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-
     steps:
+    # Checkout repo
     - name: Checkout
       uses: actions/checkout@v2
       with:
@@ -31,17 +29,24 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@2008f912f56e61277eefaac6d1888b750582aa16
 
+    # Build
     - name: Build
       run: |
         msbuild OutrunSharp.sln /p:Configuration=Release
+
+    # Package into zip
+    - name: Package
+      run: |
         7z a OutrunSharp.zip OutrunSharp/bin/Debug/net5.0/*
 
+    # Upload artifact
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.1
       with:
         path:
           OutrunSharp.zip
 
+    # Upload to releases
     - name: Upload to Releases
       shell: bash
       if: github.event_name == 'push'
@@ -50,5 +55,5 @@ jobs:
         TRAVIS_REPO_SLUG: FairPlay137/OutrunSharp
         TRAVIS_COMMIT: ${{ github.sha }}
       run: |
-        curl -fLOSs --retry 2 --retry-delay 60 https://github.com/probonopd/uploadtool/raw/master/upload.sh
+        curl -fLOSs https://github.com/probonopd/uploadtool/raw/master/upload.sh
         ./upload.sh OutrunSharp.zip
