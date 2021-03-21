@@ -61,7 +61,7 @@ namespace OutrunSharp
                     Version version = Assembly.GetEntryAssembly().GetName().Version;
                     DateTime buildDate = new DateTime(2000, 1, 1)
                                             .AddDays(version.Build).AddSeconds(version.Revision * 2);
-                    string displayableVersion = $"{version} (built {buildDate})";
+                    string displayableVersion = $"{version} (commit {Properties.Resources.CurrentCommit.Trim()}, built {buildDate})";
                     string versionString = "v" + displayableVersion + " " +
                         (env.IsDevelopment() ? "DEV " : "PROD ") +
 #if DEBUG

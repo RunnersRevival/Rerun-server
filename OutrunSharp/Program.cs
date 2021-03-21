@@ -12,7 +12,7 @@ namespace OutrunSharp
             Version version = Assembly.GetEntryAssembly().GetName().Version;
             DateTime buildDate = new DateTime(2000, 1, 1)
                                     .AddDays(version.Build).AddSeconds(version.Revision * 2);
-            string displayableVersion = $"{version} (built {buildDate})";
+            string displayableVersion = $"{version} (commit {Properties.Resources.CurrentCommit.Trim()}, built {buildDate})";
             Console.WriteLine("OutrunSharp v" + displayableVersion);
 #if DEBUG
             Console.WriteLine("!!! DEBUG BUILD !!!");
