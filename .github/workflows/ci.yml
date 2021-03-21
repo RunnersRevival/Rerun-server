@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+    steps:
+    # Checkout repo
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    # Set up dependencies
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # Build
+    - name: Build
+      run: dotnet build --no-restore
+
+    # Test
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+
+    # Package into zip
+    - name: Package
+      run: |
+        7z a OutrunSharp.zip "OutrunSharp/bin/Debug/net5.0/*"
+
+    # Upload artifact
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.1
+      with:
+        path:
+          OutrunSharp.zip
+
+    # Upload to releases
+    - name: Upload to Releases
+      shell: bash
+      if: github.event_name == 'push'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TRAVIS_REPO_SLUG: FairPlay137/OutrunSharp
+        TRAVIS_COMMIT: ${{ github.sha }}
+      run: |
+        curl -fLOSs https://github.com/probonopd/uploadtool/raw/master/upload.sh
+        ./upload.sh OutrunSharp.zip
