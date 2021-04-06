@@ -14,18 +14,18 @@ using System.Threading.Tasks;
 
 namespace OutrunSharp.Controllers
 {
-    public class GameController : Controller
+    public class MessageController : Controller
     {
-        private readonly ILogger<GameController> _logger;
+        private readonly ILogger<MessageController> _logger;
 
-        public GameController(ILogger<GameController> logger)
+        public MessageController(ILogger<MessageController> logger)
         {
             _logger = logger;
         }
 
-        [Route("Game/getDailyChalData")]
+        [Route("Message/getMessageList")]
         [HttpPost]
-        public RunnersResponseMessage GetDailyChallengeData(string key, string param, int secure)
+        public RunnersResponseMessage GetMessageList(string key, string param, int secure)
         {
             OutrunDbContext context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;
@@ -63,7 +63,7 @@ namespace OutrunSharp.Controllers
             string playerId = context.CheckSessionID(paramData.sessionId);
             if (playerId.Length != 0)
             {
-                DailyChallengeDataResponse response = new();
+                MessageListResponse response = new();
                 return RunnersResponseHelper.CraftResponse(true, response);
             }
             else
