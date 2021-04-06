@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 
+#pragma warning disable IDE1006 // Naming Styles
+
 namespace OutrunSharp.Models.ResponseModels
 {
     public class PlayerStateResponse : BaseResponse

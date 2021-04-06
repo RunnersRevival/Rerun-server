@@ -53,7 +53,7 @@ namespace OutrunSharp.Controllers
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot deserialize",
-                            RunnersResponseHelper.StatusCode.ParamHashDifference,
+                            RunnersResponseHelper.StatusCode.RequestParamError,
                             0));
                 }
             } else
@@ -135,9 +135,54 @@ namespace OutrunSharp.Controllers
         [HttpPost]
         public RunnersResponseMessage GetVariousParameter(string key, string param, int secure)
         {
-            // agnostic; we do not need to get anything from param here
-            VariousParamsResponse response = new();
-            return RunnersResponseHelper.CraftResponse(true, response);
+            OutrunDbContext context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
+            BaseRequest paramData;
+            if (secure == 1)
+            {
+                try
+                {
+                    paramData = RunnersRequestHelper.DecryptAndDeserializeParam<BaseRequest>(param, key);
+                }
+                catch (DecryptFailureException e)
+                {
+                    // Decryption failed
+                    _logger.LogError("Decryption failed! Details: " + e.ToString());
+                    return RunnersResponseHelper.CraftResponse(true,
+                        RunnersResponseHelper.CreateBaseResponse(
+                            "Cannot decrypt",
+                            RunnersResponseHelper.StatusCode.DecryptionFailure,
+                            0));
+                }
+                catch (JsonException e)
+                {
+                    // Deserialization failed
+                    _logger.LogError("Deserialization failed! Details: " + e.ToString());
+                    return RunnersResponseHelper.CraftResponse(true,
+                        RunnersResponseHelper.CreateBaseResponse(
+                            "Cannot deserialize",
+                            RunnersResponseHelper.StatusCode.RequestParamError,
+                            0));
+                }
+            }
+            else
+            {
+                paramData = JsonSerializer.Deserialize<BaseRequest>(param);
+            }
+            string playerId = context.CheckSessionID(paramData.sessionId);
+            if (playerId.Length != 0)
+            {
+                // agnostic
+                VariousParamsResponse response = new();
+                return RunnersResponseHelper.CraftResponse(true, response);
+            }
+            else
+            {
+                return RunnersResponseHelper.CraftResponse(true,
+                    RunnersResponseHelper.CreateBaseResponse(
+                        "Expired session",
+                        RunnersResponseHelper.StatusCode.ExpirationSession,
+                        0));
+            }
         }
     }
 }

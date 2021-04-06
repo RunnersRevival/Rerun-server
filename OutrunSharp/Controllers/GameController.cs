@@ -14,19 +14,18 @@ using System.Threading.Tasks;
 
 namespace OutrunSharp.Controllers
 {
-    public class SpinController : Controller
+    public class GameController : Controller
     {
+        private readonly ILogger<GameController> _logger;
 
-        private readonly ILogger<SpinController> _logger;
-
-        public SpinController(ILogger<SpinController> logger)
+        public GameController(ILogger<GameController> logger)
         {
             _logger = logger;
         }
 
-        [Route("Spin/getWheelOptions")]
+        [Route("Game/getDailyChalData")]
         [HttpPost]
-        public RunnersResponseMessage GetWheelOptions(string key, string param, int secure)
+        public RunnersResponseMessage GetVariousParameter(string key, string param, int secure)
         {
             OutrunDbContext context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;
@@ -64,8 +63,7 @@ namespace OutrunSharp.Controllers
             string playerId = context.CheckSessionID(paramData.sessionId);
             if (playerId.Length != 0)
             {
-                WheelOptionsResponse response = new();
-                // TODO: get player data
+                DailyChallengeDataResponse response = new();
                 return RunnersResponseHelper.CraftResponse(true, response);
             }
             else

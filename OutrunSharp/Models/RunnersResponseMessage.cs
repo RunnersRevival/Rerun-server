@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+#pragma warning disable IDE1006 // Naming Styles
+
 namespace OutrunSharp.Models
 {
     // The general model for all responses for Runners

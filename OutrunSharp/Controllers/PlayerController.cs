@@ -53,7 +53,7 @@ namespace OutrunSharp.Controllers
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot deserialize",
-                            RunnersResponseHelper.StatusCode.ParamHashDifference,
+                            RunnersResponseHelper.StatusCode.RequestParamError,
                             0));
                 }
             }
@@ -106,7 +106,7 @@ namespace OutrunSharp.Controllers
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot deserialize",
-                            RunnersResponseHelper.StatusCode.ParamHashDifference,
+                            RunnersResponseHelper.StatusCode.RequestParamError,
                             0));
                 }
             }
@@ -160,7 +160,7 @@ namespace OutrunSharp.Controllers
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot deserialize",
-                            RunnersResponseHelper.StatusCode.ParamHashDifference,
+                            RunnersResponseHelper.StatusCode.RequestParamError,
                             0));
                 }
             }

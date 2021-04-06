@@ -6,10 +6,11 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": "true",
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:9001"
     },
     "OutrunSharp - Production": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:9001"
     }
   }
 }
