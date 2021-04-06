@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OutrunSharp.Models.RequestModels.Obj
+namespace OutrunSharp.Models.RequestModels.Login.Obj
 {
     public class LineAuth
     {

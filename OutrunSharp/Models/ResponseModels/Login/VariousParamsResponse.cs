@@ -2,7 +2,7 @@
 
 #pragma warning disable IDE1006 // Naming Styles
 
-namespace OutrunSharp.Models.ResponseModels
+namespace OutrunSharp.Models.ResponseModels.Login
 {
     public class VariousParamsResponse : BaseResponse
     {

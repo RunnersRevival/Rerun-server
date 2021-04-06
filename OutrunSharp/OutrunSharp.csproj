@@ -30,6 +30,33 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\RequestModels\Battle\" />
+    <Folder Include="Models\RequestModels\Chao\" />
+    <Folder Include="Models\RequestModels\Character\" />
+    <Folder Include="Models\RequestModels\Event\" />
+    <Folder Include="Models\RequestModels\Friend\" />
+    <Folder Include="Models\RequestModels\Game\" />
+    <Folder Include="Models\RequestModels\Leaderboard\" />
+    <Folder Include="Models\RequestModels\Message\" />
+    <Folder Include="Models\RequestModels\Store\" />
+    <Folder Include="Models\RequestModels\Spin\" />
+    <Folder Include="Models\RequestModels\Sgn\" />
+    <Folder Include="Models\RequestModels\RaidbossSpin\" />
+    <Folder Include="Models\RequestModels\Player\" />
+    <Folder Include="Models\RequestModels\Option\" />
+    <Folder Include="Models\ResponseModels\Chao\" />
+    <Folder Include="Models\ResponseModels\Character\" />
+    <Folder Include="Models\ResponseModels\Friend\" />
+    <Folder Include="Models\ResponseModels\Battle\" />
+    <Folder Include="Models\ResponseModels\Event\" />
+    <Folder Include="Models\ResponseModels\Leaderboard\" />
+    <Folder Include="Models\ResponseModels\RaidbossSpin\" />
+    <Folder Include="Models\ResponseModels\Sgn\" />
+    <Folder Include="Models\ResponseModels\Option\" />
+    <Folder Include="Models\ResponseModels\Store\" />
+  </ItemGroup>
+
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="git rev-parse --short HEAD &gt; &quot;$(ProjectDir)\CurrentCommit.txt&quot;" />
   </Target>

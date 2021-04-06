@@ -5,7 +5,7 @@ using OutrunSharp.Helpers;
 using OutrunSharp.Models;
 using OutrunSharp.Models.DbModels;
 using OutrunSharp.Models.RequestModels;
-using OutrunSharp.Models.ResponseModels;
+using OutrunSharp.Models.ResponseModels.Message;
 using System;
 using System.Collections.Generic;
 using System.Linq;

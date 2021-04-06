@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using OutrunSharp.Models.Obj;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 #pragma warning disable IDE1006 // Naming Styles
 
-namespace OutrunSharp.Models.ResponseModels
+namespace OutrunSharp.Models.ResponseModels.Game
 {
     public class DailyChallengeDataResponse : BaseResponse
     {

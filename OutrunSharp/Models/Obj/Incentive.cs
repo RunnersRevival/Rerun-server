@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 #pragma warning disable IDE1006 // Naming Styles
 
-namespace OutrunSharp.Models
+namespace OutrunSharp.Models.Obj
 {
     public class Incentive : Item
     {

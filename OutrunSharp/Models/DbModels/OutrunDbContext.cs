@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Org.BouncyCastle.Bcpg.Sig;
 using OutrunSharp.Exceptions;
 using OutrunSharp.Helpers;
+using OutrunSharp.Models.Obj;
 using System;
 using System.Collections.Generic;
 using System.Linq;

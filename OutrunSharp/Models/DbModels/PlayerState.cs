@@ -7,7 +7,7 @@ namespace OutrunSharp.Models.DbModels
 {
     public class PlayerState
     {
-        public List<Item> Items { get; set; }
+        public List<Obj.Item> Items { get; set; }
         public List<string> EquippedItems { get; set; }
 
         public string MainCharaID { get; set; }

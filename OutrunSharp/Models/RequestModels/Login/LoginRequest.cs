@@ -1,4 +1,4 @@
-﻿using OutrunSharp.Models.RequestModels.Obj;
+﻿using OutrunSharp.Models.RequestModels.Login.Obj;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 #pragma warning disable IDE1006 // Naming Styles
 
-namespace OutrunSharp.Models.RequestModels
+namespace OutrunSharp.Models.RequestModels.Login
 {
     public class LoginRequest : BaseRequest
     {
