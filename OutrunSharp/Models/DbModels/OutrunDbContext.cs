@@ -33,7 +33,7 @@ namespace OutrunSharp.Models.DbModels
         static string GetRandomString(int length)
         {
             string s = "";
-            using (RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider())
+            using (RNGCryptoServiceProvider provider = new())
             {
                 while (s.Length != length)
                 {
@@ -58,7 +58,7 @@ namespace OutrunSharp.Models.DbModels
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM player_info WHERE id = " + id, conn);
+                MySqlCommand cmd = new("SELECT * FROM player_info WHERE id = " + id, conn);
 
                 using var reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
@@ -104,7 +104,7 @@ namespace OutrunSharp.Models.DbModels
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT player_key FROM player_info WHERE id = " + id, conn);
+                MySqlCommand cmd = new("SELECT player_key FROM player_info WHERE id = " + id, conn);
 
                 using var reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
@@ -142,7 +142,7 @@ namespace OutrunSharp.Models.DbModels
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT password, player_key FROM player_info WHERE id = " + id, conn);
+                MySqlCommand cmd = new("SELECT password, player_key FROM player_info WHERE id = " + id, conn);
 
                 using var reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
@@ -191,7 +191,7 @@ namespace OutrunSharp.Models.DbModels
 
             var sql = "INSERT INTO session_ids(sid, uid, assigned_at_time) VALUES(@sid, @uid, @now)";
 
-            using var cmd = new MySqlCommand(sql, conn);
+            using MySqlCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@sid", sessionId);
             cmd.Parameters.AddWithValue("@uid", uid);
             cmd.Parameters.AddWithValue("@now", nowUnix);
@@ -204,12 +204,12 @@ namespace OutrunSharp.Models.DbModels
 
         public bool InvalidateSessionID(string sessionId) // returns true if there was a session with that ID, false otherwise
         {
-            using var conn = GetConnection();
+            using MySqlConnection conn = GetConnection();
             conn.Open();
 
-            var sql = "DELETE FROM session_ids WHERE sid = @target";
+            string sql = "DELETE FROM session_ids WHERE sid = @target";
 
-            using var cmd = new MySqlCommand(sql, conn);
+            using MySqlCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@target", sessionId);
             cmd.Prepare();
 
@@ -225,11 +225,11 @@ namespace OutrunSharp.Models.DbModels
 
             var sql = "SELECT uid, assigned_at_time FROM session_ids WHERE sid = @sid";
 
-            using var cmd = new MySqlCommand(sql, conn);
+            using MySqlCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@sid", sessionId);
             cmd.Prepare();
 
-            using var reader = cmd.ExecuteReader();
+            using MySqlDataReader reader = cmd.ExecuteReader();
             if (!reader.Read())
             {
                 // no such session exists
@@ -250,10 +250,10 @@ namespace OutrunSharp.Models.DbModels
         {
             using MySqlConnection conn = GetConnection();
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT sid, assigned_at_time FROM session_ids", conn);
+            MySqlCommand cmd = new("SELECT sid, assigned_at_time FROM session_ids", conn);
             long expirationTime;
             long now = DateTimeOffset.Now.ToUnixTimeSeconds();
-            using var reader = cmd.ExecuteReader();
+            using MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 expirationTime = Convert.ToInt64(reader["assigned_at_time"]) + 3600;
@@ -267,7 +267,7 @@ namespace OutrunSharp.Models.DbModels
         {
             using MySqlConnection conn = GetConnection();
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT sid, assigned_at_time FROM session_ids", conn);
+            MySqlCommand cmd = new("SELECT sid, assigned_at_time FROM session_ids", conn);
             long expirationTime;
             long now = DateTimeOffset.Now.ToUnixTimeSeconds();
             using var reader = await cmd.ExecuteReaderAsync();

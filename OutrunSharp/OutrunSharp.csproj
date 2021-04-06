@@ -39,7 +39,6 @@
     <Folder Include="Models\RequestModels\Game\" />
     <Folder Include="Models\RequestModels\Leaderboard\" />
     <Folder Include="Models\RequestModels\Message\" />
-    <Folder Include="Models\RequestModels\Store\" />
     <Folder Include="Models\RequestModels\Spin\" />
     <Folder Include="Models\RequestModels\Sgn\" />
     <Folder Include="Models\RequestModels\RaidbossSpin\" />
@@ -54,7 +53,6 @@
     <Folder Include="Models\ResponseModels\RaidbossSpin\" />
     <Folder Include="Models\ResponseModels\Sgn\" />
     <Folder Include="Models\ResponseModels\Option\" />
-    <Folder Include="Models\ResponseModels\Store\" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
