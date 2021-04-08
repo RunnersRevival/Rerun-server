@@ -11,7 +11,7 @@ namespace OutrunSharp.Helpers
     {
         public static T DecryptAndDeserializeParam<T>(string param, string key)
         {
-            string decryptedParam = Regex.Replace(Cryptor.DecryptText(param, key).Trim(), @"\p{C}+", string.Empty);
+            var decryptedParam = Regex.Replace(Cryptor.DecryptText(param, key).Trim(), @"\p{C}+", string.Empty);
             return JsonSerializer.Deserialize<T>(decryptedParam);
         }
     }

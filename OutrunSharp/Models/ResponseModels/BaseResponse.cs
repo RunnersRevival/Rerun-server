@@ -13,7 +13,7 @@ namespace OutrunSharp.Models.ResponseModels
                 DateTime.Now.Month,
                 DateTime.Now.Day,
                 23, 59, 59, 999);
-            long ctUnix = ct.ToUnixTimeSeconds();
+            var ctUnix = ct.ToUnixTimeSeconds();
             errorMessage = "OK";
 			statusCode = 0;
             seq = "0";
@@ -34,7 +34,7 @@ namespace OutrunSharp.Models.ResponseModels
                 DateTime.Now.Month,
                 DateTime.Now.Day,
                 23, 59, 59, 999);
-            long ctUnix = ct.ToUnixTimeSeconds();
+            var ctUnix = ct.ToUnixTimeSeconds();
             errorMessage = errMsg;
             statusCode = status;
             seq = "0";

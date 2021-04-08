@@ -1,15 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg.Sig;
 using OutrunSharp.Exceptions;
 using OutrunSharp.Helpers;
 using OutrunSharp.Models.Obj;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OutrunSharp.Models.DbModels
@@ -25,27 +21,26 @@ namespace OutrunSharp.Models.DbModels
 
         private MySqlConnection GetConnection()
         {
-            return new MySqlConnection(ConnectionString);
+            return new(ConnectionString);
         }
 
         const string validRandChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
         static string GetRandomString(int length)
         {
-            string s = "";
-            using (RNGCryptoServiceProvider provider = new())
+            var s = "";
+            using RNGCryptoServiceProvider provider = new();
+            while (s.Length != length)
             {
-                while (s.Length != length)
+                var oneByte = new byte[1];
+                provider.GetBytes(oneByte);
+                var character = (char)oneByte[0];
+                if (validRandChars.Contains(character))
                 {
-                    byte[] oneByte = new byte[1];
-                    provider.GetBytes(oneByte);
-                    char character = (char)oneByte[0];
-                    if (validRandChars.Contains(character))
-                    {
-                        s += character;
-                    }
+                    s += character;
                 }
             }
+
             return s;
         }
 
@@ -53,55 +48,54 @@ namespace OutrunSharp.Models.DbModels
         {
             PlayerInfo info = new();
 
-            bool onFirstEntry = true;
+            var onFirstEntry = true;
 
-            using (MySqlConnection conn = GetConnection())
+            using var conn = GetConnection();
+            conn.Open();
+            MySqlCommand cmd = new("SELECT * FROM player_info WHERE id = " + id, conn);
+
+            using var reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
             {
-                conn.Open();
-                MySqlCommand cmd = new("SELECT * FROM player_info WHERE id = " + id, conn);
-
-                using var reader = cmd.ExecuteReader();
-                if (!reader.HasRows)
+                throw new NoSuchPlayerException("Player ID " + id + " does not exist in the database.");
+            }
+            while (reader.Read())
+            {
+                if (!onFirstEntry)
                 {
-                    throw new NoSuchPlayerException("Player ID " + id + " does not exist in the database.");
+                    throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database. This may indicate a conflict.");
                 }
-                while (reader.Read())
+                else
                 {
-                    if (!onFirstEntry)
-                    {
-                        throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database. This may indicate a conflict.");
-                    }
-                    else
-                    {
-                        info.Id = Convert.ToUInt64(reader["id"]);
-                        info.Username = reader["username"].ToString();
-                        info.Password = reader["password"].ToString();
-                        info.MigratePassword = reader["migrate_password"].ToString();
-                        info.UserPassword = reader["user_password"].ToString();
-                        info.PlayerKey = reader["player_key"].ToString();
-                        info.LastLogin = Convert.ToInt64(reader["last_login"]);
-                        info.Language = (Language)Convert.ToInt32(reader["language"]);
-                        info.Characters = JsonConvert.DeserializeObject<List<Character>>(reader["characters"].ToString());
-                        info.Chao = JsonConvert.DeserializeObject<List<Chao>>(reader["chao"].ToString());
-                        info.SuspendedUntil = Convert.ToInt64(reader["suspended_until"]);
-                        info.SuspendReason = Convert.ToInt32(reader["suspend_reason"]);
-                        info.LastLoginDevice = reader["last_login_device"].ToString();
-                        info.LastLoginPlatform = (Platform)Convert.ToInt32(reader["last_login_platform"]);
+                    info.Id = Convert.ToUInt64(reader["id"]);
+                    info.Username = reader["username"].ToString();
+                    info.Password = reader["password"].ToString();
+                    info.MigratePassword = reader["migrate_password"].ToString();
+                    info.UserPassword = reader["user_password"].ToString();
+                    info.PlayerKey = reader["player_key"].ToString();
+                    info.LastLogin = Convert.ToInt64(reader["last_login"]);
+                    info.Language = (Language)Convert.ToInt32(reader["language"]);
+                    info.Characters = JsonConvert.DeserializeObject<List<Character>>(reader["characters"].ToString());
+                    info.Chao = JsonConvert.DeserializeObject<List<Chao>>(reader["chao"].ToString());
+                    info.SuspendedUntil = Convert.ToInt64(reader["suspended_until"]);
+                    info.SuspendReason = Convert.ToInt32(reader["suspend_reason"]);
+                    info.LastLoginDevice = reader["last_login_device"].ToString();
+                    info.LastLoginPlatform = (Platform)Convert.ToInt32(reader["last_login_platform"]);
 
-                        onFirstEntry = false;
-                    }
+                    onFirstEntry = false;
                 }
             }
+
             return info;
         }
 
         public string GetPlayerKey(string id)
         {
-            string key = string.Empty;
+            var key = string.Empty;
 
-            bool onFirstEntry = true;
+            var onFirstEntry = true;
 
-            using (MySqlConnection conn = GetConnection())
+            using (var conn = GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new("SELECT player_key FROM player_info WHERE id = " + id, conn);
@@ -133,13 +127,13 @@ namespace OutrunSharp.Models.DbModels
 
         public bool ValidatePassword(string id, string pass)
         {
-            string key = string.Empty;
-            string password = string.Empty;
-            string gameId = "dho5v5yy7n2uswa5iblb";
+            var key = string.Empty;
+            var password = string.Empty;
+            var gameId = "dho5v5yy7n2uswa5iblb";
 
-            bool onFirstEntry = true;
+            var onFirstEntry = true;
 
-            using (MySqlConnection conn = GetConnection())
+            using (var conn = GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new("SELECT password, player_key FROM player_info WHERE id = " + id, conn);
@@ -177,19 +171,19 @@ namespace OutrunSharp.Models.DbModels
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Prepare();
 
-            int rowsUpdated = cmd.ExecuteNonQuery();
+            var rowsUpdated = cmd.ExecuteNonQuery();
             return rowsUpdated;
         }
 
         public string CreateSessionID(ulong uid)
         {
-            string sessionId = "REVIVAL_" + GetRandomString(40);
-            long nowUnix = DateTimeOffset.Now.ToUnixTimeSeconds();
+            var sessionId = "REVIVAL_" + GetRandomString(40);
+            var nowUnix = DateTimeOffset.Now.ToUnixTimeSeconds();
 
             using var conn = GetConnection();
             conn.Open();
 
-            var sql = "INSERT INTO session_ids(sid, uid, assigned_at_time) VALUES(@sid, @uid, @now)";
+            const string sql = "INSERT INTO session_ids(sid, uid, assigned_at_time) VALUES(@sid, @uid, @now)";
 
             using MySqlCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@sid", sessionId);
@@ -204,18 +198,18 @@ namespace OutrunSharp.Models.DbModels
 
         public bool InvalidateSessionID(string sessionId) // returns true if there was a session with that ID, false otherwise
         {
-            using MySqlConnection conn = GetConnection();
+            using var conn = GetConnection();
             conn.Open();
 
-            string sql = "DELETE FROM session_ids WHERE sid = @target";
+            const string sql = "DELETE FROM session_ids WHERE sid = @target";
 
             using MySqlCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@target", sessionId);
             cmd.Prepare();
 
-            int rows = cmd.ExecuteNonQuery();
+            var rows = cmd.ExecuteNonQuery();
 
-            return !(rows == 0);
+            return rows != 0;
         }
 
         public string CheckSessionID(string sessionId) // returns user ID if session is valid; empty otherwise
@@ -223,19 +217,19 @@ namespace OutrunSharp.Models.DbModels
             using var conn = GetConnection();
             conn.Open();
 
-            var sql = "SELECT uid, assigned_at_time FROM session_ids WHERE sid = @sid";
+            const string sql = "SELECT uid, assigned_at_time FROM session_ids WHERE sid = @sid";
 
             using MySqlCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@sid", sessionId);
             cmd.Prepare();
 
-            using MySqlDataReader reader = cmd.ExecuteReader();
+            using var reader = cmd.ExecuteReader();
             if (!reader.Read())
             {
                 // no such session exists
                 return string.Empty;
             }
-            long expirationTime = Convert.ToInt64(reader["assigned_at_time"]) + 3600;
+            var expirationTime = Convert.ToInt64(reader["assigned_at_time"]) + 3600;
             if (DateTimeOffset.Now.ToUnixTimeSeconds() <= expirationTime)
             {
                 return reader["uid"].ToString();
@@ -251,12 +245,11 @@ namespace OutrunSharp.Models.DbModels
             using MySqlConnection conn = GetConnection();
             conn.Open();
             MySqlCommand cmd = new("SELECT sid, assigned_at_time FROM session_ids", conn);
-            long expirationTime;
-            long now = DateTimeOffset.Now.ToUnixTimeSeconds();
-            using MySqlDataReader reader = cmd.ExecuteReader();
+            var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+            using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                expirationTime = Convert.ToInt64(reader["assigned_at_time"]) + 3600;
+                var expirationTime = Convert.ToInt64(reader["assigned_at_time"]) + 3600;
                 if (now > expirationTime)
                 {
                     InvalidateSessionID(reader["sid"].ToString());
@@ -265,15 +258,14 @@ namespace OutrunSharp.Models.DbModels
         }
         public async Task InvalidateAllExpiredSessionIDsAsync()
         {
-            using MySqlConnection conn = GetConnection();
+            await using var conn = GetConnection();
             conn.Open();
             MySqlCommand cmd = new("SELECT sid, assigned_at_time FROM session_ids", conn);
-            long expirationTime;
-            long now = DateTimeOffset.Now.ToUnixTimeSeconds();
-            using var reader = await cmd.ExecuteReaderAsync();
+            var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+            await using var reader = await cmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                expirationTime = Convert.ToInt64(reader["assigned_at_time"]) + 3600;
+                var expirationTime = Convert.ToInt64(reader["assigned_at_time"]) + 3600;
                 if (now > expirationTime)
                 {
                     InvalidateSessionID(reader["sid"].ToString());

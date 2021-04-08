@@ -11,11 +11,11 @@ namespace OutrunSharp.Models.ResponseModels.Player
     {
         public PlayerStateResponse() : base()
         {
-            playerState = new();
+            playerState = new PlayerStateModel();
         }
         public PlayerStateResponse(string errMsg, int status) : base(errMsg, status)
         {
-            playerState = new();
+            playerState = new PlayerStateModel();
         }
 
         public PlayerStateModel playerState { get; set; }
@@ -30,23 +30,23 @@ namespace OutrunSharp.Models.ResponseModels.Player
                 DateTime.Now.Month,
                 DateTime.Now.Day,
                 23, 59, 59, 999);
-            long endOfDayUnix = endOfDay.ToUnixTimeSeconds();
+            var endOfDayUnix = endOfDay.ToUnixTimeSeconds();
             Random random = new();
             items = new List<Item>()
             {
-                new Item(((int)ItemIDs.ItemIDInvincible).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDBarrier).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDMagnet).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDTrampoline).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDCombo).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDLaser).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDDrill).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDAsteroid).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDRingBonus).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDDistanceBonus).ToString(), 0),
-                new Item(((int)ItemIDs.ItemIDAnimalBonus).ToString(), 0)
+                new(((int)ItemIDs.ItemIDInvincible).ToString(), 0),
+                new(((int)ItemIDs.ItemIDBarrier).ToString(), 0),
+                new(((int)ItemIDs.ItemIDMagnet).ToString(), 0),
+                new(((int)ItemIDs.ItemIDTrampoline).ToString(), 0),
+                new(((int)ItemIDs.ItemIDCombo).ToString(), 0),
+                new(((int)ItemIDs.ItemIDLaser).ToString(), 0),
+                new(((int)ItemIDs.ItemIDDrill).ToString(), 0),
+                new(((int)ItemIDs.ItemIDAsteroid).ToString(), 0),
+                new(((int)ItemIDs.ItemIDRingBonus).ToString(), 0),
+                new(((int)ItemIDs.ItemIDDistanceBonus).ToString(), 0),
+                new(((int)ItemIDs.ItemIDAnimalBonus).ToString(), 0)
             };
-            equipItemList = new string[] { "-1", "-1", "-1" };
+            equipItemList = new[] { "-1", "-1", "-1" };
             mainCharaID = ((int)CharaIDs.Sonic).ToString();
             subCharaID = "-1";
             mainChaoID = "-1";

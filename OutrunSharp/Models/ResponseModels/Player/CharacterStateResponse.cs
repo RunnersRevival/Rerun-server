@@ -12,22 +12,22 @@ namespace OutrunSharp.Models.ResponseModels.Player
     {
         public CharacterStateResponse() : base()
         {
-            characterState = new();
-            foreach (string charaId in DefaultCharaIDs)
+            characterState = new List<Character>();
+            foreach (var charaId in DefaultCharaIDs)
             {
                 characterState.Add(new Character(charaId));
             }
         }
         public CharacterStateResponse(string errMsg, int status) : base(errMsg, status)
         {
-            characterState = new();
-            foreach (string charaId in DefaultCharaIDs)
+            characterState = new List<Character>();
+            foreach (var charaId in DefaultCharaIDs)
             {
                 characterState.Add(new Character(charaId));
             }
         }
 
-        private readonly string[] DefaultCharaIDs = new string[] { "300000", "300001", "300002", "300003" };
+        private readonly string[] DefaultCharaIDs = { "300000", "300001", "300002", "300003" };
 
         public List<Character> characterState { get; set; }
     }

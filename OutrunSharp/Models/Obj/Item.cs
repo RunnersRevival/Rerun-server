@@ -20,6 +20,10 @@ namespace OutrunSharp.Models.Obj
 
     public enum ItemIDs
     {
+        ItemIDBoostScore = 110000,
+        ItemIDBoostTrampoline,
+        ItemIDBoostSubChara,
+
         ItemIDInvincible = 120000,
         ItemIDBarrier, // Shield
         ItemIDMagnet,
@@ -40,5 +44,10 @@ namespace OutrunSharp.Models.Obj
         ItemIDRedRing = 900000,
         ItemIDRing = 910000,
         ItemIDEnergy = 920000,
+
+        ItemIDContinue = 950000,
+        ItemIDDailyBattleReset = 980000,
+        ItemIDDailyBattleReset1 = 980001, // find new opponent
+        ItemIDDailyBattleReset2 = 980002, // find beatable opponent
     }
 }

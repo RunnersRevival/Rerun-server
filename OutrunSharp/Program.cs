@@ -10,14 +10,21 @@ namespace OutrunSharp
     {
         public static void Main(string[] args)
         {
-            Version version = Assembly.GetEntryAssembly().GetName().Version;
-            DateTime buildDate = new DateTime(2000, 1, 1)
-                                    .AddDays(version.Build).AddSeconds(version.Revision * 2);
-            string displayableVersion = $"{version} (commit {Properties.Resources.CurrentCommit.Trim()}, built {buildDate})";
+            var version = Assembly.GetEntryAssembly()?.GetName().Version;
+            string displayableVersion;
+            if (version is not null)
+            {
+                var buildDate = new DateTime(2000, 1, 1)
+                    .AddDays(version.Build).AddSeconds(version.Revision * 2);
+                displayableVersion = $"{version} (commit {Properties.Resources.CurrentCommit.Trim()}, built {buildDate})";
+            }
+            else
+                displayableVersion = "[unknown]";
 #if DEBUG
             displayableVersion += " (debug)";
 #endif
             Console.WriteLine("OutrunSharp v" + displayableVersion);
+
             CreateHostBuilder(args).Build().Run();
         }
 

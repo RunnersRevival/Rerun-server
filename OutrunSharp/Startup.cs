@@ -1,15 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Reflection;
 using OutrunSharp.Models.DbModels;
 
@@ -22,7 +18,7 @@ namespace OutrunSharp
             Configuration = configuration;
         }
 
-        public DateTime startupTime;
+        public DateTime StartupTime;
 
         public IConfiguration Configuration { get; }
 
@@ -41,7 +37,7 @@ namespace OutrunSharp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            startupTime = DateTime.Now;
+            StartupTime = DateTime.Now;
             
             if (env.IsDevelopment())
             {
@@ -59,11 +55,17 @@ namespace OutrunSharp
                 endpoints.MapGet("/", async context =>
                 {
                     context.Response.StatusCode = 404;
-                    Version version = Assembly.GetEntryAssembly().GetName().Version;
-                    DateTime buildDate = new DateTime(2000, 1, 1)
-                                            .AddDays(version.Build).AddSeconds(version.Revision * 2);
-                    string displayableVersion = $"{version} (commit {Properties.Resources.CurrentCommit.Trim()}, built {buildDate})";
-                    string versionString = "v" + displayableVersion + " " +
+                    var version = Assembly.GetEntryAssembly()?.GetName().Version;
+                    string displayableVersion;
+                    if (version is not null)
+                    {
+                        var buildDate = new DateTime(2000, 1, 1)
+                            .AddDays(version.Build).AddSeconds(version.Revision * 2);
+                        displayableVersion = $"{version} (commit {Properties.Resources.CurrentCommit.Trim()}, built {buildDate})";
+                    }
+                    else
+                        displayableVersion = "[unknown]";
+                    var versionString = "v" + displayableVersion + " " +
                         (env.IsDevelopment() ? "DEV " : "PROD ") +
 #if DEBUG
                         "DEBUG";

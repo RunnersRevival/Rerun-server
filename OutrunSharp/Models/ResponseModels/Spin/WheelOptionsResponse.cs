@@ -30,9 +30,9 @@ namespace OutrunSharp.Models.ResponseModels.Spin
                 DateTime.Now.Month,
                 DateTime.Now.Day,
                 23, 59, 59, 999).AddMilliseconds(1);
-            long rtUnix = rt.ToUnixTimeSeconds();
-            items = new string[] { "200000", "120000", "120001", "120002", "200000", "900000", "120003", "120004" };
-            item = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
+            var rtUnix = rt.ToUnixTimeSeconds();
+            items = new[] { "200000", "120000", "120001", "120002", "200000", "900000", "120003", "120004" };
+            item = new[] { 1, 1, 1, 1, 1, 1, 1, 1 };
             itemWeight = new uint[] { 1250, 1250, 1250, 1250, 1250, 1250, 1250, 1250 };
             itemWon = 0;
             nextFreeSpin = rtUnix;

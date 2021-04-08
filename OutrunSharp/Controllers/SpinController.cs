@@ -8,6 +8,7 @@ using OutrunSharp.Models.RequestModels;
 using OutrunSharp.Models.ResponseModels.Spin;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -60,22 +61,25 @@ namespace OutrunSharp.Controllers
             else
             {
                 paramData = JsonSerializer.Deserialize<BaseRequest>(param);
+                if (paramData is null)
+                    return RunnersResponseHelper.CraftResponse(true,
+                        RunnersResponseHelper.CreateBaseResponse(
+                            "!(paramData != null)",
+                            RunnersResponseHelper.StatusCode.ServerSystemError,
+                            0));
             }
-            string playerId = context.CheckSessionID(paramData.sessionId);
-            if (playerId.Length != 0)
-            {
-                WheelOptionsResponse response = new();
-                // TODO: get player data
-                return RunnersResponseHelper.CraftResponse(true, response);
-            }
-            else
-            {
+
+            Debug.Assert(context != null, nameof(context) + " != null");
+            var playerId = context.CheckSessionID(paramData.sessionId);
+            if (playerId.Length == 0)
                 return RunnersResponseHelper.CraftResponse(true,
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         0));
-            }
+            WheelOptionsResponse response = new();
+            // TODO: get player data
+            return RunnersResponseHelper.CraftResponse(true, response);
         }
     }
 }

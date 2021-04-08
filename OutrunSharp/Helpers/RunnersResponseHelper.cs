@@ -71,12 +71,17 @@ namespace OutrunSharp.Helpers
         {
             short isSecure = 0;
             string aesKey = null;
-            object outputParam = responseObj;
-            if (wantSecure) {
-                isSecure = 1;
-                aesKey = System.Text.Encoding.Default.GetString(Cryptor.GetCryptoIV());
-                outputParam = Cryptor.EncryptText(JsonSerializer.Serialize(responseObj));
-            }
+            var outputParam = responseObj;
+            if (!wantSecure)
+                return new RunnersResponseMessage
+                {
+                    key = aesKey,
+                    param = outputParam,
+                    secure = isSecure
+                };
+            isSecure = 1;
+            aesKey = System.Text.Encoding.Default.GetString(Cryptor.GetCryptoIV());
+            outputParam = Cryptor.EncryptText(JsonSerializer.Serialize(responseObj));
             return new RunnersResponseMessage
             {
                 key = aesKey,
@@ -88,7 +93,7 @@ namespace OutrunSharp.Helpers
 		public static BaseResponse CreateBaseResponse(string errMessage, StatusCode statusCode, int seq)
         {
 			DateTimeOffset closeTime = DateTime.Now.AddTicks(-1).AddDays(1);
-			long closeTimeUnix = closeTime.ToUnixTimeSeconds();
+			var closeTimeUnix = closeTime.ToUnixTimeSeconds();
 			return new BaseResponse
 			{
 				errorMessage = errMessage,

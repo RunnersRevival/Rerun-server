@@ -12,7 +12,7 @@ namespace OutrunSharp.Helpers
 {
     public class Cryptor
     {
-        private static readonly byte[] OldCryptoKey = Encoding.UTF8.GetBytes("vMdkkY8bfVmUS6qr"); // used in versions prior to 1.1.0
+        //private static readonly byte[] OldCryptoKey = Encoding.UTF8.GetBytes("vMdkkY8bfVmUS6qr"); // used in versions prior to 1.1.0
         private static readonly byte[] CryptoKey = Encoding.UTF8.GetBytes("Ec7bLaTdSuXuf5pW");
         private static readonly byte[] CryptoIV = Encoding.UTF8.GetBytes("DV3G4Kb7xflNqi5x");
 
@@ -29,17 +29,17 @@ namespace OutrunSharp.Helpers
                 throw new ArgumentNullException(nameof(text));
             if (!IsBase64String(text))
                 throw new DecryptFailureException("The text input parameter is not base64 encoded");
-            byte[] cipherText = Convert.FromBase64String(text);
-            string decryptedText = null;
+            var cipherText = Convert.FromBase64String(text);
+            string decryptedText;
             try
             {
-                using Rijndael rijAlg = Rijndael.Create();
+                using var rijAlg = Rijndael.Create();
                 rijAlg.BlockSize = 128;
                 rijAlg.Padding = PaddingMode.Zeros;
                 rijAlg.Key = CryptoKey;
                 rijAlg.IV = Encoding.UTF8.GetBytes(iv);
 
-                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
+                var decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
 
                 using MemoryStream msDecrypt = new(cipherText);
                 using CryptoStream csDecrypt = new(msDecrypt, decryptor, CryptoStreamMode.Read);
@@ -61,7 +61,7 @@ namespace OutrunSharp.Helpers
             byte[] encrypted;
             // Create an Rijndael object
             // with the specified key and IV.
-            using (Rijndael rijAlg = Rijndael.Create())
+            using (var rijAlg = Rijndael.Create())
             {
                 rijAlg.BlockSize = 128;
                 rijAlg.Padding = PaddingMode.PKCS7;
@@ -69,7 +69,7 @@ namespace OutrunSharp.Helpers
                 rijAlg.IV = CryptoIV;
 
                 // Create an encryptor to perform the stream transform.
-                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
+                var encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
 
                 // Create the streams used for encryption.
                 using MemoryStream msEncrypt = new();
@@ -91,15 +91,9 @@ namespace OutrunSharp.Helpers
         public static string CalcMD5String(string plainText)
         {
             MD5CryptoServiceProvider cryptoMD5 = new();
-            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            byte[] hashValue = cryptoMD5.ComputeHash(plainTextBytes);
-            string convHash = string.Empty;
-            foreach (byte b in hashValue)
-            {
-                string hexConv = b.ToString("X2");
-                convHash += hexConv.ToLower();
-            }
-            return convHash;
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            var hashValue = cryptoMD5.ComputeHash(plainTextBytes);
+            return hashValue.Select(b => b.ToString("X2")).Aggregate(string.Empty, (current, hexConv) => current + hexConv.ToLower());
         }
     }
 }

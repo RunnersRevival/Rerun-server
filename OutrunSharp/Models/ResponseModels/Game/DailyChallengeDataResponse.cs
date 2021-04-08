@@ -18,15 +18,15 @@ namespace OutrunSharp.Models.ResponseModels.Game
             DayOfWeek firstDayOfWeek = defaultCultureInfo.DateTimeFormat.FirstDayOfWeek;
             DateTimeOffset beginningOfNextWeek = GetFirstDayOfWeek(DateTime.UtcNow.AddDays(7), firstDayOfWeek);
 
-            incentiveList = new()
+            incentiveList = new List<Incentive>()
             {
-                new Incentive(((int)ItemIDs.ItemIDRing).ToString(), 100),
-                new Incentive(((int)ItemIDs.ItemIDBarrier).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDMagnet).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDTrampoline).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDAsteroid).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDDrill).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDRedRing).ToString(), 15),
+                new(((int)ItemIDs.ItemIDRing).ToString(), 100),
+                new(((int)ItemIDs.ItemIDBarrier).ToString(), 5),
+                new(((int)ItemIDs.ItemIDMagnet).ToString(), 5),
+                new(((int)ItemIDs.ItemIDTrampoline).ToString(), 5),
+                new(((int)ItemIDs.ItemIDAsteroid).ToString(), 5),
+                new(((int)ItemIDs.ItemIDDrill).ToString(), 5),
+                new(((int)ItemIDs.ItemIDRedRing).ToString(), 15),
             };
             incentiveListCont = incentiveList.Count;
             numDilayChalCont = 0;
@@ -36,19 +36,19 @@ namespace OutrunSharp.Models.ResponseModels.Game
         }
         public DailyChallengeDataResponse(string errMsg, int status) : base(errMsg, status)
         {
-            CultureInfo defaultCultureInfo = CultureInfo.CurrentCulture;
-            DayOfWeek firstDayOfWeek = defaultCultureInfo.DateTimeFormat.FirstDayOfWeek;
+            var defaultCultureInfo = CultureInfo.CurrentCulture;
+            var firstDayOfWeek = defaultCultureInfo.DateTimeFormat.FirstDayOfWeek;
             DateTimeOffset beginningOfNextWeek = GetFirstDayOfWeek(DateTime.UtcNow.AddDays(7), firstDayOfWeek);
 
-            incentiveList = new()
+            incentiveList = new List<Incentive>()
             {
-                new Incentive(((int)ItemIDs.ItemIDRing).ToString(), 100),
-                new Incentive(((int)ItemIDs.ItemIDBarrier).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDMagnet).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDTrampoline).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDAsteroid).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDDrill).ToString(), 5),
-                new Incentive(((int)ItemIDs.ItemIDRedRing).ToString(), 15),
+                new(((int)ItemIDs.ItemIDRing).ToString(), 100),
+                new(((int)ItemIDs.ItemIDBarrier).ToString(), 5),
+                new(((int)ItemIDs.ItemIDMagnet).ToString(), 5),
+                new(((int)ItemIDs.ItemIDTrampoline).ToString(), 5),
+                new(((int)ItemIDs.ItemIDAsteroid).ToString(), 5),
+                new(((int)ItemIDs.ItemIDDrill).ToString(), 5),
+                new(((int)ItemIDs.ItemIDRedRing).ToString(), 15),
             };
             incentiveListCont = incentiveList.Count;
             numDilayChalCont = 0;
@@ -67,7 +67,7 @@ namespace OutrunSharp.Models.ResponseModels.Game
 
         private static DateTime GetFirstDayOfWeek(DateTime dayInWeek, DayOfWeek firstDay)
         {
-            DateTime firstDayInWeek = dayInWeek.Date;
+            var firstDayInWeek = dayInWeek.Date;
 
             while (firstDayInWeek.DayOfWeek != firstDay)
             {
