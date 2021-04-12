@@ -35,6 +35,10 @@ jobs:
     - name: Clean
       run: dotnet clean && dotnet nuget locals all --clear
 
+    # yes turns out i ran into this bug too
+    - name: Add Nuget package source (setup-dotnet bug workaround)
+      run: dotnet nuget add source https://api.nuget.org/v3/index.json nuget.org
+
     # Set up dependencies
     - name: Restore dependencies
       run: dotnet restore
