@@ -54,14 +54,14 @@ jobs:
     # Package into zip
     - name: Package
       run: |
-        7z a OutrunSharp.zip "OutrunSharp/bin/Debug/net5.0/*"
+        7z a OutrunSharp-latest.zip "OutrunSharp/bin/Debug/net5.0/*"
 
     # Upload artifact
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.1
       with:
         path:
-          OutrunSharp-debug.zip
+          OutrunSharp-latest.zip
 
     # Upload to releases
     - name: Upload to Releases
@@ -73,4 +73,4 @@ jobs:
         TRAVIS_COMMIT: ${{ github.sha }}
       run: |
         curl -fLOSs https://github.com/probonopd/uploadtool/raw/master/upload.sh
-        ./upload.sh OutrunSharp-debug.zip
+        ./upload.sh OutrunSharp-latest.zip
