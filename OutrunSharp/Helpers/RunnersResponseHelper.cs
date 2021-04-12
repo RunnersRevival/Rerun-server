@@ -1,11 +1,6 @@
 ﻿using OutrunSharp.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using OutrunSharp.Models.ResponseModels;
 
 namespace OutrunSharp.Helpers
@@ -70,17 +65,16 @@ namespace OutrunSharp.Helpers
 		public static RunnersResponseMessage CraftResponse(bool wantSecure, object responseObj)
         {
             short isSecure = 0;
-            string aesKey = null;
             var outputParam = responseObj;
             if (!wantSecure)
                 return new RunnersResponseMessage
                 {
-                    key = aesKey,
+                    key = null,
                     param = outputParam,
                     secure = isSecure
                 };
             isSecure = 1;
-            aesKey = System.Text.Encoding.Default.GetString(Cryptor.GetCryptoIV());
+            var aesKey = System.Text.Encoding.Default.GetString(Cryptor.GetCryptoIV());
             outputParam = Cryptor.EncryptText(JsonSerializer.Serialize(responseObj));
             return new RunnersResponseMessage
             {

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 #pragma warning disable IDE1006 // Naming Styles
 
@@ -31,8 +27,8 @@ namespace OutrunSharp.Models.Obj
             status = CharacterStatus.CharacterStatusUnlocked;
             level = 0;
             exp = 0;
-            abilityLevel = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            abilityNumRings = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            abilityLevel = new[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            abilityNumRings = new[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             abilityLevelup = Array.Empty<int>();
             abilityLevelupExp = Array.Empty<int>();
         }

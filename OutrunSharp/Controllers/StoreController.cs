@@ -12,16 +12,14 @@ using System.Text.Json;
 
 namespace OutrunSharp.Controllers
 {
+    [Route("Store")]
     public class StoreController : Controller
     {
         private readonly ILogger<StoreController> _logger;
 
-        public StoreController(ILogger<StoreController> logger)
-        {
-            _logger = logger;
-        }
+        public StoreController(ILogger<StoreController> logger) => _logger = logger;
 
-        [Route("Store/getRedstarExchangeList")]
+        [Route("getRedstarExchangeList")]
         [HttpPost]
         public RunnersResponseMessage GetRedStarExchangeList(string key, string param, int secure)
         {

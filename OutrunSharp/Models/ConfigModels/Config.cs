@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 
 namespace OutrunSharp.Models.ConfigModels
 {
@@ -9,7 +6,7 @@ namespace OutrunSharp.Models.ConfigModels
     {
         public Config()
         {
-            Port = 5000;
+            Port = 9001;
 
         }
         public int Port { get; init; }

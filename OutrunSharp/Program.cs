@@ -23,7 +23,7 @@ namespace OutrunSharp
 #if DEBUG
             displayableVersion += " (debug)";
 #endif
-            Console.WriteLine("OutrunSharp v" + displayableVersion);
+            Console.WriteLine(@"OutrunSharp v" + displayableVersion);
 
             CreateHostBuilder(args).Build().Run();
         }

@@ -13,17 +13,14 @@ using System.Text.Json;
 
 namespace OutrunSharp.Controllers
 {
+    [Route("Login")]
     public class LoginController : Controller
     {
-
         private readonly ILogger<LoginController> _logger;
 
-        public LoginController(ILogger<LoginController> logger)
-        {
-            _logger = logger;
-        }
+        public LoginController(ILogger<LoginController> logger) => _logger = logger;
 
-        [Route("Login/login")]
+        [Route("login")]
         [HttpPost]
         public RunnersResponseMessage DoLogin(string key, string param, int secure)
         {
@@ -132,7 +129,7 @@ namespace OutrunSharp.Controllers
             }
         }
 
-        [Route("Login/getVariousParameter")]
+        [Route("getVariousParameter")]
         [HttpPost]
         public RunnersResponseMessage GetVariousParameter(string key, string param, int secure)
         {

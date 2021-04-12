@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using OutrunSharp.Models.Obj;
+﻿using OutrunSharp.Models.Obj;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 
+// ReSharper disable InconsistentNaming
 #pragma warning disable IDE1006 // Naming Styles
 
 namespace OutrunSharp.Models.ResponseModels.Game
@@ -14,8 +12,8 @@ namespace OutrunSharp.Models.ResponseModels.Game
     {
         public DailyChallengeDataResponse() : base()
         {
-            CultureInfo defaultCultureInfo = CultureInfo.CurrentCulture;
-            DayOfWeek firstDayOfWeek = defaultCultureInfo.DateTimeFormat.FirstDayOfWeek;
+            var defaultCultureInfo = CultureInfo.CurrentCulture;
+            var firstDayOfWeek = defaultCultureInfo.DateTimeFormat.FirstDayOfWeek;
             DateTimeOffset beginningOfNextWeek = GetFirstDayOfWeek(DateTime.UtcNow.AddDays(7), firstDayOfWeek);
 
             incentiveList = new List<Incentive>()

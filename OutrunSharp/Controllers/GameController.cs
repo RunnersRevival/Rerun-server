@@ -6,25 +6,19 @@ using OutrunSharp.Models;
 using OutrunSharp.Models.DbModels;
 using OutrunSharp.Models.RequestModels;
 using OutrunSharp.Models.ResponseModels.Game;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace OutrunSharp.Controllers
 {
+    [Route("Game")]
     public class GameController : Controller
     {
         private readonly ILogger<GameController> _logger;
 
-        public GameController(ILogger<GameController> logger)
-        {
-            _logger = logger;
-        }
+        public GameController(ILogger<GameController> logger) => _logger = logger;
 
-        [Route("Game/getDailyChalData")]
+        [Route("getDailyChalData")]
         [HttpPost]
         public RunnersResponseMessage GetDailyChallengeData(string key, string param, int secure)
         {
@@ -39,7 +33,7 @@ namespace OutrunSharp.Controllers
                 catch (DecryptFailureException e)
                 {
                     // Decryption failed
-                    _logger.LogError("Decryption failed! Details: " + e.ToString());
+                    _logger.LogError("Decryption failed! Details: " + e);
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot decrypt",
@@ -49,7 +43,7 @@ namespace OutrunSharp.Controllers
                 catch (JsonException e)
                 {
                     // Deserialization failed
-                    _logger.LogError("Deserialization failed! Details: " + e.ToString());
+                    _logger.LogError("Deserialization failed! Details: " + e);
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot deserialize",
@@ -82,7 +76,7 @@ namespace OutrunSharp.Controllers
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
-        [Route("Game/getCostList")]
+        [Route("getCostList")]
         [HttpPost]
         public RunnersResponseMessage GetCostList(string key, string param, int secure)
         {
@@ -97,7 +91,7 @@ namespace OutrunSharp.Controllers
                 catch (DecryptFailureException e)
                 {
                     // Decryption failed
-                    _logger.LogError("Decryption failed! Details: " + e.ToString());
+                    _logger.LogError("Decryption failed! Details: " + e);
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot decrypt",
@@ -107,7 +101,7 @@ namespace OutrunSharp.Controllers
                 catch (JsonException e)
                 {
                     // Deserialization failed
-                    _logger.LogError("Deserialization failed! Details: " + e.ToString());
+                    _logger.LogError("Deserialization failed! Details: " + e);
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot deserialize",

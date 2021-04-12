@@ -41,7 +41,7 @@ namespace OutrunSharp
             
             if (env.IsDevelopment())
             {
-                Console.WriteLine("!!! DEVELOPMENT ENVIRONMENT !!!");
+                Console.WriteLine(@"!!! DEVELOPMENT ENVIRONMENT !!!");
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "OutrunSharp v1"));

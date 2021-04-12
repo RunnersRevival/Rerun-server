@@ -11,17 +11,15 @@ using System.Text.Json;
 
 namespace OutrunSharp.Controllers
 {
+    [Route("Player")]
     public class PlayerController : Controller
     {
 
         private readonly ILogger<PlayerController> _logger;
 
-        public PlayerController(ILogger<PlayerController> logger)
-        {
-            _logger = logger;
-        }
+        public PlayerController(ILogger<PlayerController> logger) => _logger = logger;
 
-        [Route("Player/getPlayerState")]
+        [Route("getPlayerState")]
         [HttpPost]
         public RunnersResponseMessage GetPlayerState(string key, string param, int secure)
         {
@@ -78,7 +76,7 @@ namespace OutrunSharp.Controllers
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
-        [Route("Player/getCharacterState")]
+        [Route("getCharacterState")]
         [HttpPost]
         public RunnersResponseMessage GetCharacterState(string key, string param, int secure)
         {
@@ -135,7 +133,7 @@ namespace OutrunSharp.Controllers
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
-        [Route("Player/getChaoState")]
+        [Route("getChaoState")]
         [HttpPost]
         public RunnersResponseMessage GetChaoState(string key, string param, int secure)
         {

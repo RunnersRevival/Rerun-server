@@ -1,9 +1,6 @@
 ﻿using OutrunSharp.Models.RequestModels.Login.Obj;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
+// ReSharper disable InconsistentNaming
 #pragma warning disable IDE1006 // Naming Styles
 
 namespace OutrunSharp.Models.RequestModels.Login

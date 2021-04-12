@@ -24,9 +24,9 @@ namespace OutrunSharp.Models.DbModels
             return new(ConnectionString);
         }
 
-        const string validRandChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        private const string ValidRandChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
-        static string GetRandomString(int length)
+        private static string GetRandomString(int length)
         {
             var s = "";
             using RNGCryptoServiceProvider provider = new();
@@ -35,7 +35,7 @@ namespace OutrunSharp.Models.DbModels
                 var oneByte = new byte[1];
                 provider.GetBytes(oneByte);
                 var character = (char)oneByte[0];
-                if (validRandChars.Contains(character))
+                if (ValidRandChars.Contains(character))
                 {
                     s += character;
                 }
@@ -118,7 +118,7 @@ namespace OutrunSharp.Models.DbModels
                     }
                 }
             }
-            if(key.Length != 16)
+            if(key != null && key.Length != 16)
             {
                 UpdatePlayerInfo(id, "player_key", GetRandomString(16));
             }

@@ -6,30 +6,23 @@ using OutrunSharp.Models;
 using OutrunSharp.Models.DbModels;
 using OutrunSharp.Models.RequestModels;
 using OutrunSharp.Models.ResponseModels.Spin;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace OutrunSharp.Controllers
 {
+    [Route("Spin")]
     public class SpinController : Controller
     {
-
         private readonly ILogger<SpinController> _logger;
 
-        public SpinController(ILogger<SpinController> logger)
-        {
-            _logger = logger;
-        }
+        public SpinController(ILogger<SpinController> logger) => _logger = logger;
 
-        [Route("Spin/getWheelOptions")]
+        [Route("getWheelOptions")]
         [HttpPost]
         public RunnersResponseMessage GetWheelOptions(string key, string param, int secure)
         {
-            OutrunDbContext context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
+            var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;
             if (secure == 1)
             {
@@ -40,7 +33,7 @@ namespace OutrunSharp.Controllers
                 catch (DecryptFailureException e)
                 {
                     // Decryption failed
-                    _logger.LogError("Decryption failed! Details: " + e.ToString());
+                    _logger.LogError("Decryption failed! Details: " + e);
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot decrypt",
@@ -50,7 +43,7 @@ namespace OutrunSharp.Controllers
                 catch (JsonException e)
                 {
                     // Deserialization failed
-                    _logger.LogError("Deserialization failed! Details: " + e.ToString());
+                    _logger.LogError("Deserialization failed! Details: " + e);
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
                             "Cannot deserialize",

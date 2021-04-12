@@ -11,16 +11,14 @@ using System.Text.Json;
 
 namespace OutrunSharp.Controllers
 {
+    [Route("Message")]
     public class MessageController : Controller
     {
         private readonly ILogger<MessageController> _logger;
 
-        public MessageController(ILogger<MessageController> logger)
-        {
-            _logger = logger;
-        }
+        public MessageController(ILogger<MessageController> logger) => _logger = logger;
 
-        [Route("Message/getMessageList")]
+        [Route("getMessageList")]
         [HttpPost]
         public RunnersResponseMessage GetMessageList(string key, string param, int secure)
         {
