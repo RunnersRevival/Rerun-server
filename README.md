@@ -1,4 +1,5 @@
 # OutrunSharp
+![nightly build](https://github.com/FairPlay137/OutrunSharp/actions/workflows/ci.yml/badge.svg)
 A WIP C# rewrite of [outrun](https://github.com/Mtbcooler/outrun), the server software powering Sonic Runners Revival.
 
 OutrunSharp is a Sonic Runners custom server powered by ASP.NET, based off of research done by fluofoxxo and FairPlay137.
