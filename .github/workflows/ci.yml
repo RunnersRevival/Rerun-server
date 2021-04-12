@@ -37,7 +37,7 @@ jobs:
 
     # yes turns out i ran into this bug too
     - name: Add Nuget package source (setup-dotnet bug workaround)
-      run: dotnet nuget add source https://api.nuget.org/v3/index.json nuget.org
+      run: dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org
 
     # Set up dependencies
     - name: Restore dependencies
