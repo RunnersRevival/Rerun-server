@@ -11,6 +11,7 @@ This server is not yet ready for general use just yet, as it currently relies on
 * .NET 5.0 or better SDK
 * ASP.NET build support
 * A MySQL instance
+* Git for Windows (this can be downloaded [here](https://git-scm.com/download/win))
 
 ## What still needs to be done?
 * Account registration
