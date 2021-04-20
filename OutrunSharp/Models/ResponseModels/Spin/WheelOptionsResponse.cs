@@ -9,11 +9,11 @@ namespace OutrunSharp.Models.ResponseModels.Spin
     {
         public WheelOptionsResponse() : base()
         {
-            wheelOptions = new();
+            wheelOptions = new WheelOptionsModel();
         }
         public WheelOptionsResponse(string errMsg, int status) : base(errMsg, status)
         {
-            wheelOptions = new();
+            wheelOptions = new WheelOptionsModel();
         }
 
         public WheelOptionsModel wheelOptions { get; set; }
