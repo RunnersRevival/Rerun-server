@@ -48,7 +48,6 @@
     <Folder Include="Models\ResponseModels\Character\" />
     <Folder Include="Models\ResponseModels\Friend\" />
     <Folder Include="Models\ResponseModels\Battle\" />
-    <Folder Include="Models\ResponseModels\Event\" />
     <Folder Include="Models\ResponseModels\Leaderboard\" />
     <Folder Include="Models\ResponseModels\RaidbossSpin\" />
     <Folder Include="Models\ResponseModels\Sgn\" />
