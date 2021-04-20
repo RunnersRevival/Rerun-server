@@ -11,6 +11,7 @@ This server is not yet ready for general use just yet, as it currently relies on
 * .NET 5.0 or better SDK
 * ASP.NET build support
 * A MySQL instance
+* Git for Windows (this can be downloaded [here](https://git-scm.com/download/win))
 
 ## What still needs to be done?
 * Account registration
@@ -25,23 +26,13 @@ This server is not yet ready for general use just yet, as it currently relies on
 
 ## FAQ
 **Q:** Will this work on Linux and macOS as well?
-
-**A:** If there is a .NET 5 runtime available for your platform, it'll run on it. So yes, it'll more than likely work just fine on Linux and macOS.
-
-
+* **A:** If there is a .NET 5 runtime available for your platform, it'll run on it. So yes, it'll more than likely work just fine on Linux and macOS.
 
 **Q:** Why isn't the port configurable yet?
-
-**A:** Because I haven't figured out a way to make it configurable just yet.
-
-
+* **A:** Because I haven't figured out a way to make it configurable just yet.
 
 **Q:** How do I set up a database for use with OutrunSharp?
-
-**A:** At the moment, you need to use the MySQL branch of Outrun for Revival to initialize the database as there are no routines to init the database in OutrunSharp yet.
-
-
+* **A:** At the moment, you need to use the MySQL branch of Outrun for Revival to initialize the database as there are no routines to init the database in OutrunSharp yet.
 
 **Q:** Why rewrite Outrun?
-
-**A:** Because 1: all of Revival will be written using one programming language, and 2: the Outrun for Revival codebase is starting to get a little bloated, and is getting increasingly hard to maintain.
+* **A:** Because 1: all of Revival will be written using one programming language, and 2: the Outrun for Revival codebase is starting to get a little bloated, and is getting increasingly hard to maintain.
