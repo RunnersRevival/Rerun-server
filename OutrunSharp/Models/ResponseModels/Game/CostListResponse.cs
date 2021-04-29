@@ -39,7 +39,7 @@ namespace OutrunSharp.Models.ResponseModels.Game
             new ConsumedItem(((int)ItemIDs.ItemIDAnimalBonus).ToString(), 0, ((int)ItemIDs.ItemIDRing).ToString()),
 
             // misc.
-            new ConsumedItem(((int)ItemIDs.ItemIDContinue).ToString(), 5, ((int)ItemIDs.ItemIDRedRing).ToString()),
+            new ConsumedItem(((int)ItemIDs.ItemIDContinue).ToString(), 5, ((int)ItemIDs.ItemIDRedRing).ToString()), // TODO: implement code to be able to change this from settings
             new ConsumedItem(((int)ItemIDs.ItemIDDailyBattleReset).ToString(), 2, ((int)ItemIDs.ItemIDRedRing).ToString()),
             new ConsumedItem(((int)ItemIDs.ItemIDDailyBattleReset1).ToString(), 5, ((int)ItemIDs.ItemIDRedRing).ToString()),
             new ConsumedItem(((int)ItemIDs.ItemIDDailyBattleReset2).ToString(), 15, ((int)ItemIDs.ItemIDRedRing).ToString()),

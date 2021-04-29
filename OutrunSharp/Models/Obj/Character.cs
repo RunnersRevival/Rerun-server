@@ -1,5 +1,6 @@
 ﻿using System;
 
+// ReSharper disable InconsistentNaming
 #pragma warning disable IDE1006 // Naming Styles
 
 namespace OutrunSharp.Models.Obj
@@ -75,6 +76,12 @@ namespace OutrunSharp.Models.Obj
         Chara0022, // ??? event
         Chara0023, // ??? event
         Chara0024, // ??? event
+        Chara0025, // TBD
+        Chara0026, // TBD
+        Chara0027, // TBD
+        Chara0028, // TBD
+        Chara0029, // TBD
+        Chara0030, // TBD
 
         // special event characters
         AmitieAmy = 301000,

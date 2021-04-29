@@ -1,6 +1,4 @@
-﻿
-
-namespace OutrunSharp.Models.DbModels
+﻿namespace OutrunSharp.Models.DbModels
 {
     public class SessionIds
     {

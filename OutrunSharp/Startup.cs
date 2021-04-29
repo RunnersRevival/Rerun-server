@@ -78,6 +78,17 @@ namespace OutrunSharp
                     context.Response.StatusCode = 204;
                     await context.Response.WriteAsync("");
                 });
+                
+                // robots.txt, for preventing OutrunSharp from being picked up by web crawlers (imagine being able to get to an OutrunSharp endpoint through Google)
+                endpoints.MapGet("/robots.txt", async context =>
+                {
+                    await context.Response.WriteAsync("User-agent: *\nDisallow: /");
+                });
+                
+                endpoints.MapGet("/humans.txt", async context =>
+                {
+                    await context.Response.WriteAsync("This is an OutrunSharp instance. OutrunSharp is a custom server for Sonic Runners, a defunct mobile game by SEGA. It has been written by a passionate group of fans for the Sonic Runners Revival service. If you wish to contribute to OutrunSharp, the source code is located here: https://github.com/FairPlay137/OutrunSharp (note that the server code may not line up with what is currently live)");
+                });
 
                 endpoints.MapControllers();
             });

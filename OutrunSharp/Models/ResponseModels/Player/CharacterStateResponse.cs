@@ -25,7 +25,7 @@ namespace OutrunSharp.Models.ResponseModels.Player
             }
         }
 
-        private readonly string[] DefaultCharaIDs = { "300000", "300001", "300002", "300003" };
+        private readonly string[] DefaultCharaIDs = { "300000", "300001", "300002", "300003" }; // sonic, tails, knuckles, and amy
 
         public List<Character> characterState { get; set; }
     }

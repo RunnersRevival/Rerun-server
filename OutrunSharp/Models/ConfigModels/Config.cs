@@ -1,6 +1,4 @@
-﻿
-
-namespace OutrunSharp.Models.ConfigModels
+﻿namespace OutrunSharp.Models.ConfigModels
 {
     public class Config
     {
