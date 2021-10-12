@@ -4,7 +4,7 @@
 
 OutrunSharp is a Sonic Runners custom server powered by ASP.NET, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/Mtbcooler/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
 
-This server is not yet ready for general use just yet, as it currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
+**OUTRUNSHARP IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** OutrunSharp currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
 
 ## What you need to get this server working
 * Visual Studio 2019 or newer (Community version will work)
@@ -40,3 +40,6 @@ This server is not yet ready for general use just yet, as it currently relies on
 
 **Q:** Will debug endpoints be fulfilled?
 * **A:** Maybe. If we do decide to implement them, we'll lock them behind a configuration option.
+
+**Q:** Will I see differences when switching from Outrun for Revival?
+* **A:** The behavior of some functions may change (such as the roulette), but the game itself won't change much. The configuration, on the other hand, will be quite different from Outrun for Revival, so some migration steps may be required.
