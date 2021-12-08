@@ -29,7 +29,7 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 6.0.x
 
     # Clean
     - name: Clean
@@ -50,7 +50,7 @@ jobs:
     # Package into zip
     - name: Package
       run: |
-        7z a OutrunSharp-latest.zip "OutrunSharp/bin/Debug/net5.0/*"
+        7z a OutrunSharp-latest.zip "OutrunSharp/bin/Debug/net6.0/*"
 
     # Upload artifact
     - name: Upload a Build Artifact
