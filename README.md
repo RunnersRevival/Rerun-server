@@ -2,14 +2,14 @@
 
 ![continuous](https://github.com/FairPlay137/OutrunSharp/actions/workflows/ci.yml/badge.svg)
 
-OutrunSharp is a Sonic Runners custom server powered by ASP.NET, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/Mtbcooler/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
+OutrunSharp is a Sonic Runners custom server powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/Mtbcooler/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
 
 **OUTRUNSHARP IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** OutrunSharp currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
 
 ## What you need to get this server working
-* Visual Studio 2019 or newer (Community version will work)
-* .NET 5.0 or better SDK
-* ASP.NET build support
+* Visual Studio 2022 or newer (Community version will work)
+* .NET 6.0 or better SDK
+* ASP.NET Core build support
 * A MySQL instance
 * Git for Windows (this can be downloaded [here](https://git-scm.com/download/win))
 
@@ -27,7 +27,7 @@ OutrunSharp is a Sonic Runners custom server powered by ASP.NET, based off of re
 
 ## FAQ
 **Q:** Will this work on Linux and macOS as well?
-* **A:** If there is a .NET 5 runtime available for your platform, it'll run on it. So yes, it'll more than likely work just fine on Linux and macOS.
+* **A:** If there is a .NET 6 runtime available for your platform, it'll run on it. So yes, it'll more than likely work just fine on Linux and macOS.
 
 **Q:** Why isn't the port configurable?
 * **A:** Because I haven't figured out a way to make it configurable just yet. Expect this to be fixed soon!
