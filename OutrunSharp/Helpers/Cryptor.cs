@@ -32,13 +32,14 @@ namespace OutrunSharp.Helpers
             string decryptedText;
             try
             {
-                using var rijAlg = Rijndael.Create();
-                rijAlg.BlockSize = 128;
-                rijAlg.Padding = PaddingMode.Zeros;
-                rijAlg.Key = CryptoKey;
-                rijAlg.IV = Encoding.UTF8.GetBytes(iv);
+                // TODO: this used to use Rijndael, which was deprecated in .NET 6; ensure this actually works
+                using var aesAlg = Aes.Create();
+                aesAlg.BlockSize = 128;
+                aesAlg.Padding = PaddingMode.Zeros;
+                aesAlg.Key = CryptoKey;
+                aesAlg.IV = Encoding.UTF8.GetBytes(iv);
 
-                var decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
+                var decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
 
                 using MemoryStream msDecrypt = new(cipherText);
                 using CryptoStream csDecrypt = new(msDecrypt, decryptor, CryptoStreamMode.Read);
@@ -57,18 +58,20 @@ namespace OutrunSharp.Helpers
             if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException(nameof(text));
 
+            // TODO: this used to use Rijndael, which was deprecated in .NET 6; ensure this actually works
+
             byte[] encrypted;
-            // Create an Rijndael object
+            // Create an Aes object
             // with the specified key and IV.
-            using (var rijAlg = Rijndael.Create())
+            using (var aesAlg = Aes.Create())
             {
-                rijAlg.BlockSize = 128;
-                rijAlg.Padding = PaddingMode.PKCS7;
-                rijAlg.Key = CryptoKey;
-                rijAlg.IV = CryptoIV;
+                aesAlg.BlockSize = 128;
+                aesAlg.Padding = PaddingMode.PKCS7;
+                aesAlg.Key = CryptoKey;
+                aesAlg.IV = CryptoIV;
 
                 // Create an encryptor to perform the stream transform.
-                var encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
+                var encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
                 // Create the streams used for encryption.
                 using MemoryStream msEncrypt = new();
@@ -89,9 +92,11 @@ namespace OutrunSharp.Helpers
 
         public static string CalcMD5String(string plainText)
         {
-            MD5CryptoServiceProvider cryptoMD5 = new();
+            //MD5CryptoServiceProvider cryptoMD5 = new();
+            MD5 md5alg = MD5.Create();
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            var hashValue = cryptoMD5.ComputeHash(plainTextBytes);
+            //var hashValue = cryptoMD5.ComputeHash(plainTextBytes);
+            var hashValue = md5alg.ComputeHash(plainTextBytes);
             return hashValue.Select(b => b.ToString("X2")).Aggregate(string.Empty, (current, hexConv) => current + hexConv.ToLower());
         }
     }

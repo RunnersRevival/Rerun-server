@@ -29,11 +29,11 @@ namespace OutrunSharp.Models.DbModels
         private static string GetRandomString(int length)
         {
             var s = "";
-            using RNGCryptoServiceProvider provider = new();
+            using RandomNumberGenerator rng = RandomNumberGenerator.Create();
             while (s.Length != length)
             {
                 var oneByte = new byte[1];
-                provider.GetBytes(oneByte);
+                rng.GetBytes(oneByte);
                 var character = (char)oneByte[0];
                 if (ValidRandChars.Contains(character))
                 {

@@ -97,10 +97,10 @@ namespace OutrunSharp.Helpers
 				closeTime = closeTimeUnix,
 				// TODO: Make the below options configurable!
 				assets_version = "051",
-				client_data_version = "2.0.4",
+				client_data_version = "2.1.0",
 				data_version = "15",
 				info_version = "017",
-				version = "2.0.4"
+				version = "2.1.0"
 			};
 		}
     }

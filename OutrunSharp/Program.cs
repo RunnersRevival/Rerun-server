@@ -16,8 +16,8 @@ namespace OutrunSharp
             {
                 var buildDate = new DateTime(2000, 1, 1)
                     .AddDays(version.Build).AddSeconds(version.Revision * 2);
-                var netVersion = System.Environment.Version;
-                displayableVersion = $"{version} (commit {Properties.Resources.CurrentCommit.Trim()}, built {buildDate}) (.net {netVersion})";
+                var netVersion = Environment.Version;
+                displayableVersion = $"{version} (commit {Properties.Resources.CurrentCommit.Trim()}, built {buildDate}) (running on .NET {netVersion})";
             }
             else
                 displayableVersion = "[unknown]";
