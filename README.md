@@ -8,9 +8,9 @@ OutrunSharp is a Sonic Runners custom server powered by ASP.NET Core, based off 
 
 ## What you need to get this server working
 * [Visual Studio 2022 or newer](https://visualstudio.microsoft.com/vs/) (Community version will work)
-* .NET 6.0 or better SDK
+* [.NET 6.0 or better SDK](https://dotnet.microsoft.com/download)
 * ASP.NET Core build support
-* A MySQL instance
+* A [MySQL](https://dev.mysql.com/downloads/) instance
 * [Git for Windows](https://git-scm.com/download/win)
 
 ## What still needs to be done?
