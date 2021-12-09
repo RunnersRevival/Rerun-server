@@ -7,11 +7,11 @@ OutrunSharp is a Sonic Runners custom server powered by ASP.NET Core, based off 
 **OUTRUNSHARP IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** OutrunSharp currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
 
 ## What you need to get this server working
-* Visual Studio 2022 or newer (Community version will work)
+* [Visual Studio 2022 or newer](https://visualstudio.microsoft.com/vs/) (Community version will work)
 * .NET 6.0 or better SDK
 * ASP.NET Core build support
 * A MySQL instance
-* Git for Windows (this can be downloaded [here](https://git-scm.com/download/win))
+* [Git for Windows](https://git-scm.com/download/win)
 
 ## What still needs to be done?
 * Account registration
