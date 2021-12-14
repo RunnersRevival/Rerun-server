@@ -53,7 +53,7 @@
 		num_daily_chal_cont INTEGER NOT NULL,
 		num_plays INTEGER NOT NULL,
 		num_animals INTEGER NOT NULL,
-        rankNum INTEGER UNSIGNED NOT NULL,
+		rank_num INTEGER UNSIGNED NOT NULL,
 		dm_cat INTEGER NOT NULL,
 		dm_set INTEGER NOT NULL,
 		dm_pos INTEGER NOT NULL,
