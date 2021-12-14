@@ -11,6 +11,7 @@ using System.Text.Json;
 
 namespace OutrunSharp.Controllers
 {
+    // These endpoints cover gameplay-related elements.
     [Route("Game")]
     public class GameController : Controller
     {
@@ -58,7 +59,7 @@ namespace OutrunSharp.Controllers
                 {
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
                 }
@@ -115,7 +116,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
@@ -171,7 +172,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
@@ -228,7 +229,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }

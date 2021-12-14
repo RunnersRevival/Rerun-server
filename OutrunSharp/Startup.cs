@@ -48,10 +48,10 @@ namespace OutrunSharp
 
             app.UseEndpoints(endpoints =>
             {
-                // index page; return 404 along with some info about OutrunSharp
+                // index page; return info about OutrunSharp
                 endpoints.MapGet("/", async context =>
                 {
-                    context.Response.StatusCode = 404;
+                    //context.Response.StatusCode = 404;
                     var version = Assembly.GetEntryAssembly()?.GetName().Version;
                     string displayableVersion;
                     if (version is not null)
@@ -69,7 +69,7 @@ namespace OutrunSharp
 #else
                         "RELEASE";
 #endif
-                    await context.Response.WriteAsync("OutrunSharp " + versionString);
+                    await context.Response.WriteAsync("OK - OutrunSharp " + versionString);
                 });
 
                 // generates a 204 No Content response, intended for uptime monitoring
@@ -79,7 +79,7 @@ namespace OutrunSharp
                     await context.Response.WriteAsync("");
                 });
                 
-                // robots.txt, for preventing OutrunSharp from being picked up by web crawlers (imagine being able to get to an OutrunSharp endpoint through Google)
+                // robots.txt, for preventing OutrunSharp from being picked up by web crawlers (imagine being able to get to a Runners endpoint through Google)
                 endpoints.MapGet("/robots.txt", async context =>
                 {
                     await context.Response.WriteAsync("User-agent: *\nDisallow: /");

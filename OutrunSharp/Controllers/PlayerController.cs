@@ -11,6 +11,7 @@ using System.Text.Json;
 
 namespace OutrunSharp.Controllers
 {
+    // These endpoints cover player-oriented operations
     [Route("Player")]
     public class PlayerController : Controller
     {
@@ -58,7 +59,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
@@ -115,7 +116,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
@@ -172,7 +173,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }

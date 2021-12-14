@@ -11,5 +11,7 @@ namespace OutrunSharp.Models.RequestModels
         public string version { get; set; } // Client version number
 
         public string seq { get; set; }
+
+        public string revivalVerId { get; set; }
     }
 }

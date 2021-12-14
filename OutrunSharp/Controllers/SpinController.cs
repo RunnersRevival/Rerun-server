@@ -11,6 +11,7 @@ using System.Text.Json;
 
 namespace OutrunSharp.Controllers
 {
+    // These endpoints cover roulette-specific operations
     [Route("Spin")]
     public class SpinController : Controller
     {
@@ -57,7 +58,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }

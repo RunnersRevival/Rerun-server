@@ -13,6 +13,7 @@ using System.Text.Json;
 
 namespace OutrunSharp.Controllers
 {
+    // These endpoints cover user authentication and other various account-related operations.
     [Route("Login")]
     public class LoginController : Controller
     {
@@ -58,7 +59,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
@@ -70,8 +71,8 @@ namespace OutrunSharp.Controllers
                 // TODO: add actual logic here
                 return RunnersResponseHelper.CraftResponse(true,
                 RunnersResponseHelper.CreateBaseResponse(
-                    "Account creation NYI",
-                    RunnersResponseHelper.StatusCode.MissingPlayer,
+                    "Unimplemented operation",
+                    RunnersResponseHelper.StatusCode.OtherError,
                     0));
             }
             if (paramData.lineAuth.password.Length == 0)
@@ -168,7 +169,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }

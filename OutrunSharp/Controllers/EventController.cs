@@ -11,6 +11,7 @@ using OutrunSharp.Models.ResponseModels.Event;
 
 namespace OutrunSharp.Controllers
 {
+    // These endpoints cover event-specific functions.
     [Route("Event")]
     public class EventController : Controller
     {
@@ -56,7 +57,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
@@ -72,5 +73,20 @@ namespace OutrunSharp.Controllers
             EventListResponse response = new();
             return RunnersResponseHelper.CraftResponse(true, response);
         }
+
+        /* TODO: Remaining event endpoints:
+         * getEventReward - for special stages, raid bosses, and object collection events; a list of rewards
+         * getEventState - for special stages, raid bosses, and object collection events; player's event-specific data
+         */
+
+        /* TODO: Remaining raid boss endpoints:
+         * getEventUserRaidboss
+         * getEventUserRaidbossList
+         * getEventRaidbossDesiredList
+         * getEventRaidbossUserList
+         * eventActStart
+         * eventPostGameResults
+         * eventUpdateGameResults
+         */
     }
 }

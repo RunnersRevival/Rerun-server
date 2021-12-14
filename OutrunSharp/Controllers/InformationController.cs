@@ -13,6 +13,8 @@ using OutrunSharp.Models.ResponseModels.Information;
 
 namespace OutrunSharp.Controllers
 {
+    // These endpoints cover news banners, tickers, and event result messages.
+    // At one point these were located in a separate route from Login? The lack of capitalization suggests that this may have been a sloppy change in response to SEGA merging the Login and Information routes partway through Runners' development.
     [Route("login")]
     public class InformationController : Controller
     {
@@ -58,7 +60,7 @@ namespace OutrunSharp.Controllers
                 if (paramData is null)
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "!(paramData != null)",
+                            "Assertion failed: !(paramData != null)",
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
