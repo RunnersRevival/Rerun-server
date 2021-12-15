@@ -23,7 +23,7 @@ namespace OutrunSharp.Helpers
 			NotAvailablePlayer = -10101,
 			MissingPlayer = -10102,
 			ExpirationSession = -10103,
-			PassWordError = -10104,
+			PasswordError = -10104,
 			InvalidSerialCode = -10105,
 			UsedSerialCode = -10106,
 			HspWebApiError = -10110,
@@ -48,9 +48,9 @@ namespace OutrunSharp.Helpers
 			EnergyLimitPurchaseTrigger = -21010,
 			NotStartEvent = -10201,
 			AlreadyEndEvent = -10202,
-			UsernameInvalidChars = -31000, // for 2.0.4 and later
-			UsernameTooLong = -31001, // for 2.0.4 and later
-			UsernameHasNGWord = -31002, // for 2.0.4 and later
+			UsernameInvalidChars = -31000, // for 2.1.0 and later
+			UsernameTooLong = -31001, // for 2.1.0 and later
+			UsernameHasNGWord = -31002, // for 2.1.0 and later
 			VersionForApplication = -999002,
 			TimeOut = -7,
 			OtherError = -8,

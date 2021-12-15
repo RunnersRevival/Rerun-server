@@ -5,7 +5,7 @@ namespace OutrunSharp.Models.DbModels
 {
     public class PlayerInfo
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; } // internal password stored with the ID in the save file
         public string MigratePassword { get; set; } // Transfer ID
