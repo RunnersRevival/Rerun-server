@@ -50,14 +50,14 @@ jobs:
     # Package into zip
     - name: Package
       run: |
-        7z a OutrunSharp-latest.zip "OutrunSharp/bin/Debug/net6.0/*"
+        7z a Rerun-latest.zip "OutrunSharp/bin/Debug/net6.0/*"
 
     # Upload artifact
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.1
       with:
         path:
-          OutrunSharp-latest.zip
+          Rerun-latest.zip
 
     # Upload to releases
     - name: Upload to Releases
@@ -65,8 +65,8 @@ jobs:
       if: github.event_name == 'push'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TRAVIS_REPO_SLUG: FairPlay137/OutrunSharp
+        TRAVIS_REPO_SLUG: FairPlay137/Rerun-server
         TRAVIS_COMMIT: ${{ github.sha }}
       run: |
         curl -fLOSs https://github.com/probonopd/uploadtool/raw/master/upload.sh
-        ./upload.sh OutrunSharp-latest.zip
+        ./upload.sh Rerun-latest.zip
