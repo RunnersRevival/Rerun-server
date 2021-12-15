@@ -10,19 +10,14 @@ using System.Threading.Tasks;
 
 namespace OutrunSharp.Models.DbModels
 {
+    // For interfacing with Outrun MySQL compatible databases
     public class OutrunDbContext
     {
         public string ConnectionString { get; set; }
 
-        public OutrunDbContext(string connectionString)
-        {
-            ConnectionString = connectionString;
-        }
+        public OutrunDbContext(string connectionString) => ConnectionString = connectionString;
 
-        private MySqlConnection GetConnection()
-        {
-            return new(ConnectionString);
-        }
+        private MySqlConnection GetConnection() => new(ConnectionString);
 
         private const string ValidRandChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
@@ -36,9 +31,7 @@ namespace OutrunSharp.Models.DbModels
                 rng.GetBytes(oneByte);
                 var character = (char)oneByte[0];
                 if (ValidRandChars.Contains(character))
-                {
                     s += character;
-                }
             }
 
             return s;
@@ -56,15 +49,11 @@ namespace OutrunSharp.Models.DbModels
 
             using var reader = cmd.ExecuteReader();
             if (!reader.HasRows)
-            {
                 throw new NoSuchPlayerException("Player ID " + id + " does not exist in the database.");
-            }
             while (reader.Read())
             {
                 if (!onFirstEntry)
-                {
                     throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database. This may indicate a conflict.");
-                }
                 else
                 {
                     info.Id = Convert.ToUInt64(reader["id"]);
@@ -102,15 +91,11 @@ namespace OutrunSharp.Models.DbModels
 
                 using var reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
-                {
                     throw new NoSuchPlayerException("Player ID " + id + " does not exist in the database.");
-                }
                 while (reader.Read())
                 {
                     if (!onFirstEntry)
-                    {
                         throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database. This may indicate a conflict.");
-                    }
                     else
                     {
                         key = reader["player_key"].ToString();
@@ -119,9 +104,7 @@ namespace OutrunSharp.Models.DbModels
                 }
             }
             if(key != null && key.Length != 16)
-            {
                 UpdatePlayerInfo(id, "player_key", GetRandomString(16));
-            }
             return key;
         }
 
@@ -140,15 +123,11 @@ namespace OutrunSharp.Models.DbModels
 
                 using var reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
-                {
                     throw new NoSuchPlayerException("Player ID " + id + " does not exist in the database.");
-                }
                 while (reader.Read())
                 {
                     if (!onFirstEntry)
-                    {
                         throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database. This may indicate a conflict.");
-                    }
                     else
                     {
                         password = reader["password"].ToString();
@@ -177,7 +156,7 @@ namespace OutrunSharp.Models.DbModels
 
         public string CreateSessionID(ulong uid)
         {
-            var sessionId = "REVIVAL_" + GetRandomString(40);
+            var sessionId = "RERUN_" + GetRandomString(40);
             var nowUnix = DateTimeOffset.Now.ToUnixTimeSeconds();
 
             using var conn = GetConnection();
@@ -251,9 +230,7 @@ namespace OutrunSharp.Models.DbModels
             {
                 var expirationTime = Convert.ToInt64(reader["assigned_at_time"]) + 3600;
                 if (now > expirationTime)
-                {
                     InvalidateSessionID(reader["sid"].ToString());
-                }
             }
         }
         public async Task InvalidateAllExpiredSessionIDsAsync()
@@ -267,9 +244,7 @@ namespace OutrunSharp.Models.DbModels
             {
                 var expirationTime = Convert.ToInt64(reader["assigned_at_time"]) + 3600;
                 if (now > expirationTime)
-                {
                     InvalidateSessionID(reader["sid"].ToString());
-                }
             }
         }
     }

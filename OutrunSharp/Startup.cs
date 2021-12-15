@@ -27,7 +27,7 @@ namespace OutrunSharp
             services.Add(new ServiceDescriptor(typeof(OutrunDbContext), new OutrunDbContext(Configuration.GetConnectionString("DefaultConnection"))));
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "OutrunSharp", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rerun", Version = "v1" });
             });
         }
 
@@ -35,7 +35,7 @@ namespace OutrunSharp
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             StartupTime = DateTime.Now;
-            
+
             if (env.IsDevelopment())
             {
                 Console.WriteLine(@"!!! DEVELOPMENT ENVIRONMENT !!!");
@@ -69,7 +69,7 @@ namespace OutrunSharp
 #else
                         "RELEASE";
 #endif
-                    await context.Response.WriteAsync("OK - OutrunSharp " + versionString);
+                    await context.Response.WriteAsync("OK - Rerun " + versionString);
                 });
 
                 // generates a 204 No Content response, intended for uptime monitoring
@@ -78,16 +78,16 @@ namespace OutrunSharp
                     context.Response.StatusCode = 204;
                     await context.Response.WriteAsync("");
                 });
-                
-                // robots.txt, for preventing OutrunSharp from being picked up by web crawlers (imagine being able to get to a Runners endpoint through Google)
+
+                // robots.txt, for preventing Rerun from being picked up by web crawlers (imagine being able to get to a Runners endpoint through Google)
                 endpoints.MapGet("/robots.txt", async context =>
                 {
                     await context.Response.WriteAsync("User-agent: *\nDisallow: /");
                 });
-                
+
                 endpoints.MapGet("/humans.txt", async context =>
                 {
-                    await context.Response.WriteAsync("This is an OutrunSharp instance. OutrunSharp is a custom server for Sonic Runners, a defunct mobile game by SEGA. It has been written by a passionate group of fans for the Sonic Runners Revival service. If you wish to contribute to OutrunSharp, the source code is located here: https://github.com/FairPlay137/OutrunSharp (note that the server code may not line up with what is currently live)");
+                    await context.Response.WriteAsync("This is a Rerun instance. Rerun (formerly OutrunSharp) is a custom server for Sonic Runners, a defunct mobile game by SEGA. It has been written by a passionate group of fans for the Sonic Runners Revival service. If you wish to contribute to Rerun, the source code is located here: https://github.com/FairPlay137/OutrunSharp (note that the server code may not line up with what is currently live)");
                 });
 
                 endpoints.MapControllers();
