@@ -1,10 +1,10 @@
-# OutrunSharp
+# Rerun
 
 ![continuous](https://github.com/FairPlay137/OutrunSharp/actions/workflows/ci.yml/badge.svg)
 
-OutrunSharp is a Sonic Runners custom server powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/Mtbcooler/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
+Rerun is a Sonic Runners server emulator powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/Mtbcooler/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
 
-**OUTRUNSHARP IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** OutrunSharp currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
+**RERUN IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** RERUN currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
 
 ## What you need to get this server working
 * [Visual Studio 2022 or newer](https://visualstudio.microsoft.com/vs/) (Community version will work)
@@ -32,8 +32,8 @@ OutrunSharp is a Sonic Runners custom server powered by ASP.NET Core, based off 
 **Q:** Why isn't the port configurable?
 * **A:** Because I haven't figured out a way to make it configurable just yet. Expect this to be fixed soon!
 
-**Q:** How do I set up a database for use with OutrunSharp?
-* **A:** At the moment, you need to use the MySQL branch of Outrun for Revival to initialize the database as there are no routines to init the database in OutrunSharp yet.
+**Q:** How do I set up a database for use with Rerun?
+* **A:** At the moment, you need to use the MySQL branch of Outrun for Revival to initialize the database as there are no routines to init the database in Rerun yet.
 
 **Q:** Why rewrite Outrun?
 * **A:** Because 1: all of Revival will be written using one programming language (C#), and 2: the Outrun for Revival codebase is starting to get a little bloated (with outdated research and lots of guesswork on fluofoxxo's part still being present), and is getting increasingly hard to maintain.
