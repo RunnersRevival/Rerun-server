@@ -72,7 +72,7 @@ namespace OutrunSharp.Models.Obj
         Tikal, // sonic adventure event
         Mephiles, // sonic wars/forces event?
         PSISilver,
-        Chara0021, // 2.0.4 launch event
+        Marine, // 2.1.0 launch event
         Chara0022, // ??? event
         Chara0023, // ??? event
         Chara0024, // ??? event

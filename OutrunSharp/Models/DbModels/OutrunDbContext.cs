@@ -44,6 +44,21 @@ namespace OutrunSharp.Models.DbModels
             return s;
         }
 
+        private static long GetRandomLong(int length)
+        {
+            long l = 0;
+
+            int i;
+
+            int pwr = 1;
+            for (i = 0; i < length; i++)
+            {
+                l += RandomNumberGenerator.GetInt32(9)*pwr;
+                pwr *= 10;
+            }
+            return l;
+        }
+
         public PlayerInfo GetPlayerInfo(string id)
         {
             PlayerInfo info = new();
@@ -67,7 +82,7 @@ namespace OutrunSharp.Models.DbModels
                 }
                 else
                 {
-                    info.Id = Convert.ToUInt64(reader["id"]);
+                    info.Id = (long)Convert.ToUInt64(reader["id"]);
                     info.Username = reader["username"].ToString();
                     info.Password = reader["password"].ToString();
                     info.MigratePassword = reader["migrate_password"].ToString();
@@ -87,6 +102,47 @@ namespace OutrunSharp.Models.DbModels
             }
 
             return info;
+        }
+
+        public long CreatePlayerID()
+        {
+            int idLength = 10;
+
+            long newID = GetRandomLong(idLength);
+            return newID;
+        }
+
+        public string CreatePlayerKey(int length)
+        {
+            string newKey = GetRandomString(length);
+            return newKey;
+        }
+
+        public void CreatePlayer()
+        {
+            int pwLength = 10;
+            int keyLength = 16;
+
+            PlayerInfo info = new();
+
+            long newID = CreatePlayerID(); // TODO: Check if generated ID is already registered!!
+
+            info.Id = newID;
+            info.Username = "";
+            info.Password = CreatePlayerKey(pwLength);
+            info.MigratePassword = CreatePlayerKey(pwLength);
+            info.UserPassword = "";
+            info.PlayerKey = CreatePlayerKey(keyLength);
+            /*
+            info.Characters = JsonConvert.DeserializeObject<List<Character>>(reader["characters"].ToString());
+            info.Chao = JsonConvert.DeserializeObject<List<Chao>>(reader["chao"].ToString());
+            info.SuspendedUntil = Convert.ToInt64(reader["suspended_until"]);
+            info.SuspendReason = Convert.ToInt32(reader["suspend_reason"]);
+            info.LastLoginDevice = reader["last_login_device"].ToString();
+            info.LastLoginPlatform = (Platform)Convert.ToInt32(reader["last_login_platform"]);
+            */
+            
+            //TODO: Get this info into the db
         }
 
         public string GetPlayerKey(string id)
@@ -118,9 +174,9 @@ namespace OutrunSharp.Models.DbModels
                     }
                 }
             }
-            if(key != null && key.Length != 16)
+            if (key != null && key.Length != 16)
             {
-                UpdatePlayerInfo(id, "player_key", GetRandomString(16));
+                UpdatePlayerInfo(id, "player_key", CreatePlayerKey(16));
             }
             return key;
         }

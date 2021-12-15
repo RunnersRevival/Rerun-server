@@ -64,16 +64,12 @@ namespace OutrunSharp.Controllers
                             0));
             }
             
-            if(paramData.lineAuth.userId.Length == 0)
+            if (paramData.lineAuth.userId == "0")
             {
                 // registration - create a new account and return its info
                 _logger.LogDebug("Entering Registration");
-                // TODO: add actual logic here
-                return RunnersResponseHelper.CraftResponse(true,
-                RunnersResponseHelper.CreateBaseResponse(
-                    "Unimplemented operation",
-                    RunnersResponseHelper.StatusCode.OtherError,
-                    0));
+                context.CreatePlayer();
+                
             }
             if (paramData.lineAuth.password.Length == 0)
             {
@@ -83,7 +79,7 @@ namespace OutrunSharp.Controllers
                 {
                     Debug.Assert(context != null, nameof(context) + " != null");
                     var pkey = context.GetPlayerKey(paramData.lineAuth.userId);
-                    LoginCheckKeyResponse response = new("Bad password", (int)RunnersResponseHelper.StatusCode.PassWordError)
+                    LoginCheckKeyResponse response = new("Bad password", (int)RunnersResponseHelper.StatusCode.PasswordError)
                     {
                         key = pkey
                     };
@@ -122,7 +118,7 @@ namespace OutrunSharp.Controllers
             {
                 _logger.LogDebug("Auth failed!");
                 var pkey = context.GetPlayerKey(paramData.lineAuth.userId);
-                LoginCheckKeyResponse response = new("Bad password", (int)RunnersResponseHelper.StatusCode.PassWordError)
+                LoginCheckKeyResponse response = new("Bad password", (int)RunnersResponseHelper.StatusCode.PasswordError)
                 {
                     key = pkey
                 };
