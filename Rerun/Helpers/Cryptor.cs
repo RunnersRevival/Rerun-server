@@ -11,7 +11,6 @@ namespace Rerun.Helpers
     public class Cryptor
     {
         // ReSharper disable once CommentTypo
-        //private static readonly byte[] OldCryptoKey = Encoding.UTF8.GetBytes("vMdkkY8bfVmUS6qr"); // used in versions prior to 1.1.0
         private static readonly byte[] CryptoKey = Encoding.UTF8.GetBytes("Ec7bLaTdSuXuf5pW");
         private static readonly byte[] CryptoIV = Encoding.UTF8.GetBytes("DV3G4Kb7xflNqi5x");
 

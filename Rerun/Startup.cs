@@ -79,7 +79,7 @@ namespace Rerun
                     await context.Response.WriteAsync("");
                 });
 
-                // robots.txt, for preventing Rerun from being picked up by web crawlers (imagine being able to get to a Runners endpoint through Google)
+                // robots.txt, for preventing Rerun from being picked up by compliant web crawlers
                 endpoints.MapGet("/robots.txt", async context =>
                 {
                     await context.Response.WriteAsync("User-agent: *\nDisallow: /");

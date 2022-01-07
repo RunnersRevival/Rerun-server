@@ -48,9 +48,9 @@ namespace Rerun.Helpers
 			EnergyLimitPurchaseTrigger = -21010,
 			NotStartEvent = -10201,
 			AlreadyEndEvent = -10202,
-			UsernameInvalidChars = -31000, // for 2.0.4 and later
-			UsernameTooLong = -31001, // for 2.0.4 and later
-			UsernameHasNGWord = -31002, // for 2.0.4 and later
+			UsernameInvalidChars = -31000, // for 2.1.0 and later
+			UsernameTooLong = -31001, // for 2.1.0 and later
+			UsernameHasNGWord = -31002, // for 2.1.0 and later
 			VersionForApplication = -999002,
 			TimeOut = -7,
 			OtherError = -8,
@@ -66,6 +66,7 @@ namespace Rerun.Helpers
         {
             short isSecure = 0;
             var outputParam = responseObj;
+			// TODO: ensure that every value in every key-value pair in param is a string; it doesn't like it if you send non-string values
             if (!wantSecure)
                 return new RunnersResponseMessage
                 {
@@ -97,10 +98,10 @@ namespace Rerun.Helpers
 				closeTime = closeTimeUnix,
 				// TODO: Make the below options configurable!
 				assets_version = "051",
-				client_data_version = "2.1.0",
+				client_data_version = "2.1.1",
 				data_version = "15",
 				info_version = "017",
-				version = "2.1.0"
+				version = "2.1.1"
 			};
 		}
     }
