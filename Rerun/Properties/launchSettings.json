@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Rerun - Development": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": "true",
+      "applicationUrl": "http://localhost:9001"
+    },
+    "Rerun - Production": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:9001"
+    }
+  }
+}

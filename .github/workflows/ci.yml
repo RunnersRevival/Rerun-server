@@ -50,7 +50,11 @@ jobs:
     # Package into zip
     - name: Package
       run: |
+<<<<<<< HEAD
+        7z a Rerun-latest.zip "Rerun/bin/Debug/net6.0/*"
+=======
         7z a Rerun-latest.zip "OutrunSharp/bin/Debug/net6.0/*"
+>>>>>>> 4c9819054ded5b611fb6306382e5a1aac91b376c
 
     # Upload artifact
     - name: Upload a Build Artifact
@@ -65,7 +69,11 @@ jobs:
       if: github.event_name == 'push'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+<<<<<<< HEAD
+        TRAVIS_REPO_SLUG: FairPlay137/Rerun
+=======
         TRAVIS_REPO_SLUG: FairPlay137/Rerun-server
+>>>>>>> 4c9819054ded5b611fb6306382e5a1aac91b376c
         TRAVIS_COMMIT: ${{ github.sha }}
       run: |
         curl -fLOSs https://github.com/probonopd/uploadtool/raw/master/upload.sh
