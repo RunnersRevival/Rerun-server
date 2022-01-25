@@ -22,7 +22,7 @@ namespace Rerun.Controllers
 
         [Route("getRedstarExchangeList")]
         [HttpPost]
-        public RunnersResponseMessage GetRedStarExchangeList(string key, string param, int secure)
+        public XeenResponseMessage GetRedStarExchangeList(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             GetRedstarExchangeListRequest paramData;

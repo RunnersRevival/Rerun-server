@@ -20,7 +20,7 @@ namespace Rerun.Controllers
 
         [Route("getEventList")]
         [HttpPost]
-        public RunnersResponseMessage GetEventList(string key, string param, int secure)
+        public XeenResponseMessage GetEventList(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;

@@ -21,7 +21,7 @@ namespace Rerun.Controllers
 
         [Route("getMessageList")]
         [HttpPost]
-        public RunnersResponseMessage GetMessageList(string key, string param, int secure)
+        public XeenResponseMessage GetMessageList(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;

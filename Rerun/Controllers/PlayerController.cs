@@ -22,7 +22,7 @@ namespace Rerun.Controllers
 
         [Route("getPlayerState")]
         [HttpPost]
-        public RunnersResponseMessage GetPlayerState(string key, string param, int secure)
+        public XeenResponseMessage GetPlayerState(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;
@@ -79,7 +79,7 @@ namespace Rerun.Controllers
 
         [Route("getCharacterState")]
         [HttpPost]
-        public RunnersResponseMessage GetCharacterState(string key, string param, int secure)
+        public XeenResponseMessage GetCharacterState(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;
@@ -136,7 +136,7 @@ namespace Rerun.Controllers
 
         [Route("getChaoState")]
         [HttpPost]
-        public RunnersResponseMessage GetChaoState(string key, string param, int secure)
+        public XeenResponseMessage GetChaoState(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;

@@ -23,7 +23,7 @@ namespace Rerun.Controllers
 
         [Route("login")]
         [HttpPost]
-        public RunnersResponseMessage DoLogin(string key, string param, int secure)
+        public XeenResponseMessage DoLogin(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             LoginRequest paramData;
@@ -132,7 +132,7 @@ namespace Rerun.Controllers
 
         [Route("getVariousParameter")]
         [HttpPost]
-        public RunnersResponseMessage GetVariousParameter(string key, string param, int secure)
+        public XeenResponseMessage GetVariousParameter(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;

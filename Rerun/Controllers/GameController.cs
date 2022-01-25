@@ -21,7 +21,7 @@ namespace Rerun.Controllers
 
         [Route("getDailyChalData")]
         [HttpPost]
-        public RunnersResponseMessage GetDailyChallengeData(string key, string param, int secure)
+        public XeenResponseMessage GetDailyChallengeData(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;
@@ -79,7 +79,7 @@ namespace Rerun.Controllers
 
         [Route("getCostList")]
         [HttpPost]
-        public RunnersResponseMessage GetCostList(string key, string param, int secure)
+        public XeenResponseMessage GetCostList(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;
@@ -135,7 +135,7 @@ namespace Rerun.Controllers
 
         [Route("getMileageData")]
         [HttpPost]
-        public RunnersResponseMessage GetMileageData(string key, string param, int secure)
+        public XeenResponseMessage GetMileageData(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;
@@ -192,7 +192,7 @@ namespace Rerun.Controllers
 
         [Route("getCampaignList")]
         [HttpPost]
-        public RunnersResponseMessage GetCampaignList(string key, string param, int secure)
+        public XeenResponseMessage GetCampaignList(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;

@@ -21,7 +21,7 @@ namespace Rerun.Controllers
 
         [Route("getWheelOptions")]
         [HttpPost]
-        public RunnersResponseMessage GetWheelOptions(string key, string param, int secure)
+        public XeenResponseMessage GetWheelOptions(string key, string param, int secure)
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             BaseRequest paramData;

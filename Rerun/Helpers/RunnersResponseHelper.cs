@@ -62,13 +62,13 @@ namespace Rerun.Helpers
 			ServerBusy = -700
 		}
 
-		public static RunnersResponseMessage CraftResponse(bool wantSecure, object responseObj)
+		public static XeenResponseMessage CraftResponse(bool wantSecure, object responseObj)
         {
             short isSecure = 0;
             var outputParam = responseObj;
 			// TODO: ensure that every value in every key-value pair in param is a string; it doesn't like it if you send non-string values
             if (!wantSecure)
-                return new RunnersResponseMessage
+                return new XeenResponseMessage
                 {
                     key = null,
                     param = outputParam,
@@ -77,7 +77,7 @@ namespace Rerun.Helpers
             isSecure = 1;
             var aesKey = System.Text.Encoding.Default.GetString(Cryptor.GetCryptoIV());
             outputParam = Cryptor.EncryptText(JsonSerializer.Serialize(responseObj));
-            return new RunnersResponseMessage
+            return new XeenResponseMessage
             {
                 key = aesKey,
                 param = outputParam,

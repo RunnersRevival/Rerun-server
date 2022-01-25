@@ -14,18 +14,17 @@ namespace Rerun.Models.ResponseModels
                 DateTime.Now.Month,
                 DateTime.Now.Day,
                 23, 59, 59, 999);
-            var ctUnix = ct.ToUnixTimeSeconds();
             errorMessage = "OK";
 			statusCode = 0;
             seq = "0";
             serverTime = DateTimeOffset.Now.ToUnixTimeSeconds();
-            closeTime = ctUnix;
+            closeTime = ct.ToUnixTimeSeconds();
             // TODO: Make the below options configurable!
-            assets_version = "050";
-            client_data_version = "2.0.4";
+            assets_version = "052";
+            client_data_version = "2.2.0";
             data_version = "15";
             info_version = "017";
-            version = "2.0.4";
+            version = "2.2.0";
         }
 
         public BaseResponse(string errMsg, int status)
@@ -35,23 +34,22 @@ namespace Rerun.Models.ResponseModels
                 DateTime.Now.Month,
                 DateTime.Now.Day,
                 23, 59, 59, 999);
-            var ctUnix = ct.ToUnixTimeSeconds();
             errorMessage = errMsg;
             statusCode = status;
             seq = "0";
             serverTime = DateTimeOffset.Now.ToUnixTimeSeconds();
-            closeTime = ctUnix;
+            closeTime = ct.ToUnixTimeSeconds();
             // TODO: Make the below options configurable!
-            assets_version = "050";
-            client_data_version = "2.0.4";
+            assets_version = "052";
+            client_data_version = "2.2.0";
             data_version = "15";
             info_version = "017";
-            version = "2.0.4";
+            version = "2.2.0";
         }
 
         public string errorMessage { get; set; } // indicates error status (in the original, it was in Japanese, but it seems to not be checked by the game)
         public long closeTime { get; set; } // indicates end of day
-        public string seq { get; set; } // int, indicates sequence number - does this even matter?
+        public string seq { get; set; } // int, indicates sequence number - what exactly does this mean?
         public long serverTime { get; set; } // indicates current server time
         public int statusCode { get; set; } // indicates status code
 

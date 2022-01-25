@@ -39,6 +39,8 @@
     <Folder Include="Models\RequestModels\Game\" />
     <Folder Include="Models\RequestModels\Leaderboard\" />
     <Folder Include="Models\RequestModels\Message\" />
+    <Folder Include="Models\RequestModels\Debug\" />
+    <Folder Include="Models\RequestModels\Management\" />
     <Folder Include="Models\RequestModels\Spin\" />
     <Folder Include="Models\RequestModels\Sgn\" />
     <Folder Include="Models\RequestModels\RaidbossSpin\" />
@@ -49,6 +51,7 @@
     <Folder Include="Models\ResponseModels\Friend\" />
     <Folder Include="Models\ResponseModels\Battle\" />
     <Folder Include="Models\ResponseModels\Leaderboard\" />
+    <Folder Include="Models\ResponseModels\Debug\" />
     <Folder Include="Models\ResponseModels\RaidbossSpin\" />
     <Folder Include="Models\ResponseModels\Sgn\" />
     <Folder Include="Models\ResponseModels\Option\" />

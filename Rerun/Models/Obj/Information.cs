@@ -13,7 +13,7 @@ namespace Rerun.Models.Obj
             priority = 1;
             start = DateTimeOffset.Now.ToUnixTimeSeconds();
             end = DateTimeOffset.Now.AddDays(1).ToUnixTimeSeconds();
-            SetContent(InfoDisplayType.FullTime, "This is a test information. Welcome to OutrunSharp!", "10600001", InfoType.Text, "~");
+            SetContent(InfoDisplayType.FullTime, "This is a test information. Welcome to Rerun!", "10600001", InfoType.Text, "~");
         }
 
         public Information(InfoDisplayType displayType, string message, string imageID, InfoType infoType, string extra)
