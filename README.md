@@ -6,7 +6,7 @@ Rerun (formerly OutrunSharp) is a Sonic Runners server emulator powered by ASP.N
 
 **RERUN IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** Rerun currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
 
-For support, please visit the Rerun Revolt server [here](https://app.revolt.chat/invite/RzXQcTf5).
+For support, please visit the Rerun Revolt server [here](https://app.revolt.chat/invite/RzXQcTf5). (Revolt is like Discord, but open-source)
 
 ## What you need to get this server working
 * [Visual Studio 2022 or newer](https://visualstudio.microsoft.com/vs/) (Community version will work)
