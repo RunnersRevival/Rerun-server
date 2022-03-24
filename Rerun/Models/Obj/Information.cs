@@ -45,7 +45,7 @@ namespace Rerun.Models.Obj
     {
         EveryDay,
         Once,
-        FullTime,
+        FullTime, // Always show on every launch
         OnlyInfoPage
     }
 
@@ -63,11 +63,11 @@ namespace Rerun.Models.Obj
         URL,
         Roulette,
         Shop,
-        Event,
-        EventList,
+        Event, // event top button
+        EventList, // event rewards button
         RouletteInfo,
         QuickInfo, // timed mode banner
-        CountryText,
-        CountryImage
+        CountryText, // country-specific text
+        CountryImage // country-specific image
     }
 }

@@ -17,7 +17,7 @@ namespace Rerun.Models.Obj
 
     public class RedStarExchangeDefaults
     {
-        public static readonly List<RedStarItem> DefaultRedStarItems0 = new(); // red star rings - not used
+        public static readonly List<RedStarItem> DefaultRedStarItems0 = new(); // red star rings - not used in Rerun
         public static readonly List<RedStarItem> DefaultRedStarItems1 = new() // rings
         {
             new RedStarItem

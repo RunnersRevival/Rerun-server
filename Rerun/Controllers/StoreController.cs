@@ -71,20 +71,20 @@ namespace Rerun.Controllers
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
-                        0));
+                        int.Parse(paramData.seq)));
             GetRedstarExchangeListResponse response = new();
             switch (int.Parse(paramData.itemType))
             {
-                case 0:
+                case 0: // red star rings
                     response.SetItemList(RedStarExchangeDefaults.DefaultRedStarItems0);
                     break;
-                case 1:
+                case 1: // rings
                     response.SetItemList(RedStarExchangeDefaults.DefaultRedStarItems1);
                     break;
-                case 2:
+                case 2: // revive tokens
                     response.SetItemList(RedStarExchangeDefaults.DefaultRedStarItems2);
                     break;
-                case 4:
+                case 4: // boss challenge tokens
                     response.SetItemList(RedStarExchangeDefaults.DefaultRedStarItems4);
                     break;
                 default:
@@ -92,8 +92,9 @@ namespace Rerun.Controllers
                         RunnersResponseHelper.CreateBaseResponse(
                             "Invalid itemType",
                             RunnersResponseHelper.StatusCode.ClientError,
-                            0));
+                            int.Parse(paramData.seq)));
             }
+            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
     }

@@ -49,7 +49,7 @@ namespace Rerun.Models.ResponseModels
 
         public string errorMessage { get; set; } // indicates error status (in the original, it was in Japanese, but it seems to not be checked by the game)
         public long closeTime { get; set; } // indicates end of day
-        public string seq { get; set; } // int, indicates sequence number - what exactly does this mean?
+        public string seq { get; set; } // int, indicates sequence number
         public long serverTime { get; set; } // indicates current server time
         public int statusCode { get; set; } // indicates status code
 

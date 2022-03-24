@@ -36,14 +36,14 @@ namespace Rerun.Models.Obj
         ItemIDChaoRouletteTicket = 230000,
         ItemIDRouletteTicket = 240000,
         ItemIDRaidBossRouletteTicket = 250000,
-        ItemIDEventRouletteTicket = 260000,
+        ItemIDEventRouletteTicket = 260000, // event roulette apparently didn't make it into any events...?
 
         ItemIDRedRing = 900000,
         ItemIDRing = 910000,
         ItemIDEnergy = 920000,
 
         ItemIDContinue = 950000,
-        ItemIDDailyBattleReset = 980000,
+        ItemIDDailyBattleReset = 980000,  // not clear what this one's used for, if at all
         ItemIDDailyBattleReset1 = 980001, // find new opponent
         ItemIDDailyBattleReset2 = 980002, // find beatable opponent
     }

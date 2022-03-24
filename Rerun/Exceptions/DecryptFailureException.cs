@@ -2,6 +2,9 @@
 
 namespace Rerun.Exceptions
 {
+    /// <summary>
+    /// Returned by Cryptor when it fails to decrypt text.
+    /// </summary>
     public class DecryptFailureException : Exception
     {
         public DecryptFailureException()

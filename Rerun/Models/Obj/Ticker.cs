@@ -12,7 +12,7 @@ namespace Rerun.Models.Obj
             id = 1;
             start = DateTimeOffset.Now.ToUnixTimeSeconds();
             end = DateTimeOffset.Now.AddDays(1).ToUnixTimeSeconds();
-            param = "Welcome to Rerun, the next generation of Revival's server software.";
+            param = "Welcome to Rerun, the next generation of Sonic Runners Revival's server software.";
         }
 
         public Ticker(string message)

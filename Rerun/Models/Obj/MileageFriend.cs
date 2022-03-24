@@ -16,7 +16,7 @@ namespace Rerun.Models.Obj
 
         public string friendId { get; set; }
         public string name { get; set; }
-        public string url { get; set; }
+        public string url { get; set; } // not sure if this is used anywhere in the game
         public MapState mapState { get; set; }
     }
 }

@@ -72,7 +72,7 @@ namespace Rerun.Controllers
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
-                        0));
+                        int.Parse(paramData.seq)));
             InformationResponse response = new()
             {
                 informations = new List<Information>
@@ -80,6 +80,7 @@ namespace Rerun.Controllers
                     new()
                 }
             };
+            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
@@ -134,7 +135,7 @@ namespace Rerun.Controllers
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
-                        0));
+                        int.Parse(paramData.seq)));
             TickerResponse response = new()
             {
                 tickerList = new List<Ticker>
@@ -142,6 +143,7 @@ namespace Rerun.Controllers
                     new()
                 }
             };
+            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
     }

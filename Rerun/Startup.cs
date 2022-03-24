@@ -87,7 +87,8 @@ namespace Rerun
 
                 endpoints.MapGet("/humans.txt", async context =>
                 {
-                    await context.Response.WriteAsync("This is a Rerun instance. Rerun (formerly OutrunSharp) is a custom server for Sonic Runners, a defunct mobile game by SEGA. It has been written by a passionate group of fans for the Sonic Runners Revival service. If you wish to contribute to Rerun, the source code is located here: https://github.com/FairPlay137/Rerun-server (note that the server code may not line up with what is currently live)");
+                    // TODO: make this customizable
+                    await context.Response.WriteAsync("This is a Rerun instance. Rerun (formerly OutrunSharp) is an advanced custom server for Sonic Runners, a defunct mobile game by SEGA. It has been written by a passionate group of fans for the Sonic Runners Revival service. If you wish to contribute to Rerun, the source code is located here: https://github.com/FairPlay137/Rerun-server (note that the server code may not line up with what is currently live)");
                 });
 
                 endpoints.MapControllers();

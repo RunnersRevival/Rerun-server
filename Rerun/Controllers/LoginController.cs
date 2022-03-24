@@ -73,7 +73,7 @@ namespace Rerun.Controllers
                 RunnersResponseHelper.CreateBaseResponse(
                     "Unimplemented operation",
                     RunnersResponseHelper.StatusCode.OtherError,
-                    0));
+                    int.Parse(paramData.seq)));
             }
             if (paramData.lineAuth.password.Length == 0)
             {
@@ -87,6 +87,7 @@ namespace Rerun.Controllers
                     {
                         key = pkey
                     };
+                    response.seq = paramData.seq;
                     return RunnersResponseHelper.CraftResponse(true, response);
                 }
                 catch (NoSuchPlayerException)
@@ -95,7 +96,7 @@ namespace Rerun.Controllers
                         RunnersResponseHelper.CreateBaseResponse(
                             "Nonexistant player",
                             RunnersResponseHelper.StatusCode.MissingPlayer,
-                            0));
+                            int.Parse(paramData.seq)));
                 }
             }
             // login - use user id in conjunction with a password to create a session id
@@ -116,6 +117,7 @@ namespace Rerun.Controllers
                     energyRecveryTime = "600", // TODO: Have this in a config file!
                     energyRecoveryMax = "10" // TODO: Have this in a config file!
                 };
+                response.seq = paramData.seq;
                 return RunnersResponseHelper.CraftResponse(true, response);
             }
             else
@@ -126,6 +128,7 @@ namespace Rerun.Controllers
                 {
                     key = pkey
                 };
+                response.seq = paramData.seq;
                 return RunnersResponseHelper.CraftResponse(true, response);
             }
         }
@@ -181,9 +184,10 @@ namespace Rerun.Controllers
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
-                        0));
+                        int.Parse(paramData.seq)));
             // agnostic
             VariousParamsResponse response = new();
+            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
     }

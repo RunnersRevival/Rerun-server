@@ -14,6 +14,11 @@ namespace Rerun.Helpers
         private static readonly byte[] CryptoKey = Encoding.UTF8.GetBytes("Ec7bLaTdSuXuf5pW");
         private static readonly byte[] CryptoIV = Encoding.UTF8.GetBytes("DV3G4Kb7xflNqi5x");
 
+        /// <summary>
+        /// Determines whether or not a given string is a base64-encoded string.
+        /// </summary>
+        /// <param name="base64String">The string to check for base64 on</param>
+        /// <returns></returns>
         public static bool IsBase64String(string base64String)
         {
             base64String = base64String.Trim();
@@ -21,6 +26,15 @@ namespace Rerun.Helpers
                    Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None);
 
         }
+
+        /// <summary>
+        /// Decrypts base64-encoded text with a given IV.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="iv"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="DecryptFailureException"></exception>
         public static string DecryptText(string text, string iv)
         {
             if (string.IsNullOrEmpty(text))
@@ -52,6 +66,12 @@ namespace Rerun.Helpers
             return decryptedText;
         }
 
+        /// <summary>
+        /// Encrypts given text into Xeen-compatible format with the Runners IV and key.
+        /// </summary>
+        /// <param name="text">The text to encrypt</param>
+        /// <returns>A base64-encoded encrypted string</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static string EncryptText(string text)
         {
             if (string.IsNullOrEmpty(text))
@@ -84,11 +104,20 @@ namespace Rerun.Helpers
             return Convert.ToBase64String(encrypted);
         }
 
+        /// <summary>
+        /// Gets the IV used for encryption and decryption of text - this should be game-specific.
+        /// </summary>
+        /// <returns></returns>
         public static byte[] GetCryptoIV()
         {
             return CryptoIV;
         }
 
+        /// <summary>
+        /// Calculates the MD5 of a given string.
+        /// </summary>
+        /// <param name="plainText">The plaintext string to calculate the MD5 of</param>
+        /// <returns>A string containing the MD5 checksum of <see cref="plainText"/></returns>
         public static string CalcMD5String(string plainText)
         {
             //MD5CryptoServiceProvider cryptoMD5 = new();

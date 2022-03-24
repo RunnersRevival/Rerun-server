@@ -70,8 +70,9 @@ namespace Rerun.Controllers
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
-                        0));
+                        int.Parse(paramData.seq)));
             MessageListResponse response = new();
+            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
     }

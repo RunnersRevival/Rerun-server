@@ -72,8 +72,9 @@ namespace Rerun.Controllers
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
-                        0));
+                        int.Parse(paramData.seq)));
             DailyChallengeDataResponse response = new();
+            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
@@ -128,8 +129,9 @@ namespace Rerun.Controllers
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
-                        0));
+                        int.Parse(paramData.seq)));
             CostListResponse response = new();
+            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
@@ -184,9 +186,10 @@ namespace Rerun.Controllers
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
-                        0));
+                        int.Parse(paramData.seq)));
             // TODO: get this from player data
             MileageDataResponse response = new();
+            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
@@ -241,8 +244,9 @@ namespace Rerun.Controllers
                     RunnersResponseHelper.CreateBaseResponse(
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
-                        0));
+                        int.Parse(paramData.seq)));
             CampaignListResponse response = new();
+            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
     }

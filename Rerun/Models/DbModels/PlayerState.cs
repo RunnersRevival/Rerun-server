@@ -20,9 +20,9 @@ namespace Rerun.Models.DbModels
 
         // red rings
         public int NumRedRings { get; set; }
-        public int NumBuyRedRings { get; set; } // number of red rings purchased using real money; not used by Rerun
+        public int NumBuyRedRings { get; set; } // number of red rings purchased using real money; not used in Rerun
 
-        // 
+        // revive tokens
         public int Energy { get; set; }
         public int EnergyBuy { get; set; } // number of revive tokens purchased using red rings
         public long EnergyRenewsAt { get; set; }
