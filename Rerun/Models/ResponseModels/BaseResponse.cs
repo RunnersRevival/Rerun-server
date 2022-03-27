@@ -47,14 +47,48 @@ namespace Rerun.Models.ResponseModels
             version = "2.2.0";
         }
 
-        public string errorMessage { get; set; } // indicates error status (in the original, it was in Japanese, but it seems to not be checked by the game)
+        /// <summary>
+        /// A human-readable string meant to indicate the error status.
+        /// </summary>
+        /// <remarks>
+        /// This value is not actually used by the game; it's just there for debugging.
+        /// </remarks>
+        public string errorMessage { get; set; }
+        
+        /// <summary>
+        /// Unix timestamp indicating the end of the day.
+        /// </summary>
         public long closeTime { get; set; } // indicates end of day
+        
+        /// <summary>
+        /// The current sequence number.
+        /// </summary>
+        /// <remarks>
+        /// Should be converted from an int, since the game internally converts this string back into an int.
+        /// </remarks>
         public string seq { get; set; } // int, indicates sequence number
-        public long serverTime { get; set; } // indicates current server time
+        
+        /// <summary>
+        /// Unix timestamp indicating the current server time. Used for keeping timed stuff such as events, energy refresh, and timed mileage rewards in sync with the server.
+        /// </summary>
+        public long serverTime { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
         public int statusCode { get; set; } // indicates status code
 
         public string assets_version { get; set; }
+        
+        /// <summary>
+        /// A value with an unknown purpose; might not be used in-game
+        /// </summary>
         public string client_data_version { get; set; }
+        
+        /// <summary>
+        /// A value with an unknown purpose; might not be used in-game
+        /// </summary>
         public string data_version { get; set; }
         public string info_version { get; set; }
         public string version { get; set; }

@@ -72,7 +72,10 @@ namespace Rerun.Controllers
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         int.Parse(paramData.seq)));
-            GetRedstarExchangeListResponse response = new();
+            GetRedstarExchangeListResponse response = new()
+            {
+                seq = paramData.seq
+            };
             switch (int.Parse(paramData.itemType))
             {
                 case 0: // red star rings
@@ -94,7 +97,6 @@ namespace Rerun.Controllers
                             RunnersResponseHelper.StatusCode.ClientError,
                             int.Parse(paramData.seq)));
             }
-            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
     }

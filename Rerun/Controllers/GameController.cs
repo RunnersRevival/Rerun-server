@@ -73,8 +73,9 @@ namespace Rerun.Controllers
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         int.Parse(paramData.seq)));
-            DailyChallengeDataResponse response = new();
-            response.seq = paramData.seq;
+            DailyChallengeDataResponse response = new() {
+                seq = paramData.seq
+            };
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
@@ -130,8 +131,9 @@ namespace Rerun.Controllers
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         int.Parse(paramData.seq)));
-            CostListResponse response = new();
-            response.seq = paramData.seq;
+            CostListResponse response = new() {
+                seq = paramData.seq
+            };
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
@@ -188,8 +190,10 @@ namespace Rerun.Controllers
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         int.Parse(paramData.seq)));
             // TODO: get this from player data
-            MileageDataResponse response = new();
-            response.seq = paramData.seq;
+            MileageDataResponse response = new()
+            {
+                seq = paramData.seq
+            };
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
@@ -245,8 +249,10 @@ namespace Rerun.Controllers
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         int.Parse(paramData.seq)));
-            CampaignListResponse response = new();
-            response.seq = paramData.seq;
+            CampaignListResponse response = new()
+            {
+                seq = paramData.seq
+            };
             return RunnersResponseHelper.CraftResponse(true, response);
         }
     }

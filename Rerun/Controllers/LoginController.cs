@@ -101,7 +101,7 @@ namespace Rerun.Controllers
             }
             // login - use user id in conjunction with a password to create a session id
             _logger.LogDebug("Entering Login");
-            _logger.LogDebug(paramData.lineAuth.password);
+            //_logger.LogDebug(paramData.lineAuth.password);
             Debug.Assert(context != null, nameof(context) + " != null");
             if (context.ValidatePassword(paramData.lineAuth.userId, paramData.lineAuth.password))
             {
@@ -115,9 +115,9 @@ namespace Rerun.Controllers
                     sessionId = sessionId,
                     sessionTimeLimit = 3600, // TODO: Have this in a config file!
                     energyRecveryTime = "600", // TODO: Have this in a config file!
-                    energyRecoveryMax = "10" // TODO: Have this in a config file!
+                    energyRecoveryMax = "10",
+                    seq = paramData.seq // TODO: Have this in a config file!
                 };
-                response.seq = paramData.seq;
                 return RunnersResponseHelper.CraftResponse(true, response);
             }
             else
@@ -126,9 +126,9 @@ namespace Rerun.Controllers
                 var pkey = context.GetPlayerKey(paramData.lineAuth.userId);
                 LoginCheckKeyResponse response = new("Bad password", (int)RunnersResponseHelper.StatusCode.PassWordError)
                 {
-                    key = pkey
+                    key = pkey,
+                    seq = paramData.seq
                 };
-                response.seq = paramData.seq;
                 return RunnersResponseHelper.CraftResponse(true, response);
             }
         }
@@ -186,8 +186,10 @@ namespace Rerun.Controllers
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         int.Parse(paramData.seq)));
             // agnostic
-            VariousParamsResponse response = new();
-            response.seq = paramData.seq;
+            VariousParamsResponse response = new()
+            {
+                seq = paramData.seq
+            };
             return RunnersResponseHelper.CraftResponse(true, response);
         }
     }

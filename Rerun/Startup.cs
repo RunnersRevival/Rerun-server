@@ -15,7 +15,7 @@ namespace Rerun
     {
         public Startup(IConfiguration configuration) => Configuration = configuration;
 
-        public DateTime StartupTime;
+        private DateTime StartupTime;
 
         public IConfiguration Configuration { get; }
 

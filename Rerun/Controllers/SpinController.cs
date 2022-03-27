@@ -71,8 +71,10 @@ namespace Rerun.Controllers
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         int.Parse(paramData.seq)));
-            WheelOptionsResponse response = new();
-            response.seq = paramData.seq;
+            WheelOptionsResponse response = new()
+            {
+                seq = paramData.seq
+            };
             // TODO: get player data
             return RunnersResponseHelper.CraftResponse(true, response);
         }

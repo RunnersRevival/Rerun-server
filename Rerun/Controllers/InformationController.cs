@@ -78,9 +78,9 @@ namespace Rerun.Controllers
                 informations = new List<Information>
                 {
                     new()
-                }
+                },
+                seq = paramData.seq
             };
-            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
 
@@ -141,9 +141,9 @@ namespace Rerun.Controllers
                 tickerList = new List<Ticker>
                 {
                     new()
-                }
+                },
+                seq = paramData.seq
             };
-            response.seq = paramData.seq;
             return RunnersResponseHelper.CraftResponse(true, response);
         }
     }

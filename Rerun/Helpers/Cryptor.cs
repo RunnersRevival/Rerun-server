@@ -30,11 +30,11 @@ namespace Rerun.Helpers
         /// <summary>
         /// Decrypts base64-encoded text with a given IV.
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="iv"></param>
+        /// <param name="text">The base64-encoded text to decrypt.</param>
+        /// <param name="iv">The IV to use for decryption.</param>
         /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="DecryptFailureException"></exception>
+        /// <exception cref="ArgumentNullException">Thrown if text is null.</exception>
+        /// <exception cref="DecryptFailureException">Thrown if something goes wrong during the decryption, or the given text is not base64.</exception>
         public static string DecryptText(string text, string iv)
         {
             if (string.IsNullOrEmpty(text))
@@ -71,7 +71,7 @@ namespace Rerun.Helpers
         /// </summary>
         /// <param name="text">The text to encrypt</param>
         /// <returns>A base64-encoded encrypted string</returns>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException">Thrown if text is null.</exception>
         public static string EncryptText(string text)
         {
             if (string.IsNullOrEmpty(text))
@@ -107,7 +107,7 @@ namespace Rerun.Helpers
         /// <summary>
         /// Gets the IV used for encryption and decryption of text - this should be game-specific.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The IV for the game server that's being emulated.</returns>
         public static byte[] GetCryptoIV()
         {
             return CryptoIV;
@@ -116,12 +116,12 @@ namespace Rerun.Helpers
         /// <summary>
         /// Calculates the MD5 of a given string.
         /// </summary>
-        /// <param name="plainText">The plaintext string to calculate the MD5 of</param>
+        /// <param name="plainText">The plaintext string to calculate the MD5 of.</param>
         /// <returns>A string containing the MD5 checksum of <see cref="plainText"/></returns>
         public static string CalcMD5String(string plainText)
         {
             //MD5CryptoServiceProvider cryptoMD5 = new();
-            MD5 md5alg = MD5.Create();
+            var md5alg = MD5.Create();
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
             //var hashValue = cryptoMD5.ComputeHash(plainTextBytes);
             var hashValue = md5alg.ComputeHash(plainTextBytes);

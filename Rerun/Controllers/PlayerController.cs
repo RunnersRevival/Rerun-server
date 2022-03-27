@@ -72,8 +72,10 @@ namespace Rerun.Controllers
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         int.Parse(paramData.seq)));
-            PlayerStateResponse response = new();
-            response.seq = paramData.seq;
+            PlayerStateResponse response = new()
+            {
+                seq = paramData.seq
+            };
             // TODO: get player data
             return RunnersResponseHelper.CraftResponse(true, response);
         }
@@ -188,8 +190,10 @@ namespace Rerun.Controllers
                         "Expired session",
                         RunnersResponseHelper.StatusCode.ExpirationSession,
                         int.Parse(paramData.seq)));
-            ChaoStateResponse response = new();
-            response.seq = paramData.seq;
+            ChaoStateResponse response = new()
+            {
+                seq = paramData.seq
+            };
             // TODO: get player data
             return RunnersResponseHelper.CraftResponse(true, response);
         }
