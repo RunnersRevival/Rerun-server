@@ -26,6 +26,7 @@ namespace Rerun.Helpers
 			PassWordError = -10104,
 			InvalidSerialCode = -10105,
 			UsedSerialCode = -10106,
+			SequenceIDError = -10107,
 			HspWebApiError = -10110,
 			ApolloWebApiError = -10115,
 			DataMismatch = -30120,
@@ -33,6 +34,7 @@ namespace Rerun.Helpers
 			NotEnoughRedStarRings = -20130,
 			NotEnoughRings = -20131,
 			NotEnoughEnergy = -20132,
+			NotEnoughChallenge = -20133,
 			RouletteUseLimit = -30401,
 			RouletteBoardReset = -30411,
 			CharacterLevelLimit = -20601,
@@ -46,11 +48,12 @@ namespace Rerun.Helpers
 			InvalidReceiptData = -11003,
 			AlreadyProcessedReceipt = -11004,
 			EnergyLimitPurchaseTrigger = -21010,
+			AmountExceedingLimit = -31001,
 			NotStartEvent = -10201,
 			AlreadyEndEvent = -10202,
-			UsernameInvalidChars = -31000, // for 2.1.0 and later
-			UsernameTooLong = -31001, // for 2.1.0 and later
-			UsernameHasNGWord = -31002, // for 2.1.0 and later
+			UsernameInvalidChars = -40000, // for 2.1.0 and later
+			UsernameTooLong = -40001, // for 2.1.0 and later
+			UsernameHasNGWord = -40002, // for 2.1.0 and later
 			VersionForApplication = -999002,
 			TimeOut = -7,
 			OtherError = -8,

@@ -67,18 +67,23 @@ namespace Rerun.Models.Obj
         Silver, // easy
         MetalSonic,
         ClassicSonic, // birthday event
+        
+        // 2.0 characters
         Werehog, // sonic unleashed event
         Sticks,
         Tikal, // sonic adventure event
         Mephiles, // sonic wars/forces event?
         PSISilver,
-        Chara0021, // 2.0.4 launch event
+        
+        // Revival 2.x characters
+        Marine, // sonic rush adventure event
         Chara0022, // ??? event
         Chara0023, // ??? event
         Chara0024, // ??? event
-        Chara0025, // TBD
-        Chara0026, // TBD
-        Chara0027, // TBD
+        Chara0025,
+        Chara0026, // 2.2.0 launch event
+        Chara0027, // 2.2.0 launch event
+        
         Chara0028, // TBD
         Chara0029, // TBD
         Chara0030, // TBD

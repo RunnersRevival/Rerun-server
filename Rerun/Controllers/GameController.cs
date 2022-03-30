@@ -64,6 +64,7 @@ namespace Rerun.Controllers
                             0));
                 }
             }
+            // TODO: Above is reused code across all endpoints in all controllers!!! Resolve duplication requirement!
 
             Debug.Assert(context != null, nameof(context) + " != null");
             var playerId = context.CheckSessionID(paramData.sessionId);
@@ -122,6 +123,7 @@ namespace Rerun.Controllers
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
+            // TODO: Above is reused code across all endpoints in all controllers!!! Resolve duplication requirement!
 
             Debug.Assert(context != null, nameof(context) + " != null");
             var playerId = context.CheckSessionID(paramData.sessionId);
@@ -180,6 +182,7 @@ namespace Rerun.Controllers
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
+            // TODO: Above is reused code across all endpoints in all controllers!!! Resolve duplication requirement!
 
             Debug.Assert(context != null, nameof(context) + " != null");
             var playerId = context.CheckSessionID(paramData.sessionId);
@@ -240,6 +243,7 @@ namespace Rerun.Controllers
                             RunnersResponseHelper.StatusCode.ServerSystemError,
                             0));
             }
+            // TODO: Above is reused code across all endpoints in all controllers!!! Resolve duplication requirement!
 
             Debug.Assert(context != null, nameof(context) + " != null");
             var playerId = context.CheckSessionID(paramData.sessionId);

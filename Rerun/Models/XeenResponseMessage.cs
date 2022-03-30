@@ -18,8 +18,11 @@ namespace Rerun.Models
         public object param { get; set; }
 
         /// <summary>
-        /// Indicates whether AES encryption is used for <see cref="param"/>
+        /// Indicates whether AES encryption is used for <see cref="param"/>.
         /// </summary>
+        /// <remarks>
+        /// This is represented as a flag in the client's code, so the only valid values are either 0 or 1.
+        /// </remarks>
         /// <seealso cref="key"/>
         public short secure { get; set; }
     }

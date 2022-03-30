@@ -21,7 +21,7 @@ namespace Rerun.Models.ResponseModels
             closeTime = ct.ToUnixTimeSeconds();
             // TODO: Make the below options configurable!
             assets_version = "052";
-            client_data_version = "2.2.0";
+            client_data_version = "0";
             data_version = "15";
             info_version = "017";
             version = "2.2.0";
@@ -41,7 +41,7 @@ namespace Rerun.Models.ResponseModels
             closeTime = ct.ToUnixTimeSeconds();
             // TODO: Make the below options configurable!
             assets_version = "052";
-            client_data_version = "2.2.0";
+            client_data_version = "0";
             data_version = "15";
             info_version = "017";
             version = "2.2.0";
@@ -74,23 +74,29 @@ namespace Rerun.Models.ResponseModels
         public long serverTime { get; set; }
         
         /// <summary>
-        /// 
+        /// The status code for the response.
         /// </summary>
-        /// 
+        /// <remarks>
+        /// It is recommended that the <see cref="Rerun.Helpers.RunnersResponseHelper.StatusCode"/> enum be used as to prevent instability.
+        /// </remarks>
         public int statusCode { get; set; } // indicates status code
 
         public string assets_version { get; set; }
-        
         /// <summary>
-        /// A value with an unknown purpose; might not be used in-game
+        /// A value with an unknown purpose. It is read by the game as an int.
         /// </summary>
         public string client_data_version { get; set; }
-        
         /// <summary>
-        /// A value with an unknown purpose; might not be used in-game
+        /// The server data file's version.
         /// </summary>
         public string data_version { get; set; }
+        /// <summary>
+        /// The info version.
+        /// </summary>
         public string info_version { get; set; }
+        /// <summary>
+        /// The server version. Ideally should match the client version.
+        /// </summary>
         public string version { get; set; }
     }
 }

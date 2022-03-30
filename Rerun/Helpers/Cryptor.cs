@@ -17,14 +17,13 @@ namespace Rerun.Helpers
         /// <summary>
         /// Determines whether or not a given string is a base64-encoded string.
         /// </summary>
-        /// <param name="base64String">The string to check for base64 on</param>
-        /// <returns></returns>
+        /// <param name="base64String">The string to check for base64 on.</param>
+        /// <returns>A bool indicating whether or not <see cref="base64String"/> is a base64-encoded string.</returns>
         public static bool IsBase64String(string base64String)
         {
             base64String = base64String.Trim();
             return (base64String.Length % 4 == 0) &&
                    Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None);
-
         }
 
         /// <summary>
@@ -32,7 +31,7 @@ namespace Rerun.Helpers
         /// </summary>
         /// <param name="text">The base64-encoded text to decrypt.</param>
         /// <param name="iv">The IV to use for decryption.</param>
-        /// <returns></returns>
+        /// <returns>A string containing the decrypted text.</returns>
         /// <exception cref="ArgumentNullException">Thrown if text is null.</exception>
         /// <exception cref="DecryptFailureException">Thrown if something goes wrong during the decryption, or the given text is not base64.</exception>
         public static string DecryptText(string text, string iv)
