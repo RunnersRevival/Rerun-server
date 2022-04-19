@@ -5,7 +5,7 @@ using Rerun.Models.ResponseModels;
 
 namespace Rerun.Helpers
 {
-    public class RunnersResponseHelper
+    public static class RunnersResponseHelper
     {
 
 		public enum StatusCode
@@ -69,7 +69,7 @@ namespace Rerun.Helpers
         {
             short isSecure = 0;
             var outputParam = responseObj;
-			// TODO: ensure that every value in every key-value pair in param is a string; it doesn't like it if you send non-string values
+			// TODO: ensure that every value in every key-value pair in param is a string; game doesn't like it if you send non-string values
             if (!wantSecure)
                 return new XeenResponseMessage
                 {

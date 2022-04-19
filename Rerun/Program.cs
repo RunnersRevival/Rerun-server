@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Reflection;
+using Rerun.Logging;
 
 namespace Rerun
 {
@@ -34,7 +35,7 @@ namespace Rerun
                 .ConfigureLogging(logging =>
                 {
                     logging.ClearProviders();
-                    logging.AddConsole();
+                    logging.AddRerunConsoleLogger();
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

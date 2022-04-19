@@ -47,7 +47,8 @@ namespace Rerun.Helpers
                 // TODO: this used to use Rijndael, which was deprecated in .NET 6; ensure this actually works
                 using var aesAlg = Aes.Create();
                 aesAlg.BlockSize = 128;
-                aesAlg.Padding = PaddingMode.Zeros;
+                aesAlg.Mode = CipherMode.CBC;
+                aesAlg.Padding = PaddingMode.PKCS7;
                 aesAlg.Key = CryptoKey;
                 aesAlg.IV = Encoding.UTF8.GetBytes(iv);
 
@@ -84,6 +85,7 @@ namespace Rerun.Helpers
             using (var aesAlg = Aes.Create())
             {
                 aesAlg.BlockSize = 128;
+                aesAlg.Mode = CipherMode.CBC;
                 aesAlg.Padding = PaddingMode.PKCS7;
                 aesAlg.Key = CryptoKey;
                 aesAlg.IV = CryptoIV;
