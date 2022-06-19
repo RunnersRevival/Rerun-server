@@ -18,9 +18,7 @@ namespace Rerun
         private DateTime StartupTime;
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -31,7 +29,6 @@ namespace Rerun
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             StartupTime = DateTime.Now;
@@ -88,7 +85,7 @@ namespace Rerun
                 endpoints.MapGet("/humans.txt", async context =>
                 {
                     // TODO: make this customizable
-                    await context.Response.WriteAsync("This is a Rerun instance. Rerun (formerly OutrunSharp) is an advanced custom server for Sonic Runners, a defunct mobile game by SEGA. It has been written by a passionate group of fans for the Sonic Runners Revival service. If you wish to contribute to Rerun, the source code is located here: https://github.com/FairPlay137/Rerun-server (note that the server code may not line up with what is currently live)");
+                    await context.Response.WriteAsync("This is a Rerun instance. Rerun is an advanced custom server for Sonic Runners, a defunct mobile game by SEGA. It has been written by a passionate group of fans for the Sonic Runners Revival service. If you wish to contribute to Rerun, the source code is located here: https://github.com/RunnersRevival/Rerun-server (note that the server code may not line up with what is currently live)");
                 });
 
                 endpoints.MapControllers();

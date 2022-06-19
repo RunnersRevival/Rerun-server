@@ -1,4 +1,4 @@
-﻿namespace Rerun.Models.DbModels
+﻿namespace Rerun.Db.Models
 {
     public class SessionIds
     {

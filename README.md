@@ -1,8 +1,8 @@
 # Rerun
 
-![continuous](https://github.com/FairPlay137/OutrunSharp/actions/workflows/ci.yml/badge.svg)
+![continuous](https://github.com/RunnersRevival/Rerun-server/actions/workflows/ci.yml/badge.svg)
 
-Rerun (formerly OutrunSharp) is a Sonic Runners server emulator powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/Mtbcooler/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
+Rerun is a Sonic Runners server emulator powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/Mtbcooler/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
 
 **RERUN IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** Rerun currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
 

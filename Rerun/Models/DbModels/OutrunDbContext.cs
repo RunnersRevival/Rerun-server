@@ -7,10 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Rerun.Db.Models;
 
 namespace Rerun.Models.DbModels
 {
     // For interfacing with Outrun MySQL compatible databases
+    [Obsolete("Use RerunDbContext instead.  This class predates the use of EntityFrameworkCore in Rerun.")]
     public class OutrunDbContext
     {
         public string ConnectionString { get; set; }

@@ -2,6 +2,7 @@
 using Rerun.Models.Obj;
 using System;
 using System.Collections.Generic;
+using Rerun.Db.Models;
 
 // ReSharper disable InconsistentNaming
 #pragma warning disable IDE1006 // Naming Styles

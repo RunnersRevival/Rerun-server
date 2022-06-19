@@ -19,6 +19,8 @@ public class RerunDataTable
     
     public List<ConsumedItem> costList { get; set; }
     
+    public int maxContinues { get; set; }
+    
     public static RerunDataTable DefaultRerunData()
     {
         return new RerunDataTable()
@@ -103,7 +105,8 @@ public class RerunDataTable
                 new ConsumedItem(((int)ItemIDs.ItemIDDailyBattleReset).ToString(), 2, ((int)ItemIDs.ItemIDRedRing).ToString()),
                 new ConsumedItem(((int)ItemIDs.ItemIDDailyBattleReset1).ToString(), 5, ((int)ItemIDs.ItemIDRedRing).ToString()),
                 new ConsumedItem(((int)ItemIDs.ItemIDDailyBattleReset2).ToString(), 15, ((int)ItemIDs.ItemIDRedRing).ToString())
-            }
+            },
+            maxContinues = 2
         };
     }
 }

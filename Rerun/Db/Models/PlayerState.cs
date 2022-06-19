@@ -1,16 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Rerun.Models.DbModels
+namespace Rerun.Db.Models
 {
     public class PlayerState
     {
-        public List<Obj.Item> Items { get; set; }
+        [Column("id")]
+        public ulong Id { get; set; }
+        
+        [Column("items")]
+        public List<Rerun.Models.Obj.Item> Items { get; set; }
+        [Column("items")]
         public List<string> EquippedItems { get; set; }
 
-        // 
+        // characters
         public string MainCharaID { get; set; }
         public string SubCharaID { get; set; }
 
+        // chao
         public string MainChaoID { get; set; }
         public string SubChaoID { get; set; }
 
