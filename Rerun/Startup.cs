@@ -23,6 +23,7 @@ namespace Rerun
         {
             services.AddControllers();
             services.Add(new ServiceDescriptor(typeof(OutrunDbContext), new OutrunDbContext(Configuration.GetConnectionString("DefaultConnection"))));
+            // TODO: Migrate to RerunDbContext
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rerun", Version = "v1" });
@@ -82,6 +83,7 @@ namespace Rerun
                     await context.Response.WriteAsync("User-agent: *\nDisallow: /");
                 });
 
+                // humans.txt, for a human-readable description of the current Rerun instance
                 endpoints.MapGet("/humans.txt", async context =>
                 {
                     // TODO: make this customizable

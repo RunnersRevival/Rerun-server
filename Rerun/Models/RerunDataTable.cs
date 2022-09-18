@@ -3,6 +3,7 @@ using Rerun.Models.Obj;
 
 namespace Rerun.Models;
 
+/// <summary>A set of configuration options for many server-side features.</summary>
 public class RerunDataTable
 {
     public RerunDataTable()

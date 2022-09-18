@@ -60,7 +60,7 @@ namespace Rerun.Controllers
                 {
                     return RunnersResponseHelper.CraftResponse(true,
                         RunnersResponseHelper.CreateBaseResponse(
-                            "Nonexistant player",
+                            "Nonexistent player",
                             RunnersResponseHelper.StatusCode.MissingPlayer,
                             int.Parse(paramData.seq)));
                 }
@@ -73,11 +73,11 @@ namespace Rerun.Controllers
             {
                 _logger.LogDebug("Successful login");
                 var sessionId = context.CreateSessionID(Convert.ToUInt64(paramData.lineAuth.userId));
-                var playerinfo = context.GetPlayerInfo(paramData.lineAuth.userId);
+                var playerInfo = context.GetPlayerInfo(paramData.lineAuth.userId);
                 context.UpdatePlayerInfo(paramData.lineAuth.userId, "last_login", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
                 LoginSuccessResponse response = new()
                 {
-                    userName = playerinfo.Username,
+                    userName = playerInfo.Username,
                     sessionId = sessionId,
                     sessionTimeLimit = 3600, // TODO: Have this in a config file!
                     energyRecveryTime = "600", // TODO: Have this in a config file!
