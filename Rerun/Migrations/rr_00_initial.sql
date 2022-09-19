@@ -135,6 +135,7 @@
 		sid VARCHAR(48) NOT NULL,
 		uid BIGINT UNSIGNED NOT NULL,
 		assigned_at_time BIGINT NOT NULL,
+        current_seq INTEGER NOT NULL,
 		PRIMARY KEY (sid)
 	);
 	CREATE TABLE IF NOT EXISTS `player_operator_infos` (
