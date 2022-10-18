@@ -4,14 +4,16 @@
 
 ***RERUN IS STILL A HEAVY WORK IN PROGRESS. It is not yet able to get the game to the main menu, and there are many, MANY missing features.***
 
-Rerun is a Sonic Runners server emulator powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/Mtbcooler/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
+Rerun is a Sonic Runners server emulator powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/RunnersRevival/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
 
 **RERUN IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** Rerun currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
 
 For support, please visit the Rerun Element Space [here](https://matrix.to/#/!vqhayGnOJhcecomYZf:matrix.org).
 
+There is also documentation in the works, which can be viewed in the Docs folder.
+
 ## What you need to get this server working
-* [Visual Studio 2022 or newer](https://visualstudio.microsoft.com/vs/) (Community version will work)
+* [Visual Studio 2022 or newer](https://visualstudio.microsoft.com/vs/) (Community version will work), or JetBrains Rider.
 * [.NET 6.0 or better SDK](https://dotnet.microsoft.com/download)
 * ASP.NET Core build support
 * A [MySQL](https://dev.mysql.com/downloads/) or [MariaDB](https://mariadb.org/download) instance
@@ -31,7 +33,7 @@ For support, please visit the Rerun Element Space [here](https://matrix.to/#/!vq
 
 ## FAQ
 **Q:** Will this work on Linux and macOS as well?
-* **A:** If there is a .NET 6 runtime available for your platform, it'll run on it. So yes, it'll more than likely work just fine on Linux and macOS.
+* **A:** If there is a .NET runtime available for your platform, it'll run on it. So yes, it'll more than likely work just fine on Linux and macOS.
 
 **Q:** Why isn't the port configurable?
 * **A:** Because I haven't figured out a way to make it configurable just yet. Expect this to be fixed soon!
