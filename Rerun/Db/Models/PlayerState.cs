@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Rerun.Db.Models
@@ -7,6 +8,7 @@ namespace Rerun.Db.Models
     public class PlayerState
     {
         [Column("id")]
+        [Key]
         public ulong Id { get; set; }
         
         [Column("items")]

@@ -36,6 +36,7 @@ namespace Rerun
 
             if (env.IsDevelopment())
             {
+                // not sure how useful this'll be, but it's there nonetheless
                 Console.WriteLine(@"!!! DEVELOPMENT ENVIRONMENT !!!");
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
@@ -46,7 +47,7 @@ namespace Rerun
 
             app.UseEndpoints(endpoints =>
             {
-                // index page; return info about OutrunSharp
+                // index page; return info about Rerun
                 endpoints.MapGet("/", async context =>
                 {
                     //context.Response.StatusCode = 404;

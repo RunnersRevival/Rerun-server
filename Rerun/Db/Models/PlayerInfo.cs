@@ -9,6 +9,7 @@ namespace Rerun.Db.Models
     public class PlayerInfo
     {
         [Column("id")]
+        [Key]
         public ulong Id { get; set; }
         
         [Column("username")]

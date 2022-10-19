@@ -12,7 +12,7 @@ using Rerun.Db.Models;
 namespace Rerun.Models.DbModels
 {
     // For interfacing with Outrun MySQL compatible databases
-    [Obsolete("Use RerunDbContext instead.  This class predates the use of EntityFrameworkCore in Rerun.")]
+    [Obsolete("Use RerunDbContext instead.  This class predates the use of EntityFrameworkCore in Rerun.  OutrunDbContext will be removed when the migration to EFCore has been fully completed.")]
     public class OutrunDbContext
     {
         public string ConnectionString { get; set; }
@@ -22,11 +22,10 @@ namespace Rerun.Models.DbModels
         private MySqlConnection GetConnection() => new(ConnectionString);
 
         private const string ValidRandChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-
         private static string GetRandomString(int length)
         {
             var s = "";
-            using RandomNumberGenerator rng = RandomNumberGenerator.Create();
+            using var rng = RandomNumberGenerator.Create();
             while (s.Length != length)
             {
                 var oneByte = new byte[1];
@@ -55,7 +54,7 @@ namespace Rerun.Models.DbModels
             while (reader.Read())
             {
                 if (!onFirstEntry)
-                    throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database. This may indicate a conflict.");
+                    throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database.  There may be a database misconfiguration.");
                 else
                 {
                     info.Id = Convert.ToUInt64(reader["id"]);
@@ -97,7 +96,7 @@ namespace Rerun.Models.DbModels
                 while (reader.Read())
                 {
                     if (!onFirstEntry)
-                        throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database. This may indicate a conflict.");
+                        throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database.  There may be a database misconfiguration.");
                     else
                     {
                         key = reader["player_key"].ToString();
@@ -114,7 +113,7 @@ namespace Rerun.Models.DbModels
         {
             var key = string.Empty;
             var password = string.Empty;
-            var gameId = "dho5v5yy7n2uswa5iblb";
+            const string gameId = "dho5v5yy7n2uswa5iblb";
 
             var onFirstEntry = true;
 
@@ -129,7 +128,7 @@ namespace Rerun.Models.DbModels
                 while (reader.Read())
                 {
                     if (!onFirstEntry)
-                        throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database. This may indicate a conflict.");
+                        throw new PlayerIDConflictException("Player ID " + id + " has multiple entries in the database.  There may be a database misconfiguration.");
                     else
                     {
                         password = reader["password"].ToString();

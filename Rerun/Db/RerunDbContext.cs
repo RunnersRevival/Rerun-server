@@ -13,5 +13,17 @@ public class RerunDbContext : DbContext
 {
     public DbSet<PlayerInfo> player_info { get; set; }
     public DbSet<PlayerState> player_states { get; set; }
+    public DbSet<PlayerMileage> player_mileage { get; set; }
+    
     public DbSet<SessionIds> session_ids { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        
+    }
 }

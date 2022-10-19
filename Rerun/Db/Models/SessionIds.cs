@@ -7,6 +7,7 @@ namespace Rerun.Db.Models
     {
         [Column("sid")]
         [MaxLength(48)]
+        [Key]
         public string SID { get; set; }
         [Column("uid")]
         public ulong UID { get; set; }
