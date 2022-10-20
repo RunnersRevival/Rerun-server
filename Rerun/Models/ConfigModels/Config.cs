@@ -13,8 +13,14 @@
         /// </summary>
         public int Port { get; init; }
         /// <summary>
-        /// The filename for the Rerun data file.
+        /// The filename for the Rerun data file. This can be made and edited using the companion Rerun Editor program.
+        /// Default value is "DataTable.rdt"
         /// </summary>
         public string RerunDataFilename { get; init; }
+        
+        /// <summary>
+        /// Specifies whether Rerun should log device names in its database.
+        /// </summary>
+        public bool AllowDeviceLogging { get; init; }
     }
 }

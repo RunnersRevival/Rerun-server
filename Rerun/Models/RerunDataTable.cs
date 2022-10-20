@@ -10,18 +10,28 @@ public class RerunDataTable
     {
     }
     
+    /// <summary>The data table version which is reported to the client. If this changes during an active client session, the game will reset to the title screen as if it needed to download new assets.</summary>
     public int dataVersion { get; set; }
     
+    /// <summary>A lookup table for each character which denotes which level-up cost group to use.</summary>
     public Dictionary<string, int> charaGroup { get; set; }
     
+    /// <summary>Lookup tables for level-up costs.</summary>
     public Dictionary<int, int[]> charaLevelupCostGroups { get; set; }
     
+    /// <summary>The red ring cost for one spin on the Chao Roulette.</summary>
     public int chaoRouletteCost { get; set; }
     
+    /// <summary>The number of free spins each player gets per day.</summary>
+    public int freeSpinsPerDay { get; set; }
+    
+    /// <summary>Lookup tables for the cost of various items, including continues and daily battle resets.</summary>
     public List<ConsumedItem> costList { get; set; }
     
+    /// <summary>The maximum number of continues that can be used during a single run.</summary>
     public int maxContinues { get; set; }
     
+    /// <summary>The default RerunDataTable data.</summary>
     public static RerunDataTable DefaultRerunData()
     {
         return new RerunDataTable()
@@ -86,6 +96,7 @@ public class RerunDataTable
                     }
                 }
             },
+            freeSpinsPerDay = 3,
             chaoRouletteCost = 15,
             costList = {
                 new ConsumedItem(((int)ItemIDs.ItemIDBoostScore).ToString(), 6000, ((int)ItemIDs.ItemIDRing).ToString()),

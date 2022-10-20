@@ -6,7 +6,7 @@
 
 Rerun is a Sonic Runners server emulator powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/RunnersRevival/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
 
-**RERUN IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** Rerun currently relies on all the necessary MySQL Outrun for Revival database entries being there. In the future, we'll handle the creation of MySQL tables just like what Outrun for Revival MySQL does.
+**RERUN IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** The database system is still very much a work-in-progress, and as such it cannot be relied on at this early stage of development.
 
 For support, please visit the Rerun Element Space [here](https://matrix.to/#/!vqhayGnOJhcecomYZf:matrix.org).
 
@@ -19,6 +19,10 @@ There is also documentation in the works, which can be viewed in the Docs folder
 * A [MySQL](https://dev.mysql.com/downloads/) or [MariaDB](https://mariadb.org/download) instance
 * [Git for Windows](https://git-scm.com/download/win)
 
+## Projects in this repository
+* Rerun - The main server.
+* Rerun-Editor - The (Work-In-Progress) Windows-only Rerun Data Table (RDT) editor. This program will be the primary way to configure Rerun.
+
 ## What still needs to be done?
 * Account registration
 * Story Mode
@@ -27,7 +31,7 @@ There is also documentation in the works, which can be viewed in the Docs folder
 * Roulette (vastly improved over Outrun, to more closely mirror the official server)
 * Events
 * Campaigns
-* Configuration (as compatible with Outrun as possible, but more expansive)
+* Configuration
 * Shop
 * Analytics
 
