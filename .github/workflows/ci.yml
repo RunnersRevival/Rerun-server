@@ -50,7 +50,7 @@ jobs:
     # Package into zip
     - name: Package
       run: |
-        7z a Rerun-latest.zip "Rerun/bin/Debug/net6.0/*"
+        7z a Rerun-latest.zip "Rerun/bin/Debug/net7.0/*"
 
     # Upload artifact
     - name: Upload a Build Artifact
