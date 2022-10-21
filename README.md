@@ -34,6 +34,7 @@ There is also documentation in the works, which can be viewed in the Docs folder
 * Configuration
 * Shop
 * Analytics
+* Session ID purging
 
 ## FAQ
 **Q:** Will this work on Linux and macOS as well?

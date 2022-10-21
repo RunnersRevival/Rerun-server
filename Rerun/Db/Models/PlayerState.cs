@@ -5,12 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Rerun.Db.Models
 {
-    public class PlayerState
+    public class PlayerState : PerPlayerDbEntity
     {
-        [Column("id")]
-        [Key]
-        public ulong Id { get; set; }
-        
         [Column("items")]
         public List<Rerun.Models.Obj.Item> Items { get; set; }
         [Column("equipped_items")]

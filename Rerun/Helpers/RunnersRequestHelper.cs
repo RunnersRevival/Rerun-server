@@ -23,9 +23,25 @@ namespace Rerun.Helpers
             return JsonSerializer.Deserialize<T>(decryptedParam);
         }
 
-		public static (T, XeenResponseMessage) TryDecryptParam<T>(string key, string param, int secure)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T">The request model type that should be used to deserialize param.</typeparam>
+        /// <param name="key">The IV that should be used for decryption.</param>
+        /// <param name="param">The request's param.</param>
+        /// <param name="secure">A flag</param>
+        /// <returns>An object of type T representing the param data, as well as .</returns>
+        public static (T, XeenResponseMessage) TryDecryptParam<T>(string key, string param, int secure)
 			where T : BaseRequest
 		{
+			if (secure is < 0 or > 1)
+			{
+                return (null, RunnersResponseHelper.CraftResponse(true,
+					RunnersResponseHelper.CreateBaseResponse(
+						"Secure flag was not set properly for this response!",
+                        RunnersResponseHelper.StatusCode.ServerSystemError,
+                        0)));
+            }
 			T paramData;
 			if (secure == 1)
 			{

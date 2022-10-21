@@ -25,47 +25,43 @@ public class RerunConsoleLogger : ILogger
         Exception? exception,
         Func<TState, Exception?, string> formatter)
     {
-        if (!IsEnabled(logLevel))
-        {
-            return;
-        }
+        if (!IsEnabled(logLevel)) return;
 
-        RerunConsoleLoggerConfig config = _getCurrentConfig();
-        if (config.EventId == 0 || config.EventId == eventId.Id)
+        var config = _getCurrentConfig();
+        if (config.EventId != 0 && config.EventId != eventId.Id) return;
+        var originalColor = Console.ForegroundColor;
+            
+        Console.Write($"[{DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}] [");
+            
+        Console.ForegroundColor = config.LogLevels[logLevel];
+        switch (logLevel)
         {
-            ConsoleColor originalColor = Console.ForegroundColor;
-            
-            Console.Write($"[{DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}] [");
-            
-            Console.ForegroundColor = config.LogLevels[logLevel];
-            switch (logLevel)
-            {
-                case LogLevel.Trace:
-                    Console.Write("TRACE");
-                    break;
-                case LogLevel.Debug:
-                    Console.Write("DEBUG");
-                    break;
-                case LogLevel.Information:
-                    Console.Write("INFO");
-                    break;
-                case LogLevel.Warning:
-                    Console.Write("WARN");
-                    break;
-                case LogLevel.Error:
-                    Console.Write("ERROR");
-                    break;
-                case LogLevel.Critical:
-                    Console.Write("FATAL");
-                    break;
-                default:
-                    Console.Write("LOG");
-                    break;
-            }
-            //Console.Write($"{logLevel,-12}");
-            
-            Console.ForegroundColor = originalColor;
-            Console.WriteLine($"] ({_name}) {formatter(state, exception)}");
+            case LogLevel.Trace:
+                Console.Write("TRACE");
+                break;
+            case LogLevel.Debug:
+                Console.Write("DEBUG");
+                break;
+            case LogLevel.Information:
+                Console.Write("INFO");
+                break;
+            case LogLevel.Warning:
+                Console.Write("WARN");
+                break;
+            case LogLevel.Error:
+                Console.Write("ERROR");
+                break;
+            case LogLevel.Critical:
+                Console.Write("FATAL");
+                break;
+            case LogLevel.None:
+            default:
+                Console.Write("LOG");
+                break;
         }
+        //Console.Write($"{logLevel,-12}");
+            
+        Console.ForegroundColor = originalColor;
+        Console.WriteLine($"] ({_name}) {formatter(state, exception)}");
     }
 }

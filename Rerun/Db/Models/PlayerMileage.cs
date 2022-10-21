@@ -3,12 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Rerun.Db.Models;
 
-public class PlayerMileage
+public class PlayerMileage : PerPlayerDbEntity
 {
-    [Column("id")]
-    [Key]
-    public ulong Id { get; set; }
-    
     [Column("map_distance")]
     public int MapDistance { get; set; }
     

@@ -20,11 +20,11 @@ namespace Rerun.Models.ResponseModels
             serverTime = DateTimeOffset.Now.ToUnixTimeSeconds();
             closeTime = ct.ToUnixTimeSeconds();
             // TODO: Make the below options configurable!
-            assets_version = "052";
+            assets_version = "054";
             client_data_version = "0";
             data_version = "15";
             info_version = "017";
-            version = "2.2.0";
+            version = "2.2.2";
         }
 
         public BaseResponse(string errMsg, int status)
@@ -40,11 +40,11 @@ namespace Rerun.Models.ResponseModels
             serverTime = DateTimeOffset.Now.ToUnixTimeSeconds();
             closeTime = ct.ToUnixTimeSeconds();
             // TODO: Make the below options configurable!
-            assets_version = "052";
+            assets_version = "054";
             client_data_version = "0";
             data_version = "15";
             info_version = "017";
-            version = "2.2.0";
+            version = "2.2.2";
         }
 
         /// <summary>

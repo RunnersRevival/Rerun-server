@@ -6,12 +6,8 @@ using Rerun.Models.Obj;
 
 namespace Rerun.Db.Models
 {
-    public class PlayerInfo
+    public class PlayerInfo : PerPlayerDbEntity
     {
-        [Column("id")]
-        [Key]
-        public ulong Id { get; set; }
-        
         [Column("username")]
         [MaxLength(12)]
         public string Username { get; set; }
