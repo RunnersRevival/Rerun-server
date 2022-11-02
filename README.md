@@ -41,10 +41,10 @@ There is also documentation in the works, which can be viewed in the Docs folder
 * **A:** If there is a .NET runtime available for your platform, it'll run on it. So yes, it'll more than likely work just fine on Linux and macOS.
 
 **Q:** Why isn't the port configurable?
-* **A:** Because I haven't figured out a way to make it configurable just yet. Expect this to be fixed soon!
+* **A:** This functionality is coming soon, with the config data.
 
 **Q:** How do I set up a database for use with Rerun?
-* **A:** At the moment, you need to use the MySQL branch of Outrun for Revival to initialize the database (and register a player) as there are no routines to init the database or to create a player ID in Rerun yet.
+* **A:** At the moment, you need to use the MySQL branch of Outrun for Revival to initialize the database (and register a player) as there are no routines to init the database or to create a player ID in Rerun yet. This will change in the near future though.
 
 **Q:** Why rewrite Outrun?
 * **A:** Because 1: all of Revival will be written using one programming language (C#), and 2: the Outrun for Revival codebase is starting to get a little bloated (with outdated research and lots of guesswork on fluofoxxo's part still being present), and is getting increasingly hard to maintain.
@@ -54,3 +54,6 @@ There is also documentation in the works, which can be viewed in the Docs folder
 
 **Q:** Will I see differences when switching from Outrun for Revival?
 * **A:** The behavior of some functions may change (such as the roulette), but the game itself won't change much. The configuration, on the other hand, will be quite different from Outrun for Revival, so some migration steps may be required.
+
+**Q:** I've seen this project referred to as OutrunSharp in the past. What's the deal with that?
+* **A:** After OutrunSharp started becoming its own thing, we decided to rename it to Rerun. Keep in mind Rerun is still focusing on bringing a solid codebase to the Runners server space.

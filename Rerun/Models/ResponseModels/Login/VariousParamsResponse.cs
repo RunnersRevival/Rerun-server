@@ -29,6 +29,6 @@ namespace Rerun.Models.ResponseModels.Login
         public int energyRecveryTime { get; set; }
         public int onePlayCmCount { get; set; }
         public int onePlayContinueCount { get; set; } // maximum continues
-        public int isPurchased { get; set; } // flag
+        public int isPurchased { get; set; } // flag - indicates whether clients with ad modules should disable ads
     }
 }

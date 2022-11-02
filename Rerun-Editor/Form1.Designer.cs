@@ -29,8 +29,15 @@ partial class Form1
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.generalPage = new System.Windows.Forms.TabPage();
+            this.energyRecoveryTimeField = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.energyRecoveryMaxField = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.preventDataVersionIncrementCheckBox = new System.Windows.Forms.CheckBox();
             this.numContinuesField = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -60,10 +67,12 @@ partial class Form1
             this.label4 = new System.Windows.Forms.Label();
             this.chaoRoulettePage = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
-            this.eventSchedulePage = new System.Windows.Forms.TabPage();
+            this.eventSpecificOddsPage = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
             this.raidBossPage = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
+            this.storePage = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -76,17 +85,19 @@ partial class Form1
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.preventDataVersionIncrementCheckBox = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.generalPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.energyRecoveryTimeField)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.energyRecoveryMaxField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numContinuesField)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.mileageRewardsPage.SuspendLayout();
             this.roulettePage.SuspendLayout();
             this.chaoRoulettePage.SuspendLayout();
-            this.eventSchedulePage.SuspendLayout();
+            this.eventSpecificOddsPage.SuspendLayout();
             this.raidBossPage.SuspendLayout();
+            this.storePage.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -100,8 +111,9 @@ partial class Form1
             this.tabControl1.Controls.Add(this.itemCostsPage);
             this.tabControl1.Controls.Add(this.roulettePage);
             this.tabControl1.Controls.Add(this.chaoRoulettePage);
-            this.tabControl1.Controls.Add(this.eventSchedulePage);
+            this.tabControl1.Controls.Add(this.eventSpecificOddsPage);
             this.tabControl1.Controls.Add(this.raidBossPage);
+            this.tabControl1.Controls.Add(this.storePage);
             this.tabControl1.Location = new System.Drawing.Point(12, 27);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -111,6 +123,11 @@ partial class Form1
             // 
             // generalPage
             // 
+            this.generalPage.Controls.Add(this.label16);
+            this.generalPage.Controls.Add(this.energyRecoveryTimeField);
+            this.generalPage.Controls.Add(this.label15);
+            this.generalPage.Controls.Add(this.energyRecoveryMaxField);
+            this.generalPage.Controls.Add(this.label13);
             this.generalPage.Controls.Add(this.button1);
             this.generalPage.Controls.Add(this.preventDataVersionIncrementCheckBox);
             this.generalPage.Controls.Add(this.numContinuesField);
@@ -126,6 +143,87 @@ partial class Form1
             this.generalPage.TabIndex = 0;
             this.generalPage.Text = "General";
             this.generalPage.UseVisualStyleBackColor = true;
+            // 
+            // energyRecoveryTimeField
+            // 
+            this.energyRecoveryTimeField.Location = new System.Drawing.Point(380, 116);
+            this.energyRecoveryTimeField.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.energyRecoveryTimeField.Minimum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.energyRecoveryTimeField.Name = "energyRecoveryTimeField";
+            this.energyRecoveryTimeField.Size = new System.Drawing.Size(206, 23);
+            this.energyRecoveryTimeField.TabIndex = 11;
+            this.energyRecoveryTimeField.Value = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(241, 118);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(139, 15);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "Energy regen time (secs):";
+            // 
+            // energyRecoveryMaxField
+            // 
+            this.energyRecoveryMaxField.Location = new System.Drawing.Point(380, 86);
+            this.energyRecoveryMaxField.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.energyRecoveryMaxField.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.energyRecoveryMaxField.Name = "energyRecoveryMaxField";
+            this.energyRecoveryMaxField.Size = new System.Drawing.Size(206, 23);
+            this.energyRecoveryMaxField.TabIndex = 9;
+            this.energyRecoveryMaxField.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(241, 89);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(137, 15);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Maximum regen energy:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(198, 8);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(49, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Edit...";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // preventDataVersionIncrementCheckBox
+            // 
+            this.preventDataVersionIncrementCheckBox.AutoSize = true;
+            this.preventDataVersionIncrementCheckBox.Location = new System.Drawing.Point(253, 11);
+            this.preventDataVersionIncrementCheckBox.Name = "preventDataVersionIncrementCheckBox";
+            this.preventDataVersionIncrementCheckBox.Size = new System.Drawing.Size(196, 19);
+            this.preventDataVersionIncrementCheckBox.TabIndex = 6;
+            this.preventDataVersionIncrementCheckBox.Text = "Don\'t increment version on save";
+            this.preventDataVersionIncrementCheckBox.UseVisualStyleBackColor = true;
             // 
             // numContinuesField
             // 
@@ -421,15 +519,15 @@ partial class Form1
             this.label5.TabIndex = 1;
             this.label5.Text = "Coming soon!";
             // 
-            // eventSchedulePage
+            // eventSpecificOddsPage
             // 
-            this.eventSchedulePage.Controls.Add(this.label6);
-            this.eventSchedulePage.Location = new System.Drawing.Point(4, 44);
-            this.eventSchedulePage.Name = "eventSchedulePage";
-            this.eventSchedulePage.Size = new System.Drawing.Size(592, 389);
-            this.eventSchedulePage.TabIndex = 7;
-            this.eventSchedulePage.Text = "Event Schedule";
-            this.eventSchedulePage.UseVisualStyleBackColor = true;
+            this.eventSpecificOddsPage.Controls.Add(this.label6);
+            this.eventSpecificOddsPage.Location = new System.Drawing.Point(4, 44);
+            this.eventSpecificOddsPage.Name = "eventSpecificOddsPage";
+            this.eventSpecificOddsPage.Size = new System.Drawing.Size(592, 389);
+            this.eventSpecificOddsPage.TabIndex = 7;
+            this.eventSpecificOddsPage.Text = "Event-specific Odds";
+            this.eventSpecificOddsPage.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -460,6 +558,26 @@ partial class Form1
             this.label7.Size = new System.Drawing.Size(155, 30);
             this.label7.TabIndex = 1;
             this.label7.Text = "Coming soon!";
+            // 
+            // storePage
+            // 
+            this.storePage.Controls.Add(this.label14);
+            this.storePage.Location = new System.Drawing.Point(4, 44);
+            this.storePage.Name = "storePage";
+            this.storePage.Size = new System.Drawing.Size(592, 389);
+            this.storePage.TabIndex = 9;
+            this.storePage.Text = "Store";
+            this.storePage.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(219, 179);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(155, 30);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Coming soon!";
             // 
             // openFileDialog1
             // 
@@ -539,24 +657,14 @@ partial class Form1
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(161, 17);
             this.toolStripStatusLabel1.Text = "Non-functional UI prototype!";
             // 
-            // preventDataVersionIncrementCheckBox
+            // label16
             // 
-            this.preventDataVersionIncrementCheckBox.AutoSize = true;
-            this.preventDataVersionIncrementCheckBox.Location = new System.Drawing.Point(253, 11);
-            this.preventDataVersionIncrementCheckBox.Name = "preventDataVersionIncrementCheckBox";
-            this.preventDataVersionIncrementCheckBox.Size = new System.Drawing.Size(196, 19);
-            this.preventDataVersionIncrementCheckBox.TabIndex = 6;
-            this.preventDataVersionIncrementCheckBox.Text = "Don\'t increment version on save";
-            this.preventDataVersionIncrementCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(198, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(49, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Edit...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(243, 226);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(314, 90);
+            this.label16.TabIndex = 12;
+            this.label16.Text = resources.GetString("label16.Text");
             // 
             // Form1
             // 
@@ -574,6 +682,8 @@ partial class Form1
             this.tabControl1.ResumeLayout(false);
             this.generalPage.ResumeLayout(false);
             this.generalPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.energyRecoveryTimeField)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.energyRecoveryMaxField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numContinuesField)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -583,10 +693,12 @@ partial class Form1
             this.roulettePage.PerformLayout();
             this.chaoRoulettePage.ResumeLayout(false);
             this.chaoRoulettePage.PerformLayout();
-            this.eventSchedulePage.ResumeLayout(false);
-            this.eventSchedulePage.PerformLayout();
+            this.eventSpecificOddsPage.ResumeLayout(false);
+            this.eventSpecificOddsPage.PerformLayout();
             this.raidBossPage.ResumeLayout(false);
             this.raidBossPage.PerformLayout();
+            this.storePage.ResumeLayout(false);
+            this.storePage.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -617,7 +729,7 @@ partial class Form1
     private TabPage roulettePage;
     private TabPage chaoRoulettePage;
     private Label label1;
-    private TabPage eventSchedulePage;
+    private TabPage eventSpecificOddsPage;
     private TabPage raidBossPage;
     private Button resetDataVersionButton;
     private Label dataVersionLabel;
@@ -647,4 +759,11 @@ partial class Form1
     private Label label12;
     private Button button1;
     private CheckBox preventDataVersionIncrementCheckBox;
+    private NumericUpDown energyRecoveryMaxField;
+    private Label label13;
+    private NumericUpDown energyRecoveryTimeField;
+    private Label label15;
+    private TabPage storePage;
+    private Label label14;
+    private Label label16;
 }
