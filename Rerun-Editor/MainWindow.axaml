@@ -2,8 +2,41 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
         x:Class="Rerun_Editor.MainWindow"
-        Title="Rerun Editor">
-    Under construction! We hope to have actual UI here soon!
+        Title="Rerun Editor - Pre-Alpha">
+  <TabControl>
+    <TabItem Header="General">
+      <DockPanel Width="300" Height="300">
+        
+      </DockPanel>
+    </TabItem>
+    <TabItem Header="Mileage Rewards">
+      Coming soon!
+    </TabItem>
+    <TabItem Header="Chara. Costs">
+      Coming soon!
+    </TabItem>
+    <TabItem Header="Level Costs">
+      Coming soon!
+    </TabItem>
+    <TabItem Header="Item Costs">
+      Coming soon!
+    </TabItem>
+    <TabItem Header="Roulette">
+      Coming soon!
+    </TabItem>
+    <TabItem Header="Chao Roulette">
+      Coming soon!
+    </TabItem>
+    <TabItem Header="Event Odds">
+      Coming soon!
+    </TabItem>
+    <TabItem Header="Raid Boss">
+      Coming soon!
+    </TabItem>
+    <TabItem Header="Store">
+      Coming soon!
+    </TabItem>
+  </TabControl>
 </Window>

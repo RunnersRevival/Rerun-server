@@ -26,6 +26,7 @@ namespace Rerun
             displayableVersion += " (debug)";
 #endif
             Console.WriteLine(@"Rerun v" + displayableVersion);
+            Console.WriteLine("WARNING: This is WORK-IN-PROGRESS software. It is not recommended to use this in production, as the Rerun database spec has not been finalized yet.");
 
             CreateHostBuilder(args).Build().Run();
         }
