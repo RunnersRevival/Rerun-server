@@ -25,8 +25,7 @@ namespace Rerun.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             var (paramData, errorResponseMsg) = RunnersRequestHelper.TryDecryptParam<BaseRequest>(key, param, secure);
-            if (errorResponseMsg is not null)
-                return errorResponseMsg; // something went wrong
+            if (errorResponseMsg is not null) return errorResponseMsg; // something went wrong
 
             Debug.Assert(context != null, nameof(context) + " != null");
             var playerId = context.CheckSessionID(paramData.sessionId);
@@ -48,8 +47,7 @@ namespace Rerun.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             var (paramData, errorResponseMsg) = RunnersRequestHelper.TryDecryptParam<BaseRequest>(key, param, secure);
-            if (errorResponseMsg is not null)
-                return errorResponseMsg; // something went wrong
+            if (errorResponseMsg is not null) return errorResponseMsg; // something went wrong
 
             Debug.Assert(context != null, nameof(context) + " != null");
             var playerId = context.CheckSessionID(paramData.sessionId);
@@ -71,8 +69,7 @@ namespace Rerun.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             var (paramData, errorResponseMsg) = RunnersRequestHelper.TryDecryptParam<BaseRequest>(key, param, secure);
-            if (errorResponseMsg is not null)
-                return errorResponseMsg; // something went wrong
+            if (errorResponseMsg is not null) return errorResponseMsg; // something went wrong
 
             Debug.Assert(context != null, nameof(context) + " != null");
             var playerId = context.CheckSessionID(paramData.sessionId);
@@ -96,8 +93,7 @@ namespace Rerun.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(OutrunDbContext)) as OutrunDbContext;
             var (paramData, errorResponseMsg) = RunnersRequestHelper.TryDecryptParam<BaseRequest>(key, param, secure);
-            if (errorResponseMsg is not null)
-                return errorResponseMsg; // something went wrong
+            if (errorResponseMsg is not null) return errorResponseMsg; // something went wrong
 
             Debug.Assert(context != null, nameof(context) + " != null");
             var playerId = context.CheckSessionID(paramData.sessionId);

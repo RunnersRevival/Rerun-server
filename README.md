@@ -4,7 +4,7 @@
 
 ***RERUN IS STILL A HEAVY WORK IN PROGRESS. It is not yet able to get the game to the main menu, and there are many, MANY missing features.***
 
-Rerun is a Sonic Runners server emulator powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/RunnersRevival/outrun) in C#. It will become the server software powering Sonic Runners Revival once it is deemed ready for production.
+Rerun is an advanced Sonic Runners server emulator powered by ASP.NET Core, based off of research done by fluofoxxo and FairPlay137. This project aims to reimplement [outrun](https://github.com/RunnersRevival/outrun) in C#.
 
 **RERUN IS NOT CURRENTLY FEASIBLE FOR SELF-HOSTING.** The database system is still very much a work-in-progress, and as such it cannot be relied on at this early stage of development.
 
@@ -14,7 +14,7 @@ There is also documentation in the works, which can be viewed in the Docs folder
 
 ## What you need to get this server working
 * [Visual Studio 2022 or newer](https://visualstudio.microsoft.com/vs/) (Community version will work), or JetBrains Rider.
-* [.NET 6.0 or better SDK](https://dotnet.microsoft.com/download)
+* [.NET 7.0 or better SDK](https://dotnet.microsoft.com/download)
 * ASP.NET Core build support
 * A [MySQL](https://dev.mysql.com/downloads/) or [MariaDB](https://mariadb.org/download) instance
 * [Git for Windows](https://git-scm.com/download/win)
@@ -57,3 +57,6 @@ There is also documentation in the works, which can be viewed in the Docs folder
 
 **Q:** I've seen this project referred to as OutrunSharp in the past. What's the deal with that?
 * **A:** After OutrunSharp started becoming its own thing, we decided to rename it to Rerun. Keep in mind Rerun is still focusing on bringing a solid codebase to the Runners server space.
+
+**Q:** Isn't there another rewrite going on? What's with the fragmentation?
+* **A:** Simply put, the development team is getting familiar with Runners server framework through having their own takes at rewrites, with one server, Spikewall, being written in C# just like Rerun is. However, Spikewall is much further along than Rerun, due to its simplicity.

@@ -25,8 +25,11 @@ namespace Rerun
 #if DEBUG
             displayableVersion += " (debug)";
 #endif
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(@"Rerun v" + displayableVersion);
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("WARNING: This is WORK-IN-PROGRESS software. It is not recommended to use this in production, as the Rerun database spec has not been finalized yet.");
+            Console.ForegroundColor = ConsoleColor.Gray;
 
             CreateHostBuilder(args).Build().Run();
         }

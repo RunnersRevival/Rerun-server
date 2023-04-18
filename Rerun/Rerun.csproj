@@ -53,7 +53,6 @@
     <Folder Include="Models\RequestModels\RaidbossSpin\" />
     <Folder Include="Models\RequestModels\Player\" />
     <Folder Include="Models\RequestModels\Option\" />
-    <Folder Include="Models\ResponseModels\Chao\" />
     <Folder Include="Models\ResponseModels\Character\" />
     <Folder Include="Models\ResponseModels\Friend\" />
     <Folder Include="Models\ResponseModels\Battle\" />

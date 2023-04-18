@@ -125,7 +125,7 @@ namespace Rerun.Db.Models
         [Column("best_quick_total_score")]
         public long TimedHighTotalScore { get; set; }
 
-        // event state - moving this to EventState.cs at some point, as that will be moved to another table
+        // event state - this is here due to the ease of leaderboard implementation in outrun mysql
         [Column("event_param")]
         public long EventParam { get; set; }
         [Column("event_rewardid")]
