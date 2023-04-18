@@ -5,9 +5,9 @@
 namespace Rerun.Models.Obj
 {
     // Chao are the internal name of companions/buddies
-    public class Chao
+    public class ChaoObj
     {
-        public Chao(string id, ChaoRarity chaoRarity)
+        public ChaoObj(string id, ChaoRarity chaoRarity)
         {
             chaoId = id;
             rarity = chaoRarity;

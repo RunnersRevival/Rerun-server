@@ -37,7 +37,7 @@ namespace Rerun.Db.Models
         public List<Character> Characters { get; set; } // json containing all character data for player
         
         [Column("chao")]
-        public List<Chao> Chao { get; set; } // json containing all chao data for player
+        public List<ChaoObj> Chao { get; set; } // json containing all chao data for player
         
         [Column("suspended_until")]
         public long SuspendedUntil { get; set; }

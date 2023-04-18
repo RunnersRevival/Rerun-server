@@ -66,7 +66,7 @@ namespace Rerun.Models.DbModels
                     info.LastLogin = Convert.ToInt64(reader["last_login"]);
                     info.Language = (Language)Convert.ToInt32(reader["language"]);
                     info.Characters = JsonConvert.DeserializeObject<List<Character>>(reader["characters"].ToString() ?? throw new InvalidOperationException());
-                    info.Chao = JsonConvert.DeserializeObject<List<Chao>>(reader["chao"].ToString() ?? throw new InvalidOperationException());
+                    info.Chao = JsonConvert.DeserializeObject<List<ChaoObj>>(reader["chao"].ToString() ?? throw new InvalidOperationException());
                     info.SuspendedUntil = Convert.ToInt64(reader["suspended_until"]);
                     info.SuspendReason = Convert.ToInt32(reader["suspend_reason"]);
                     info.LastLoginDevice = reader["last_login_device"].ToString();
