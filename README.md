@@ -1,5 +1,7 @@
 # Rerun
 
+⚠️ **NOTE: Rerun development is on a temporary hiatus as we are focusing our efforts on developing [spikewall](https://github.com/Ramen2X/spikewall), which is simpler and as such can be developed quicker.**
+
 ![continuous](https://github.com/RunnersRevival/Rerun-server/actions/workflows/ci.yml/badge.svg)
 
 ***RERUN IS STILL A HEAVY WORK IN PROGRESS. It is not yet able to get the game to the main menu, and there are many, MANY missing features.***
@@ -14,7 +16,7 @@ There is also documentation in the works, which can be viewed in the Docs folder
 
 ## What you need to get this server working
 * [Visual Studio 2022 or newer](https://visualstudio.microsoft.com/vs/) (Community version will work), or JetBrains Rider.
-* [.NET 7.0 or better SDK](https://dotnet.microsoft.com/download)
+* [.NET 7.0 or newer SDK](https://dotnet.microsoft.com/download)
 * ASP.NET Core build support
 * A [MySQL](https://dev.mysql.com/downloads/) or [MariaDB](https://mariadb.org/download) instance
 * [Git for Windows](https://git-scm.com/download/win)
@@ -59,4 +61,4 @@ There is also documentation in the works, which can be viewed in the Docs folder
 * **A:** After OutrunSharp started becoming its own thing, we decided to rename it to Rerun. Keep in mind Rerun is still focusing on bringing a solid codebase to the Runners server space.
 
 **Q:** Isn't there another rewrite going on? What's with the fragmentation?
-* **A:** Simply put, the development team is getting familiar with Runners server framework through having their own takes at rewrites, with one server, Spikewall, being written in C# just like Rerun is. However, Spikewall is much further along than Rerun, due to its simplicity.
+* **A:** Simply put, the development team is getting familiar with Runners server framework through having their own takes at rewrites, with one server, spikewall, being written in C# just like Rerun is. However, spikewall is much further along than Rerun, due to its simplicity.
